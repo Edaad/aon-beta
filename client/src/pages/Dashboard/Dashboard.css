@@ -1,0 +1,432 @@
+/* Dashboard styles */
+
+/* Loading and Error states */
+.dashboard-loading,
+.dashboard-error,
+.dashboard-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    color: #718096;
+}
+
+.dashboard-loading .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(100, 181, 246, 0.2);
+    border-radius: 50%;
+    border-top-color: #64b5f6;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.dashboard-error h2,
+.dashboard-empty h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.dashboard-error p {
+    max-width: 500px;
+    margin-bottom: 0.5rem;
+}
+
+/* Dashboard header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(90deg, rgba(100, 181, 246, 0.05), rgba(149, 117, 205, 0.05));
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.current-week {
+    display: flex;
+    flex-direction: column;
+}
+
+.week-label {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0.25rem;
+}
+
+.week-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.club-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    background: linear-gradient(90deg, #64b5f6, #9575cd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Replace the existing week navigation button styles with these simplified versions */
+
+.week-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.week-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.week-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    background: transparent;
+    color: #64b5f6;
+    border: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.week-nav-btn:hover:not(:disabled) {
+    background-color: rgba(100, 181, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+.week-nav-btn:disabled {
+    color: #cfd8dc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Metrics grid layout */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Metric cards */
+.metric-card {
+    background-color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.metric-card h2 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #718096;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    /* margin-bottom: 0.75rem; */
+}
+
+.metric-value.primary {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #1e88e5, #5e35b1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.metric-value.positive {
+    color: #43a047;
+}
+
+.metric-value.negative {
+    color: #e53935;
+}
+
+/* Metric value containers with inline indicators */
+.metric-value-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.change-indicator {
+    display: flex;
+    align-items: center;
+}
+
+.change {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.change.positive {
+    color: #43a047;
+    background-color: rgba(67, 160, 71, 0.1);
+}
+
+.change.negative {
+    color: #e53935;
+    background-color: rgba(229, 57, 53, 0.1);
+}
+
+.previous-label {
+    color: #a0aec0;
+    font-size: 0.75rem;
+    display: block;
+    margin-top: -0.25rem;
+}
+
+/* Total Fee card - spans all rows on the left */
+.metric-card.total-fee {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    background: linear-gradient(135deg, rgba(100, 181, 246, 0.08) 0%, rgba(149, 117, 205, 0.08) 100%);
+    border-left: 4px solid #64b5f6;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Larger primary value for Total Fee */
+.metric-card.total-fee .metric-value.primary {
+    margin-bottom: 1.5rem;
+    font-size: 4rem;
+}
+
+/* P&L card - top right */
+.metric-card.pl {
+    grid-column: 2;
+    grid-row: 1;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.08) 0%, rgba(139, 195, 74, 0.08) 100%);
+    border-left: 4px solid #76c180;
+}
+
+/* Active Players card - middle right */
+.metric-card.active-players {
+    grid-column: 2;
+    grid-row: 2;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.08) 0%, rgba(255, 152, 0, 0.08) 100%);
+    border-left: 4px solid #ffca28;
+}
+
+/* Total Hands card - bottom right */
+.metric-card.total-hands {
+    grid-column: 2;
+    grid-row: 3;
+    background: linear-gradient(135deg, rgba(126, 87, 194, 0.08) 0%, rgba(186, 104, 200, 0.08) 100%);
+    border-left: 4px solid #9575cd;
+}
+
+/* Card styles for chart container */
+.trend-chart-container {
+    padding-bottom: 1rem;
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+.trend-chart {
+    width: 100%;
+    height: 100%;
+}
+
+/* Small trend label */
+.trend-label {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #718096;
+    margin-top: 0.5rem;
+}
+
+/* Comparison section */
+.metric-comparison {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.change {
+    font-weight: 600;
+}
+
+.change.positive {
+    color: #43a047;
+}
+
+.change.negative {
+    color: #e53935;
+}
+
+.previous-label {
+    color: #a0aec0;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Rakeback summary section */
+.dashboard-section {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Update Rakeback summary section for vertical layout */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.summary-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.summary-stat .stat-label {
+    font-size: 0.9rem;
+    color: #718096;
+    margin-bottom: 0.75rem;
+}
+
+.summary-stat .stat-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.summary-stat.total {
+    background-color: rgba(100, 181, 246, 0.08);
+}
+
+.summary-stat.total .stat-value {
+    font-size: 1.5rem;
+    color: #1e88e5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-card.total-fee {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .metric-card.pl {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .metric-card.active-players {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .metric-card.total-hands {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    /* Make summary stats responsive for small screens */
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-card.total-fee,
+    .metric-card.pl,
+    .metric-card.active-players,
+    .metric-card.total-hands {
+        grid-column: span 1;
+    }
+
+    .summary-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .week-navigation {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 576px) {
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-stat {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}

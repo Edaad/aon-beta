@@ -1,0 +1,5343 @@
+{
+  "players": [
+    {
+      "id": "p001",
+      "username": "Aaron4001",
+      "percentage": 30
+    },
+    {
+      "id": "p002",
+      "username": "Adamhix106",
+      "percentage": 50
+    },
+    {
+      "id": "p003",
+      "username": "Adolf Chipler",
+      "percentage": 40
+    },
+    {
+      "id": "p004",
+      "username": "AlwaysFold_s",
+      "percentage": 40
+    },
+    {
+      "id": "p006",
+      "username": "andyttp",
+      "percentage": 30
+    },
+    {
+      "id": "p007",
+      "username": "anon42",
+      "percentage": 40
+    },
+    {
+      "id": "p008",
+      "username": "Arje1726",
+      "percentage": 50
+    },
+    {
+      "id": "p009",
+      "username": "Aryeh_M",
+      "percentage": 50
+    },
+    {
+      "id": "p010",
+      "username": "asainkid444",
+      "percentage": 35
+    },
+    {
+      "id": "p011",
+      "username": "AviFaves",
+      "percentage": 30
+    },
+    {
+      "id": "p012",
+      "username": "Ay0409",
+      "percentage": 30
+    },
+    {
+      "id": "p013",
+      "username": "B00BHawk",
+      "percentage": 55
+    },
+    {
+      "id": "p015",
+      "username": "Backshots mcgee",
+      "percentage": 35
+    },
+    {
+      "id": "p017",
+      "username": "billyballsack",
+      "percentage": 30
+    },
+    {
+      "id": "p018",
+      "username": "bluffer77777",
+      "percentage": 30
+    },
+    {
+      "id": "p019",
+      "username": "bob_s",
+      "percentage": 60
+    },
+    {
+      "id": "p020",
+      "username": "BusterScrugs",
+      "percentage": 40
+    },
+    {
+      "id": "p021",
+      "username": "Ch!pmonk",
+      "percentage": 30
+    },
+    {
+      "id": "p022",
+      "username": "CH14",
+      "percentage": 30
+    },
+    {
+      "id": "p023",
+      "username": "Chad Penning",
+      "percentage": 40
+    },
+    {
+      "id": "p024",
+      "username": "Chef_Ramsey",
+      "percentage": 35
+    },
+    {
+      "id": "p025",
+      "username": "Chilly Willyyyy",
+      "percentage": 40
+    },
+    {
+      "id": "p026",
+      "username": "ChopChoppy",
+      "percentage": 50
+    },
+    {
+      "id": "p027",
+      "username": "cmillions",
+      "percentage": 40
+    },
+    {
+      "id": "p028",
+      "username": "cmonnow",
+      "percentage": 50
+    },
+    {
+      "id": "p029",
+      "username": "daddy5544",
+      "percentage": 30
+    },
+    {
+      "id": "p031",
+      "username": "datstick69",
+      "percentage": 30
+    },
+    {
+      "id": "p032",
+      "username": "DCHA",
+      "percentage": 35
+    },
+    {
+      "id": "p033",
+      "username": "Dheucalion",
+      "percentage": 40
+    },
+    {
+      "id": "p034",
+      "username": "donkeybruh",
+      "percentage": 30
+    },
+    {
+      "id": "p035",
+      "username": "Doughboy47",
+      "percentage": 50
+    },
+    {
+      "id": "p036",
+      "username": "DSLi",
+      "percentage": 40
+    },
+    {
+      "id": "p037",
+      "username": "faintestgnat",
+      "percentage": 40
+    },
+    {
+      "id": "p038",
+      "username": "fatherg",
+      "percentage": 30
+    },
+    {
+      "id": "p039",
+      "username": "firefairy46",
+      "percentage": 91
+    },
+    {
+      "id": "p040",
+      "username": "fliptard",
+      "percentage": 40
+    },
+    {
+      "id": "p041",
+      "username": "Geeb goblin",
+      "percentage": 30
+    },
+    {
+      "id": "p042",
+      "username": "GlitchChaser",
+      "percentage": 35
+    },
+    {
+      "id": "p043",
+      "username": "GreatBritton",
+      "percentage": 30
+    },
+    {
+      "id": "p044",
+      "username": "Haholala",
+      "percentage": 40
+    },
+    {
+      "id": "p045",
+      "username": "HT8 Poker",
+      "percentage": 35
+    },
+    {
+      "id": "p046",
+      "username": "hyea 123",
+      "percentage": 40
+    },
+    {
+      "id": "p048",
+      "username": "imkewl",
+      "percentage": 30
+    },
+    {
+      "id": "p049",
+      "username": "iso77777",
+      "percentage": 30
+    },
+    {
+      "id": "p050",
+      "username": "Jack smat",
+      "percentage": 40
+    },
+    {
+      "id": "p051",
+      "username": "jaytoven",
+      "percentage": 35
+    },
+    {
+      "id": "p052",
+      "username": "jddpoker217",
+      "percentage": 30
+    },
+    {
+      "id": "p053",
+      "username": "Jlagos45",
+      "percentage": 30
+    },
+    {
+      "id": "p054",
+      "username": "Jwang824",
+      "percentage": 30
+    },
+    {
+      "id": "p055",
+      "username": "jwjwj323jjwjwjw",
+      "percentage": 30
+    },
+    {
+      "id": "p056",
+      "username": "JWWWWL",
+      "percentage": 45
+    },
+    {
+      "id": "p057",
+      "username": "jz1222",
+      "percentage": 35
+    },
+    {
+      "id": "p058",
+      "username": "k1mster",
+      "percentage": 40
+    },
+    {
+      "id": "p059",
+      "username": "kadeayer",
+      "percentage": 40
+    },
+    {
+      "id": "p060",
+      "username": "Kinganish",
+      "percentage": 35
+    },
+    {
+      "id": "p061",
+      "username": "kingkingka",
+      "percentage": 35
+    },
+    {
+      "id": "p062",
+      "username": "LaTruiteMorte",
+      "percentage": 35
+    },
+    {
+      "id": "p063",
+      "username": "lizzylo",
+      "percentage": 91
+    },
+    {
+      "id": "p064",
+      "username": "LuckboxWhit",
+      "percentage": 60
+    },
+    {
+      "id": "p065",
+      "username": "luckidagoat",
+      "percentage": 40
+    },
+    {
+      "id": "p066",
+      "username": "Mangoman11",
+      "percentage": 65
+    },
+    {
+      "id": "p067",
+      "username": "MarkSandberg51",
+      "percentage": 30
+    },
+    {
+      "id": "p069",
+      "username": "Mich Ultra",
+      "percentage": 30
+    },
+    {
+      "id": "p070",
+      "username": "MoshPoker",
+      "percentage": 45
+    },
+    {
+      "id": "p071",
+      "username": "mrmzty",
+      "percentage": 30
+    },
+    {
+      "id": "p072",
+      "username": "n420y",
+      "percentage": 40
+    },
+    {
+      "id": "p073",
+      "username": "NicoLeny",
+      "percentage": 33
+    },
+    {
+      "id": "p074",
+      "username": "NoKizz",
+      "percentage": 35
+    },
+    {
+      "id": "p075",
+      "username": "Nutbluff69",
+      "percentage": 35
+    },
+    {
+      "id": "p076",
+      "username": "P3011",
+      "percentage": 35
+    },
+    {
+      "id": "p078",
+      "username": "P5088-1060",
+      "percentage": 40
+    },
+    {
+      "id": "p079",
+      "username": "pakmanity",
+      "percentage": 30
+    },
+    {
+      "id": "p080",
+      "username": "perky",
+      "percentage": 30
+    },
+    {
+      "id": "p081",
+      "username": "PICOLO_HB",
+      "percentage": 35
+    },
+    {
+      "id": "p082",
+      "username": "POKERDORI",
+      "percentage": 30
+    },
+    {
+      "id": "p083",
+      "username": "PrestonP20",
+      "percentage": 50
+    },
+    {
+      "id": "p084",
+      "username": "Ryanig100",
+      "percentage": 55
+    },
+    {
+      "id": "p085",
+      "username": "scoopiedoopie",
+      "percentage": 25
+    },
+    {
+      "id": "p086",
+      "username": "ShankAaron",
+      "percentage": 50
+    },
+    {
+      "id": "p087",
+      "username": "SharkModeSam",
+      "percentage": 40
+    },
+    {
+      "id": "p088",
+      "username": "shreyg",
+      "percentage": 40
+    },
+    {
+      "id": "p089",
+      "username": "Sientelobebe",
+      "percentage": 50
+    },
+    {
+      "id": "p090",
+      "username": "Sjg1738",
+      "percentage": 30
+    },
+    {
+      "id": "p091",
+      "username": "Squatdemonsix9",
+      "percentage": 40
+    },
+    {
+      "id": "p092",
+      "username": "Stylissimo",
+      "percentage": 40
+    },
+    {
+      "id": "p093",
+      "username": "swan_poker",
+      "percentage": 30
+    },
+    {
+      "id": "p094",
+      "username": "TanTanSandMan",
+      "percentage": 30
+    },
+    {
+      "id": "p095",
+      "username": "Taylorrrr",
+      "percentage": 40
+    },
+    {
+      "id": "p096",
+      "username": "tazoq",
+      "percentage": 35
+    },
+    {
+      "id": "p097",
+      "username": "TDean16",
+      "percentage": 50
+    },
+    {
+      "id": "p098",
+      "username": "The_1_Percent",
+      "percentage": 40
+    },
+    {
+      "id": "p099",
+      "username": "TheFreeze404",
+      "percentage": 30
+    },
+    {
+      "id": "p100",
+      "username": "theycallmeT",
+      "percentage": 30
+    },
+    {
+      "id": "p101",
+      "username": "ThiefofCrows",
+      "percentage": 30
+    },
+    {
+      "id": "p102",
+      "username": "Vaxxco",
+      "percentage": 30
+    },
+    {
+      "id": "p103",
+      "username": "willow tree",
+      "percentage": 30
+    },
+    {
+      "id": "p104",
+      "username": "Wmaster2",
+      "percentage": 30
+    },
+    {
+      "id": "p105",
+      "username": "wockynuts",
+      "percentage": 30
+    },
+    {
+      "id": "p106",
+      "username": "xxBSACKxx",
+      "percentage": 30
+    },
+    {
+      "id": "p107",
+      "username": "Yb123",
+      "percentage": 50
+    },
+    {
+      "id": "p108",
+      "username": "Zalnx",
+      "percentage": 30
+    },
+    {
+      "id": "p109",
+      "username": "zambini",
+      "percentage": 91
+    },
+    {
+      "id": "p111",
+      "username": "Circle!",
+      "percentage": 70
+    },
+    {
+      "id": "p112",
+      "username": "iluvgambol",
+      "percentage": 50
+    },
+    {
+      "id": "p113",
+      "username": "Uturn14",
+      "percentage": 30
+    },
+    {
+      "id": "p115",
+      "username": "knoxperry",
+      "percentage": 35
+    },
+    {
+      "id": "p116",
+      "username": "Oledueces",
+      "percentage": 30
+    },
+    {
+      "id": "p117",
+      "username": "Warhead4real",
+      "percentage": 25
+    },
+    {
+      "id": "p118",
+      "username": "Trump All Day",
+      "percentage": 50
+    },
+    {
+      "id": "p119",
+      "username": "PreeshP",
+      "percentage": 45
+    },
+    {
+      "id": "p120",
+      "username": "Trace13",
+      "percentage": 50
+    },
+    {
+      "id": "p121",
+      "username": "Samb20303",
+      "percentage": 30
+    }
+  ],
+  "agents": [
+    {
+      "id": "a001",
+      "username": "WLanders",
+      "percentage": 60
+    },
+    {
+      "id": "a002",
+      "username": "Bigpunt69",
+      "percentage": 50
+    },
+    {
+      "id": "a003",
+      "username": "Whaeger7",
+      "percentage": 30
+    },
+    {
+      "id": "a004",
+      "username": "Ved_13",
+      "percentage": 65
+    },
+    {
+      "id": "a005",
+      "username": "daelmf",
+      "percentage": 35
+    },
+    {
+      "id": "a006",
+      "username": "limpforvpip",
+      "percentage": 63
+    },
+    {
+      "id": "a007",
+      "username": "P7658-9025",
+      "percentage": 40
+    },
+    {
+      "id": "a008",
+      "username": "nodna",
+      "percentage": 35
+    },
+    {
+      "id": "a009",
+      "username": "EWD26",
+      "percentage": 35
+    },
+    {
+      "id": "a010",
+      "username": "golden gopher",
+      "percentage": 35
+    },
+    {
+      "id": "a011",
+      "username": "Huda the tuna",
+      "percentage": 50
+    },
+    {
+      "id": "a012",
+      "username": "skibididop",
+      "percentage": 35
+    },
+    {
+      "id": "a013",
+      "username": "KJH726",
+      "percentage": 30
+    },
+    {
+      "id": "a014",
+      "username": "Mcawesome743",
+      "percentage": 30
+    },
+    {
+      "id": "a015",
+      "username": "firefairy47",
+      "percentage": 50
+    },
+    {
+      "id": "a016",
+      "username": "Venomo",
+      "percentage": 30
+    },
+    {
+      "id": "a017",
+      "username": "GTOpoker69",
+      "percentage": 40
+    },
+    {
+      "id": "a018",
+      "username": "mookboy",
+      "percentage": 50
+    },
+    {
+      "id": "a019",
+      "username": "Sukmyballs",
+      "percentage": 35
+    },
+    {
+      "id": "a020",
+      "username": "StuUngarGarment",
+      "percentage": 35
+    },
+    {
+      "id": "a021",
+      "username": "THC34",
+      "percentage": 35
+    },
+    {
+      "id": "a022",
+      "username": "Sjg1738",
+      "percentage": 35
+    },
+    {
+      "id": "a023",
+      "username": "Daddy12",
+      "percentage": 50
+    },
+    {
+      "id": "a024",
+      "username": "Swalley",
+      "percentage": 35
+    },
+    {
+      "id": "a025",
+      "username": "Nemo_inthetank",
+      "percentage": 55
+    },
+    {
+      "id": "a026",
+      "username": "Marialvices",
+      "percentage": 50
+    },
+    {
+      "id": "a027",
+      "username": "Arkhah87",
+      "percentage": 60
+    },
+    {
+      "id": "a028",
+      "username": "chaydodin",
+      "percentage": 35
+    }
+  ],
+  "weeks": [
+    {
+      "id": "7d3b",
+      "startDate": "2025-03-01",
+      "endDate": "2025-03-07",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "80a3",
+      "startDate": "2025-03-08",
+      "endDate": "2025-03-14",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "b72f",
+      "startDate": "2025-03-15",
+      "endDate": "2025-03-21",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "bfd3",
+      "startDate": "2025-03-22",
+      "endDate": "2025-03-28",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "0d95",
+      "startDate": "2025-03-29",
+      "endDate": "2025-04-04",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "392d",
+      "startDate": "2025-04-05",
+      "endDate": "2025-04-11",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "bc5f",
+      "startDate": "2025-04-12",
+      "endDate": "2025-04-18",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "b7b4",
+      "startDate": "2025-04-19",
+      "endDate": "2025-04-25",
+      "hasData": true,
+      "processed": true
+    },
+    {
+      "id": "bae5",
+      "startDate": "2025-04-26",
+      "endDate": "2025-05-02",
+      "hasData": true,
+      "processed": true
+    }
+  ],
+  "weekData": [
+    {
+      "id": "f2f5",
+      "weekId": "7d3b",
+      "playerResults": [
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 437.64,
+          "percentage": 50,
+          "rakeback": 218.82,
+          "agent": "-"
+        },
+        {
+          "username": "Lqdbandaids",
+          "nickname": "Lqdbandaids",
+          "rake": 390.74,
+          "percentage": 75,
+          "rakeback": 293.06,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 31.27,
+          "percentage": 35,
+          "rakeback": 10.94,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 290.94,
+          "percentage": 35,
+          "rakeback": 101.83,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 865.08,
+          "percentage": 45,
+          "rakeback": 389.29,
+          "agent": "-"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 9.5,
+          "percentage": 50,
+          "rakeback": 4.75,
+          "agent": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "lilmayo",
+          "percentage": 80,
+          "totalDownlineRake": 2259.4700000000003,
+          "rakeback": 1807.58,
+          "downlinePlayers": [
+            {
+              "username": "Anthony1505",
+              "rake": 24.95,
+              "contribution": "1.10"
+            },
+            {
+              "username": "JSEP",
+              "rake": 1067.54,
+              "contribution": "47.25"
+            },
+            {
+              "username": "JVentura",
+              "rake": 96.28,
+              "contribution": "4.26"
+            },
+            {
+              "username": "tomdawannnnn",
+              "rake": 40.37,
+              "contribution": "1.79"
+            },
+            {
+              "username": "HD 23",
+              "rake": 111.69,
+              "contribution": "4.94"
+            },
+            {
+              "username": "T-rey",
+              "rake": 5.94,
+              "contribution": "0.26"
+            },
+            {
+              "username": "Spaceylobster",
+              "rake": 145.12,
+              "contribution": "6.42"
+            },
+            {
+              "username": "Sungjae25",
+              "rake": 34.95,
+              "contribution": "1.55"
+            },
+            {
+              "username": "Drewski25",
+              "rake": 7.48,
+              "contribution": "0.33"
+            },
+            {
+              "username": "jcjc00",
+              "rake": 125.46,
+              "contribution": "5.55"
+            },
+            {
+              "username": "alvarofm",
+              "rake": 44.23,
+              "contribution": "1.96"
+            },
+            {
+              "username": "PocketRockets27",
+              "rake": 184.1,
+              "contribution": "8.15"
+            },
+            {
+              "username": "n420y",
+              "rake": 334.02,
+              "contribution": "14.78"
+            },
+            {
+              "username": "Hfoxxy",
+              "rake": 15.39,
+              "contribution": "0.68"
+            },
+            {
+              "username": "702Nutz",
+              "rake": 4.84,
+              "contribution": "0.21"
+            },
+            {
+              "username": "camikebo",
+              "rake": 17.1,
+              "contribution": "0.76"
+            },
+            {
+              "username": "ChiefKrish",
+              "rake": 0.01,
+              "contribution": "0.00"
+            },
+            {
+              "username": "ChopChoppy",
+              "rake": 0,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "zambini",
+          "percentage": 76,
+          "totalDownlineRake": 3510.149999999999,
+          "rakeback": 2667.71,
+          "downlinePlayers": [
+            {
+              "username": "zambini",
+              "rake": 558.98,
+              "contribution": "15.92"
+            },
+            {
+              "username": "Tooyze",
+              "rake": 70.84,
+              "contribution": "2.02"
+            },
+            {
+              "username": "kyledake",
+              "rake": 113.67,
+              "contribution": "3.24"
+            },
+            {
+              "username": "Spidermnkey",
+              "rake": 313.13,
+              "contribution": "8.92"
+            },
+            {
+              "username": "CompSoftware",
+              "rake": 1413.11,
+              "contribution": "40.26"
+            },
+            {
+              "username": "XLOG",
+              "rake": 52.17,
+              "contribution": "1.49"
+            },
+            {
+              "username": "Foxmannns",
+              "rake": 446.78,
+              "contribution": "12.73"
+            },
+            {
+              "username": "PrinceTevy",
+              "rake": 1.73,
+              "contribution": "0.05"
+            },
+            {
+              "username": "Shzfts",
+              "rake": 111.37,
+              "contribution": "3.17"
+            },
+            {
+              "username": "Dystroka",
+              "rake": 191.2,
+              "contribution": "5.45"
+            },
+            {
+              "username": "Beepjr",
+              "rake": 5.62,
+              "contribution": "0.16"
+            },
+            {
+              "username": "Kidney",
+              "rake": 120.52,
+              "contribution": "3.43"
+            },
+            {
+              "username": "BingoCooler",
+              "rake": 49.82,
+              "contribution": "1.42"
+            },
+            {
+              "username": "Bananaman911",
+              "rake": 61.21,
+              "contribution": "1.74"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 39895.92,
+        "profitLoss": -60341.43,
+        "activePlayers": 250,
+        "totalHands": 195384
+      },
+      "summary": {
+        "totalPlayerRake": 2025.17,
+        "totalPlayerRakeback": 1018.69,
+        "totalAgentRakeback": 4475.29,
+        "grandTotal": 5493.98
+      }
+    },
+    {
+      "id": "79c2",
+      "weekId": "80a3",
+      "playerResults": [
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 512.73,
+          "percentage": 50,
+          "rakeback": 256.37,
+          "agent": "-"
+        },
+        {
+          "username": "Lqdbandaids",
+          "nickname": "Lqdbandaids",
+          "rake": 162.14,
+          "percentage": 75,
+          "rakeback": 121.6,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 159.18,
+          "percentage": 35,
+          "rakeback": 55.71,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 229.27,
+          "percentage": 35,
+          "rakeback": 80.24,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 144.37,
+          "percentage": 45,
+          "rakeback": 64.97,
+          "agent": "Mangoman11"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 0,
+          "percentage": 50,
+          "rakeback": 0,
+          "agent": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "lilmayo",
+          "percentage": 80,
+          "totalDownlineRake": 3404.12,
+          "rakeback": 2723.3,
+          "downlinePlayers": [
+            {
+              "username": "JSEP",
+              "rake": 2396.9,
+              "contribution": "70.41"
+            },
+            {
+              "username": "JVentura",
+              "rake": 11.44,
+              "contribution": "0.34"
+            },
+            {
+              "username": "Jrudin",
+              "rake": 26.12,
+              "contribution": "0.77"
+            },
+            {
+              "username": "WheezyKibs2",
+              "rake": 40.04,
+              "contribution": "1.18"
+            },
+            {
+              "username": "T-rey",
+              "rake": 29.57,
+              "contribution": "0.87"
+            },
+            {
+              "username": "Dsparks",
+              "rake": 248.6,
+              "contribution": "7.30"
+            },
+            {
+              "username": "Spaceylobster",
+              "rake": 70.27,
+              "contribution": "2.06"
+            },
+            {
+              "username": "Drewski25",
+              "rake": 39.29,
+              "contribution": "1.15"
+            },
+            {
+              "username": "n420y",
+              "rake": 188.64,
+              "contribution": "5.54"
+            },
+            {
+              "username": "Hfoxxy",
+              "rake": 6.54,
+              "contribution": "0.19"
+            },
+            {
+              "username": "Jlar18",
+              "rake": 9.97,
+              "contribution": "0.29"
+            },
+            {
+              "username": "camikebo",
+              "rake": 3.31,
+              "contribution": "0.10"
+            },
+            {
+              "username": "Sam3527",
+              "rake": 65.77,
+              "contribution": "1.93"
+            },
+            {
+              "username": "AlanAardvark",
+              "rake": 203.72,
+              "contribution": "5.98"
+            },
+            {
+              "username": "theBoytheBum",
+              "rake": 54.33,
+              "contribution": "1.60"
+            },
+            {
+              "username": "HydeTide",
+              "rake": 8.09,
+              "contribution": "0.24"
+            },
+            {
+              "username": "Sungjae25",
+              "rake": 0.01,
+              "contribution": "0.00"
+            },
+            {
+              "username": "Anthony1505",
+              "rake": 1.5,
+              "contribution": "0.04"
+            },
+            {
+              "username": "ChiefKrish",
+              "rake": 0.01,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "zambini",
+          "percentage": 76,
+          "totalDownlineRake": 2878.8900000000003,
+          "rakeback": 2187.96,
+          "downlinePlayers": [
+            {
+              "username": "zambini",
+              "rake": 318.33,
+              "contribution": "11.06"
+            },
+            {
+              "username": "NonBinaryFlush",
+              "rake": 25.76,
+              "contribution": "0.89"
+            },
+            {
+              "username": "China Jacky",
+              "rake": 21.1,
+              "contribution": "0.73"
+            },
+            {
+              "username": "Tooyze",
+              "rake": 111.37,
+              "contribution": "3.87"
+            },
+            {
+              "username": "kyledake",
+              "rake": 126.27,
+              "contribution": "4.39"
+            },
+            {
+              "username": "Spidermnkey",
+              "rake": 101.47,
+              "contribution": "3.52"
+            },
+            {
+              "username": "CompSoftware",
+              "rake": 1864.95,
+              "contribution": "64.78"
+            },
+            {
+              "username": "XLOG",
+              "rake": 12.59,
+              "contribution": "0.44"
+            },
+            {
+              "username": "Dystroka",
+              "rake": 19.3,
+              "contribution": "0.67"
+            },
+            {
+              "username": "Dasaniii",
+              "rake": 68.04,
+              "contribution": "2.36"
+            },
+            {
+              "username": "Kidney",
+              "rake": 132.36,
+              "contribution": "4.60"
+            },
+            {
+              "username": "BingoCooler",
+              "rake": 77.35,
+              "contribution": "2.69"
+            },
+            {
+              "username": "wowcarts",
+              "rake": 0,
+              "contribution": "0.00"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 30655.06,
+        "profitLoss": -22640.73,
+        "activePlayers": 228,
+        "totalHands": 173632
+      },
+      "summary": {
+        "totalPlayerRake": 1207.69,
+        "totalPlayerRakeback": 578.89,
+        "totalAgentRakeback": 4911.26,
+        "grandTotal": 5490.15
+      }
+    },
+    {
+      "id": "dae6",
+      "weekId": "b72f",
+      "playerResults": [
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 267.49,
+          "percentage": 50,
+          "rakeback": 133.75,
+          "agent": "-"
+        },
+        {
+          "username": "Lqdbandaids",
+          "nickname": "Lqdbandaids",
+          "rake": 290.98,
+          "percentage": 75,
+          "rakeback": 218.24,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 1806.97,
+          "percentage": 35,
+          "rakeback": 632.44,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 240.33,
+          "percentage": 35,
+          "rakeback": 84.12,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 0.5,
+          "percentage": 45,
+          "rakeback": 0.23,
+          "agent": "Mangoman11"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "lilmayo",
+          "percentage": 80,
+          "totalDownlineRake": 2278.8799999999997,
+          "rakeback": 1823.1,
+          "downlinePlayers": [
+            {
+              "username": "JSEP",
+              "rake": 382.44,
+              "contribution": "16.78"
+            },
+            {
+              "username": "RookG8",
+              "rake": 6.86,
+              "contribution": "0.30"
+            },
+            {
+              "username": "slobbbbb",
+              "rake": 2.94,
+              "contribution": "0.13"
+            },
+            {
+              "username": "Dsparks",
+              "rake": 272.27,
+              "contribution": "11.95"
+            },
+            {
+              "username": "Drewski25",
+              "rake": 18.92,
+              "contribution": "0.83"
+            },
+            {
+              "username": "Bennygamble",
+              "rake": 10.34,
+              "contribution": "0.45"
+            },
+            {
+              "username": "n420y",
+              "rake": 446.79,
+              "contribution": "19.61"
+            },
+            {
+              "username": "Hfoxxy",
+              "rake": 3.04,
+              "contribution": "0.13"
+            },
+            {
+              "username": "jerry3th",
+              "rake": 87.38,
+              "contribution": "3.83"
+            },
+            {
+              "username": "Jlar18",
+              "rake": 111.39,
+              "contribution": "4.89"
+            },
+            {
+              "username": "camikebo",
+              "rake": 23.08,
+              "contribution": "1.01"
+            },
+            {
+              "username": "Sam3527",
+              "rake": 12.84,
+              "contribution": "0.56"
+            },
+            {
+              "username": "AlanAardvark",
+              "rake": 640.48,
+              "contribution": "28.11"
+            },
+            {
+              "username": "theBoytheBum",
+              "rake": 71.96,
+              "contribution": "3.16"
+            },
+            {
+              "username": "HydeTide",
+              "rake": 4.69,
+              "contribution": "0.21"
+            },
+            {
+              "username": "Gorio7",
+              "rake": 17.6,
+              "contribution": "0.77"
+            },
+            {
+              "username": "tearp",
+              "rake": 73.41,
+              "contribution": "3.22"
+            },
+            {
+              "username": "Ward80",
+              "rake": 62.6,
+              "contribution": "2.75"
+            },
+            {
+              "username": "RNRN",
+              "rake": 29.85,
+              "contribution": "1.31"
+            }
+          ]
+        },
+        {
+          "username": "zambini",
+          "percentage": 76,
+          "totalDownlineRake": 3667.12,
+          "rakeback": 2787.01,
+          "downlinePlayers": [
+            {
+              "username": "zambini",
+              "rake": 270.21,
+              "contribution": "7.37"
+            },
+            {
+              "username": "NonBinaryFlush",
+              "rake": 137.37,
+              "contribution": "3.75"
+            },
+            {
+              "username": "China Jacky",
+              "rake": 149.2,
+              "contribution": "4.07"
+            },
+            {
+              "username": "RunninNGunnin",
+              "rake": 6.08,
+              "contribution": "0.17"
+            },
+            {
+              "username": "Tooyze",
+              "rake": 175.19,
+              "contribution": "4.78"
+            },
+            {
+              "username": "kyledake",
+              "rake": 677.87,
+              "contribution": "18.49"
+            },
+            {
+              "username": "Spidermnkey",
+              "rake": 60.05,
+              "contribution": "1.64"
+            },
+            {
+              "username": "CompSoftware",
+              "rake": 1454.08,
+              "contribution": "39.65"
+            },
+            {
+              "username": "XLOG",
+              "rake": 184.95,
+              "contribution": "5.04"
+            },
+            {
+              "username": "Foxmannns",
+              "rake": 252.4,
+              "contribution": "6.88"
+            },
+            {
+              "username": "Dasaniii",
+              "rake": 49.89,
+              "contribution": "1.36"
+            },
+            {
+              "username": "Kidney",
+              "rake": 113.75,
+              "contribution": "3.10"
+            },
+            {
+              "username": "BingoCooler",
+              "rake": 54.74,
+              "contribution": "1.49"
+            },
+            {
+              "username": "Bananaman911",
+              "rake": 81.34,
+              "contribution": "2.22"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 38650.46,
+        "profitLoss": -38148.09,
+        "activePlayers": 254,
+        "totalHands": 215236
+      },
+      "summary": {
+        "totalPlayerRake": 2606.27,
+        "totalPlayerRakeback": 1068.78,
+        "totalAgentRakeback": 4610.11,
+        "grandTotal": 5678.89
+      }
+    },
+    {
+      "id": "97a0",
+      "weekId": "bfd3",
+      "playerResults": [
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 698.52,
+          "percentage": 50,
+          "rakeback": 349.26,
+          "agent": "-"
+        },
+        {
+          "username": "Lqdbandaids",
+          "nickname": "Lqdbandaids",
+          "rake": 192.1,
+          "percentage": 75,
+          "rakeback": 144.07,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 10457.87,
+          "percentage": 35,
+          "rakeback": 3660.25,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 131.75,
+          "percentage": 35,
+          "rakeback": 46.11,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 217.36,
+          "percentage": 45,
+          "rakeback": 97.81,
+          "agent": "Mangoman11"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 41.06,
+          "percentage": 50,
+          "rakeback": 20.53,
+          "agent": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "lilmayo",
+          "percentage": 80,
+          "totalDownlineRake": 6089.58,
+          "rakeback": 4871.66,
+          "downlinePlayers": [
+            {
+              "username": "lilmayo",
+              "rake": 186,
+              "contribution": "3.05"
+            },
+            {
+              "username": "RookG8",
+              "rake": 26.83,
+              "contribution": "0.44"
+            },
+            {
+              "username": "P2338-3776",
+              "rake": 7.73,
+              "contribution": "0.13"
+            },
+            {
+              "username": "T H_",
+              "rake": 225.38,
+              "contribution": "3.70"
+            },
+            {
+              "username": "kbizzle33",
+              "rake": 19.4,
+              "contribution": "0.32"
+            },
+            {
+              "username": "TKOPoker!",
+              "rake": 9.09,
+              "contribution": "0.15"
+            },
+            {
+              "username": "Cinnnny",
+              "rake": 3.99,
+              "contribution": "0.07"
+            },
+            {
+              "username": "Dsparks",
+              "rake": 109.82,
+              "contribution": "1.80"
+            },
+            {
+              "username": "Spaceylobster",
+              "rake": 5.26,
+              "contribution": "0.09"
+            },
+            {
+              "username": "Sungjae25",
+              "rake": 16.59,
+              "contribution": "0.27"
+            },
+            {
+              "username": "Drewski25",
+              "rake": 61.46,
+              "contribution": "1.01"
+            },
+            {
+              "username": "Bennygamble",
+              "rake": 0.29,
+              "contribution": "0.00"
+            },
+            {
+              "username": "Umull",
+              "rake": 0.01,
+              "contribution": "0.00"
+            },
+            {
+              "username": "PocketRockets27",
+              "rake": 143.92,
+              "contribution": "2.36"
+            },
+            {
+              "username": "n420y",
+              "rake": 367.68,
+              "contribution": "6.04"
+            },
+            {
+              "username": "Hfoxxy",
+              "rake": 0.59,
+              "contribution": "0.01"
+            },
+            {
+              "username": "Jlar18",
+              "rake": 56.77,
+              "contribution": "0.93"
+            },
+            {
+              "username": "camikebo",
+              "rake": 49.11,
+              "contribution": "0.81"
+            },
+            {
+              "username": "AlanAardvark",
+              "rake": 597.56,
+              "contribution": "9.81"
+            },
+            {
+              "username": "theBoytheBum",
+              "rake": 19.89,
+              "contribution": "0.33"
+            },
+            {
+              "username": "Gorio7",
+              "rake": 14.18,
+              "contribution": "0.23"
+            },
+            {
+              "username": "tearp",
+              "rake": 15.76,
+              "contribution": "0.26"
+            },
+            {
+              "username": "Ward80",
+              "rake": 59.91,
+              "contribution": "0.98"
+            },
+            {
+              "username": "RNRN",
+              "rake": 76.39,
+              "contribution": "1.25"
+            },
+            {
+              "username": "NoKizz",
+              "rake": 3927.5,
+              "contribution": "64.50"
+            },
+            {
+              "username": "Santiagomart",
+              "rake": 10.25,
+              "contribution": "0.17"
+            },
+            {
+              "username": "TrapQueens",
+              "rake": 38.62,
+              "contribution": "0.63"
+            },
+            {
+              "username": "Don03",
+              "rake": 24.21,
+              "contribution": "0.40"
+            },
+            {
+              "username": "HiLucien Poker",
+              "rake": 15.39,
+              "contribution": "0.25"
+            }
+          ]
+        },
+        {
+          "username": "zambini",
+          "percentage": 76,
+          "totalDownlineRake": 2971.3099999999995,
+          "rakeback": 2258.2,
+          "downlinePlayers": [
+            {
+              "username": "Tony Talent",
+              "rake": 863.98,
+              "contribution": "29.08"
+            },
+            {
+              "username": "zambini",
+              "rake": 161.8,
+              "contribution": "5.45"
+            },
+            {
+              "username": "NonBinaryFlush",
+              "rake": 98.32,
+              "contribution": "3.31"
+            },
+            {
+              "username": "China Jacky",
+              "rake": 126.23,
+              "contribution": "4.25"
+            },
+            {
+              "username": "Tooyze",
+              "rake": 59.22,
+              "contribution": "1.99"
+            },
+            {
+              "username": "kyledake",
+              "rake": 289.06,
+              "contribution": "9.73"
+            },
+            {
+              "username": "CompSoftware",
+              "rake": 746.47,
+              "contribution": "25.12"
+            },
+            {
+              "username": "XLOG",
+              "rake": 58.72,
+              "contribution": "1.98"
+            },
+            {
+              "username": "Tishi",
+              "rake": 7.82,
+              "contribution": "0.26"
+            },
+            {
+              "username": "Foxmannns",
+              "rake": 71.05,
+              "contribution": "2.39"
+            },
+            {
+              "username": "PrinceTevy",
+              "rake": 110.97,
+              "contribution": "3.73"
+            },
+            {
+              "username": "Dystroka",
+              "rake": 231.04,
+              "contribution": "7.78"
+            },
+            {
+              "username": "Dasaniii",
+              "rake": 79.14,
+              "contribution": "2.66"
+            },
+            {
+              "username": "BingoCooler",
+              "rake": 44.75,
+              "contribution": "1.51"
+            },
+            {
+              "username": "Bananaman911",
+              "rake": 22.74,
+              "contribution": "0.77"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 49864.05,
+        "profitLoss": -9884.74,
+        "activePlayers": 257,
+        "totalHands": 211568
+      },
+      "summary": {
+        "totalPlayerRake": 11738.660000000002,
+        "totalPlayerRakeback": 4318.03,
+        "totalAgentRakeback": 7129.86,
+        "grandTotal": 11447.89
+      }
+    },
+    {
+      "id": "5bd3",
+      "weekId": "0d95",
+      "playerResults": [
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 1219.62,
+          "percentage": 50,
+          "rakeback": 609.81,
+          "agent": "-"
+        },
+        {
+          "username": "Lqdbandaids",
+          "nickname": "Lqdbandaids",
+          "rake": 342.66,
+          "percentage": 75,
+          "rakeback": 257,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 4662.09,
+          "percentage": 35,
+          "rakeback": 1631.73,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 214.7,
+          "percentage": 35,
+          "rakeback": 75.14,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 990.05,
+          "percentage": 45,
+          "rakeback": 445.52,
+          "agent": "Mangoman11"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 160.67,
+          "percentage": 50,
+          "rakeback": 80.33,
+          "agent": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "lilmayo",
+          "percentage": 80,
+          "totalDownlineRake": 11379.939999999997,
+          "rakeback": 9103.95,
+          "downlinePlayers": [
+            {
+              "username": "Circle!",
+              "rake": 5892.69,
+              "contribution": "51.78"
+            },
+            {
+              "username": "lilmayo",
+              "rake": 802.54,
+              "contribution": "7.05"
+            },
+            {
+              "username": "Lemonadeeeee",
+              "rake": 96.42,
+              "contribution": "0.85"
+            },
+            {
+              "username": "RookG8",
+              "rake": 77.27,
+              "contribution": "0.68"
+            },
+            {
+              "username": "bluestriptrip",
+              "rake": 70.16,
+              "contribution": "0.62"
+            },
+            {
+              "username": "Woj87",
+              "rake": 38.73,
+              "contribution": "0.34"
+            },
+            {
+              "username": "Jesus_elpah",
+              "rake": 228.35,
+              "contribution": "2.01"
+            },
+            {
+              "username": "P8264-0114",
+              "rake": 7.64,
+              "contribution": "0.07"
+            },
+            {
+              "username": "Tommybuddy",
+              "rake": 98.11,
+              "contribution": "0.86"
+            },
+            {
+              "username": "phOtOn06",
+              "rake": 136.27,
+              "contribution": "1.20"
+            },
+            {
+              "username": "jbartyy",
+              "rake": 45.49,
+              "contribution": "0.40"
+            },
+            {
+              "username": "T-rey",
+              "rake": 14.36,
+              "contribution": "0.13"
+            },
+            {
+              "username": "Oot81",
+              "rake": 57.8,
+              "contribution": "0.51"
+            },
+            {
+              "username": "Cinnnny",
+              "rake": 15.2,
+              "contribution": "0.13"
+            },
+            {
+              "username": "Ger312",
+              "rake": 208.77,
+              "contribution": "1.83"
+            },
+            {
+              "username": "Dsparks",
+              "rake": 428.47,
+              "contribution": "3.77"
+            },
+            {
+              "username": "Spaceylobster",
+              "rake": 8.6,
+              "contribution": "0.08"
+            },
+            {
+              "username": "Drewski25",
+              "rake": 24.41,
+              "contribution": "0.21"
+            },
+            {
+              "username": "rflynn21",
+              "rake": 19.18,
+              "contribution": "0.17"
+            },
+            {
+              "username": "Bennygamble",
+              "rake": 15.49,
+              "contribution": "0.14"
+            },
+            {
+              "username": "n420y",
+              "rake": 266.71,
+              "contribution": "2.34"
+            },
+            {
+              "username": "Qeightsuited",
+              "rake": 66.19,
+              "contribution": "0.58"
+            },
+            {
+              "username": "camikebo",
+              "rake": 116.74,
+              "contribution": "1.03"
+            },
+            {
+              "username": "AlanAardvark",
+              "rake": 37.81,
+              "contribution": "0.33"
+            },
+            {
+              "username": "Gorio7",
+              "rake": 260.12,
+              "contribution": "2.29"
+            },
+            {
+              "username": "Ward80",
+              "rake": 52.64,
+              "contribution": "0.46"
+            },
+            {
+              "username": "RNRN",
+              "rake": 28.01,
+              "contribution": "0.25"
+            },
+            {
+              "username": "NoKizz",
+              "rake": 1124.01,
+              "contribution": "9.88"
+            },
+            {
+              "username": "Santiagomart",
+              "rake": 12.35,
+              "contribution": "0.11"
+            },
+            {
+              "username": "TrapQueens",
+              "rake": 40.37,
+              "contribution": "0.35"
+            },
+            {
+              "username": "Don03",
+              "rake": 182.82,
+              "contribution": "1.61"
+            },
+            {
+              "username": "iluvgambol",
+              "rake": 206.57,
+              "contribution": "1.82"
+            },
+            {
+              "username": "Ozu 25",
+              "rake": 174.38,
+              "contribution": "1.53"
+            },
+            {
+              "username": "rharris11",
+              "rake": 26.91,
+              "contribution": "0.24"
+            },
+            {
+              "username": "Puffinontrees",
+              "rake": 15.13,
+              "contribution": "0.13"
+            },
+            {
+              "username": "Euraputhy",
+              "rake": 96.13,
+              "contribution": "0.84"
+            },
+            {
+              "username": "Samuelblapsum",
+              "rake": 202.39,
+              "contribution": "1.78"
+            },
+            {
+              "username": "Bonham1",
+              "rake": 87.32,
+              "contribution": "0.77"
+            },
+            {
+              "username": "Khurizmaa",
+              "rake": 82.99,
+              "contribution": "0.73"
+            },
+            {
+              "username": "Cheeetomr2",
+              "rake": 12.55,
+              "contribution": "0.11"
+            },
+            {
+              "username": "Hfoxxy",
+              "rake": 1.85,
+              "contribution": "0.02"
+            }
+          ]
+        },
+        {
+          "username": "zambini",
+          "percentage": 76,
+          "totalDownlineRake": 5541.39,
+          "rakeback": 4211.46,
+          "downlinePlayers": [
+            {
+              "username": "Tony Talent",
+              "rake": 1497.58,
+              "contribution": "27.03"
+            },
+            {
+              "username": "zambini",
+              "rake": 106.59,
+              "contribution": "1.92"
+            },
+            {
+              "username": "LlamaPlayz",
+              "rake": 28.43,
+              "contribution": "0.51"
+            },
+            {
+              "username": "NonBinaryFlush",
+              "rake": 45.23,
+              "contribution": "0.82"
+            },
+            {
+              "username": "China Jacky",
+              "rake": 62.83,
+              "contribution": "1.13"
+            },
+            {
+              "username": "Tooyze",
+              "rake": 15.67,
+              "contribution": "0.28"
+            },
+            {
+              "username": "kyledake",
+              "rake": 2480.75,
+              "contribution": "44.77"
+            },
+            {
+              "username": "HellaHits",
+              "rake": 1.69,
+              "contribution": "0.03"
+            },
+            {
+              "username": "Spidermnkey",
+              "rake": 185.25,
+              "contribution": "3.34"
+            },
+            {
+              "username": "Foxmannns",
+              "rake": 436.35,
+              "contribution": "7.87"
+            },
+            {
+              "username": "Dystroka",
+              "rake": 618.31,
+              "contribution": "11.16"
+            },
+            {
+              "username": "Dasaniii",
+              "rake": 45.68,
+              "contribution": "0.82"
+            },
+            {
+              "username": "Bananaman911",
+              "rake": 17.03,
+              "contribution": "0.31"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 59023.33,
+        "profitLoss": -68241.33,
+        "activePlayers": 282,
+        "totalHands": 241760
+      },
+      "summary": {
+        "totalPlayerRake": 7589.79,
+        "totalPlayerRakeback": 3099.53,
+        "totalAgentRakeback": 13315.41,
+        "grandTotal": 16414.94
+      }
+    },
+    {
+      "id": "8b2e",
+      "weekId": "392d",
+      "playerResults": [
+        {
+          "username": "Circle!",
+          "nickname": "Circle!",
+          "rake": 8155.89,
+          "percentage": 70,
+          "rakeback": 5709.12,
+          "agent": "lilmayo"
+        },
+        {
+          "username": "DaMeCabeza",
+          "nickname": "DaMeCabeza",
+          "rake": 284.89,
+          "percentage": 40,
+          "rakeback": 113.96,
+          "agent": "sentouki"
+        },
+        {
+          "username": "BusterScrugs",
+          "nickname": "BusterScrugs",
+          "rake": 38.76,
+          "percentage": 40,
+          "rakeback": 15.5,
+          "agent": "-"
+        },
+        {
+          "username": "B00BHawk",
+          "nickname": "B00BHawk",
+          "rake": 1022.33,
+          "percentage": 55,
+          "rakeback": 562.28,
+          "agent": "B00BHawk"
+        },
+        {
+          "username": "TDean16",
+          "nickname": "TDean16",
+          "rake": 1032.66,
+          "percentage": 50,
+          "rakeback": 516.33,
+          "agent": "TDean16"
+        },
+        {
+          "username": "Geeb goblin",
+          "nickname": "Geeb goblin",
+          "rake": 104.84,
+          "percentage": 30,
+          "rakeback": 31.45,
+          "agent": "-"
+        },
+        {
+          "username": "shreyg",
+          "nickname": "shreyg",
+          "rake": 558.36,
+          "percentage": 40,
+          "rakeback": 223.34,
+          "agent": "-"
+        },
+        {
+          "username": "Taylorrrr",
+          "nickname": "Taylorrrr",
+          "rake": 137.25,
+          "percentage": 40,
+          "rakeback": 54.9,
+          "agent": "Taylorrrr"
+        },
+        {
+          "username": "Chad Penning",
+          "nickname": "Chad Penning",
+          "rake": 0.01,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "-"
+        },
+        {
+          "username": "pure[]",
+          "nickname": "pure[]",
+          "rake": 1249.64,
+          "percentage": 21,
+          "rakeback": 262.42,
+          "agent": "pure[]"
+        },
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 685.84,
+          "percentage": 50,
+          "rakeback": 342.92,
+          "agent": "-"
+        },
+        {
+          "username": "lizzylo",
+          "nickname": "lizzylo",
+          "rake": 106.62,
+          "percentage": 91,
+          "rakeback": 97.02,
+          "agent": "-"
+        },
+        {
+          "username": "Yb123",
+          "nickname": "Yb123",
+          "rake": 0.21,
+          "percentage": 50,
+          "rakeback": 0.1,
+          "agent": "Yb123"
+        },
+        {
+          "username": "andyttp",
+          "nickname": "andyttp",
+          "rake": 7.07,
+          "percentage": 30,
+          "rakeback": 2.12,
+          "agent": "Lqdbandaids"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 1594.33,
+          "percentage": 35,
+          "rakeback": 558.02,
+          "agent": "-"
+        },
+        {
+          "username": "1ndOnly",
+          "nickname": "1ndOnly",
+          "rake": 2580.35,
+          "percentage": 91,
+          "rakeback": 2348.12,
+          "agent": "-"
+        },
+        {
+          "username": "Daddy12",
+          "nickname": "Daddy12",
+          "rake": 364.08,
+          "percentage": 0,
+          "rakeback": 0,
+          "agent": "Daddy12"
+        },
+        {
+          "username": "Ay0409",
+          "nickname": "Ay0409",
+          "rake": 120.44,
+          "percentage": 30,
+          "rakeback": 36.13,
+          "agent": "-"
+        },
+        {
+          "username": "anon42",
+          "nickname": "anon42",
+          "rake": 117.08,
+          "percentage": 40,
+          "rakeback": 46.83,
+          "agent": "-"
+        },
+        {
+          "username": "jaytoven",
+          "nickname": "jaytoven",
+          "rake": 5.98,
+          "percentage": 35,
+          "rakeback": 2.09,
+          "agent": "-"
+        },
+        {
+          "username": "Ryanig100",
+          "nickname": "Ryanig100",
+          "rake": 432.86,
+          "percentage": 55,
+          "rakeback": 238.07,
+          "agent": "-"
+        },
+        {
+          "username": "perky",
+          "nickname": "perky",
+          "rake": 17.52,
+          "percentage": 30,
+          "rakeback": 5.26,
+          "agent": "-"
+        },
+        {
+          "username": "P3011",
+          "nickname": "P3011",
+          "rake": 519.29,
+          "percentage": 35,
+          "rakeback": 181.75,
+          "agent": "-"
+        },
+        {
+          "username": "payNcry",
+          "nickname": "payNcry",
+          "rake": 931.92,
+          "percentage": 21,
+          "rakeback": 195.7,
+          "agent": "payNcry"
+        },
+        {
+          "username": "jz1222",
+          "nickname": "jz1222",
+          "rake": 469.28,
+          "percentage": 35,
+          "rakeback": 164.25,
+          "agent": "Gillbart"
+        },
+        {
+          "username": "Adamhix106",
+          "nickname": "Adamhix106",
+          "rake": 781.56,
+          "percentage": 45,
+          "rakeback": 351.7,
+          "agent": "-"
+        },
+        {
+          "username": "zambini",
+          "nickname": "zambini",
+          "rake": 213.05,
+          "percentage": 91,
+          "rakeback": 193.88,
+          "agent": "zambini"
+        },
+        {
+          "username": "Kinganish",
+          "nickname": "Kinganish",
+          "rake": 106.29,
+          "percentage": 35,
+          "rakeback": 37.2,
+          "agent": "-"
+        },
+        {
+          "username": "Uturn14",
+          "nickname": "Uturn14",
+          "rake": 145.48,
+          "percentage": 30,
+          "rakeback": 43.64,
+          "agent": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 206,
+          "percentage": 40,
+          "rakeback": 82.4,
+          "agent": "-"
+        },
+        {
+          "username": "Sjg1738",
+          "nickname": "Sjg1738",
+          "rake": 1.58,
+          "percentage": 30,
+          "rakeback": 0.47,
+          "agent": "Sjg1738"
+        },
+        {
+          "username": "cmonnow",
+          "nickname": "cmonnow",
+          "rake": 110.2,
+          "percentage": 50,
+          "rakeback": 55.1,
+          "agent": "-"
+        },
+        {
+          "username": "faintestgnat",
+          "nickname": "faintestgnat",
+          "rake": 26.45,
+          "percentage": 40,
+          "rakeback": 10.58,
+          "agent": "-"
+        },
+        {
+          "username": "billyballsack",
+          "nickname": "Billyballsack",
+          "rake": 43.08,
+          "percentage": 30,
+          "rakeback": 12.92,
+          "agent": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 872.45,
+          "percentage": 65,
+          "rakeback": 567.09,
+          "agent": "Mangoman11"
+        },
+        {
+          "username": "imkewl",
+          "nickname": "imkewl",
+          "rake": 1.94,
+          "percentage": 30,
+          "rakeback": 0.58,
+          "agent": "-"
+        },
+        {
+          "username": "Squatdemonsix9",
+          "nickname": "Squatdemonsix9",
+          "rake": 151.55,
+          "percentage": 40,
+          "rakeback": 60.62,
+          "agent": "firefairy46"
+        },
+        {
+          "username": "CH14",
+          "nickname": "CH14",
+          "rake": 2.65,
+          "percentage": 30,
+          "rakeback": 0.8,
+          "agent": "-"
+        },
+        {
+          "username": "asainkid444",
+          "nickname": "asainkid444",
+          "rake": 204.03,
+          "percentage": 35,
+          "rakeback": 71.41,
+          "agent": "-"
+        },
+        {
+          "username": "AlwaysFold_s",
+          "nickname": "AlwaysFold_s",
+          "rake": 290.75,
+          "percentage": 40,
+          "rakeback": 116.3,
+          "agent": "-"
+        },
+        {
+          "username": "firefairy46",
+          "nickname": "firefairy46",
+          "rake": 2.15,
+          "percentage": 91,
+          "rakeback": 1.96,
+          "agent": "firefairy46"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 183.7,
+          "percentage": 45,
+          "rakeback": 82.67,
+          "agent": "-"
+        },
+        {
+          "username": "GlitchChaser",
+          "nickname": "GlitchChaser",
+          "rake": 29.45,
+          "percentage": 35,
+          "rakeback": 10.31,
+          "agent": "-"
+        },
+        {
+          "username": "Masonmount777",
+          "nickname": "Masonmount777",
+          "rake": 428.18,
+          "percentage": 40,
+          "rakeback": 171.27,
+          "agent": "sentouki"
+        },
+        {
+          "username": "badandbougp",
+          "nickname": "badandbougp",
+          "rake": 27.37,
+          "percentage": 30,
+          "rakeback": 8.21,
+          "agent": "sentouki"
+        },
+        {
+          "username": "ShankAaron",
+          "nickname": "ShankAaron",
+          "rake": 0.01,
+          "percentage": 50,
+          "rakeback": 0.01,
+          "agent": "-"
+        },
+        {
+          "username": "n420y",
+          "nickname": "n420y",
+          "rake": 180.75,
+          "percentage": 40,
+          "rakeback": 72.3,
+          "agent": "lilmayo"
+        },
+        {
+          "username": "Adolf Chipler",
+          "nickname": "Adolf Chipler",
+          "rake": 228.04,
+          "percentage": 40,
+          "rakeback": 91.22,
+          "agent": "Adolf Chipler"
+        },
+        {
+          "username": "ILoveABGs",
+          "nickname": "ILoveABGs",
+          "rake": 35.34,
+          "percentage": 40,
+          "rakeback": 14.14,
+          "agent": "sentouki"
+        },
+        {
+          "username": "NoKizz",
+          "nickname": "NoKizz",
+          "rake": 51.78,
+          "percentage": 35,
+          "rakeback": 18.12,
+          "agent": "lilmayo"
+        },
+        {
+          "username": "Mondayblues",
+          "nickname": "mondayblues",
+          "rake": 23.73,
+          "percentage": 40,
+          "rakeback": 9.49,
+          "agent": "sentouki"
+        },
+        {
+          "username": "Jlagos45",
+          "nickname": "Jlagos45",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "Heater Agency"
+        },
+        {
+          "username": "DSLi",
+          "nickname": "DSLi",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "DSLi"
+        },
+        {
+          "username": "k1mster",
+          "nickname": "k1mster",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "-"
+        },
+        {
+          "username": "iluvgambol",
+          "nickname": "iluvgambol",
+          "rake": 0,
+          "percentage": 50,
+          "rakeback": 0,
+          "agent": "lilmayo"
+        },
+        {
+          "username": "LaTruiteMorte",
+          "nickname": "LaTruiteMorte",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-"
+        },
+        {
+          "username": "ThiefofCrows",
+          "nickname": "ThiefofCrows",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-"
+        },
+        {
+          "username": "Linsanity11",
+          "nickname": "Linsanity11",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "-"
+        },
+        {
+          "username": "xxBSACKxx",
+          "nickname": "xxBSACKxx",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "sentouki",
+          "percentage": 30,
+          "totalDownlineRake": 1056.3300000000002,
+          "rakeback": 316.9,
+          "downlinePlayers": [
+            {
+              "username": "DaMeCabeza",
+              "rake": 284.89,
+              "contribution": "26.97"
+            },
+            {
+              "username": "sentouki",
+              "rake": 256.82,
+              "contribution": "24.31"
+            },
+            {
+              "username": "Masonmount777",
+              "rake": 428.18,
+              "contribution": "40.53"
+            },
+            {
+              "username": "badandbougp",
+              "rake": 27.37,
+              "contribution": "2.59"
+            },
+            {
+              "username": "ILoveABGs",
+              "rake": 35.34,
+              "contribution": "3.35"
+            },
+            {
+              "username": "mondayblues",
+              "rake": 23.73,
+              "contribution": "2.25"
+            }
+          ]
+        },
+        {
+          "username": "StuUngarGarment",
+          "percentage": 35,
+          "totalDownlineRake": 1.55,
+          "rakeback": 0.54,
+          "downlinePlayers": [
+            {
+              "username": "StuUngarGarment",
+              "rake": 1.55,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "limpforvpip",
+          "percentage": 63,
+          "totalDownlineRake": 915.17,
+          "rakeback": 576.56,
+          "downlinePlayers": [
+            {
+              "username": "DrewKnight",
+              "rake": 837.79,
+              "contribution": "91.54"
+            },
+            {
+              "username": "limpforvpip",
+              "rake": 77.38,
+              "contribution": "8.46"
+            }
+          ]
+        },
+        {
+          "username": "Daddy12",
+          "percentage": 50,
+          "totalDownlineRake": 383.16999999999996,
+          "rakeback": 191.58,
+          "downlinePlayers": [
+            {
+              "username": "Daddy12",
+              "rake": 364.08,
+              "contribution": "95.02"
+            },
+            {
+              "username": "ShriRadha",
+              "rake": 19.08,
+              "contribution": "4.98"
+            },
+            {
+              "username": "Shas975",
+              "rake": 0.01,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "P7658-9025",
+          "percentage": 40,
+          "totalDownlineRake": 33.98,
+          "rakeback": 13.59,
+          "downlinePlayers": [
+            {
+              "username": "P7658-9025",
+              "rake": 33.98,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Swalley",
+          "percentage": 35,
+          "totalDownlineRake": 241.6,
+          "rakeback": 84.56,
+          "downlinePlayers": [
+            {
+              "username": "Swalley",
+              "rake": 241.6,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Sukmyballs",
+          "percentage": 35,
+          "totalDownlineRake": 58.76,
+          "rakeback": 20.57,
+          "downlinePlayers": [
+            {
+              "username": "Sukmyballs",
+              "rake": 47.22,
+              "contribution": "80.36"
+            },
+            {
+              "username": "goonter!",
+              "rake": 4.83,
+              "contribution": "8.22"
+            },
+            {
+              "username": "Sansav1",
+              "rake": 6.71,
+              "contribution": "11.42"
+            }
+          ]
+        },
+        {
+          "username": "mookboy",
+          "percentage": 50,
+          "totalDownlineRake": 96.72,
+          "rakeback": 48.36,
+          "downlinePlayers": [
+            {
+              "username": "mookboy",
+              "rake": 29.68,
+              "contribution": "30.69"
+            },
+            {
+              "username": "izzymiles",
+              "rake": 40.16,
+              "contribution": "41.52"
+            },
+            {
+              "username": "Tiddlemouse19",
+              "rake": 26.88,
+              "contribution": "27.79"
+            }
+          ]
+        },
+        {
+          "username": "Sjg1738",
+          "percentage": 35,
+          "totalDownlineRake": 1.58,
+          "rakeback": 0.55,
+          "downlinePlayers": [
+            {
+              "username": "Sjg1738",
+              "rake": 1.58,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "WLanders",
+          "percentage": 60,
+          "totalDownlineRake": 363.08,
+          "rakeback": 217.85,
+          "downlinePlayers": [
+            {
+              "username": "WLanders",
+              "rake": 348.08,
+              "contribution": "95.87"
+            },
+            {
+              "username": "EliteBacon12345",
+              "rake": 15,
+              "contribution": "4.13"
+            }
+          ]
+        },
+        {
+          "username": "daelmf",
+          "percentage": 35,
+          "totalDownlineRake": 0.5,
+          "rakeback": 0.17,
+          "downlinePlayers": [
+            {
+              "username": "daelmf",
+              "rake": 0.5,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Huda the tuna",
+          "percentage": 50,
+          "totalDownlineRake": 359.92999999999995,
+          "rakeback": 179.96,
+          "downlinePlayers": [
+            {
+              "username": "Huda the tuna",
+              "rake": 307.93,
+              "contribution": "85.55"
+            },
+            {
+              "username": "goodbyemoney",
+              "rake": 7.78,
+              "contribution": "2.16"
+            },
+            {
+              "username": "Yoizel325",
+              "rake": 44.22,
+              "contribution": "12.29"
+            }
+          ]
+        },
+        {
+          "username": "Nemo_inthetank",
+          "percentage": 50,
+          "totalDownlineRake": 1148.0700000000002,
+          "rakeback": 574.04,
+          "downlinePlayers": [
+            {
+              "username": "Nemo_inthetank",
+              "rake": 994.94,
+              "contribution": "86.66"
+            },
+            {
+              "username": "PetitQuebec",
+              "rake": 153.13,
+              "contribution": "13.34"
+            }
+          ]
+        },
+        {
+          "username": "Arkhah87",
+          "percentage": 55,
+          "totalDownlineRake": 1904.3500000000001,
+          "rakeback": 1047.39,
+          "downlinePlayers": [
+            {
+              "username": "Arkhah87",
+              "rake": 1122,
+              "contribution": "58.92"
+            },
+            {
+              "username": "Nick Suzuki",
+              "rake": 775.45,
+              "contribution": "40.72"
+            },
+            {
+              "username": "Shreez",
+              "rake": 6.9,
+              "contribution": "0.36"
+            }
+          ]
+        },
+        {
+          "username": "Marialvices",
+          "percentage": 50,
+          "totalDownlineRake": 199.78,
+          "rakeback": 99.89,
+          "downlinePlayers": [
+            {
+              "username": "Marialvices",
+              "rake": 196.29,
+              "contribution": "98.25"
+            },
+            {
+              "username": "EdenIvy",
+              "rake": 3.49,
+              "contribution": "1.75"
+            }
+          ]
+        },
+        {
+          "username": "golden gopher",
+          "percentage": 35,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "downlinePlayers": [
+            {
+              "username": "Mad Max408",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        },
+        {
+          "username": "nodna",
+          "percentage": 35,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "downlinePlayers": [
+            {
+              "username": "nodna",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        },
+        {
+          "username": "Venomo",
+          "percentage": 30,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "downlinePlayers": [
+            {
+              "username": "Venomo",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 53296.31,
+        "profitLoss": -52964.22,
+        "activePlayers": 291,
+        "totalHands": 240173
+      },
+      "summary": {
+        "totalPlayerRake": 24885.060000000005,
+        "totalPlayerRakeback": 13792.07,
+        "totalAgentRakeback": 3372.51,
+        "grandTotal": 17164.58
+      }
+    },
+    {
+      "id": "0025",
+      "weekId": "bc5f",
+      "playerResults": [
+        {
+          "username": "Circle!",
+          "nickname": "Circle!",
+          "rake": 9161.51,
+          "percentage": 70,
+          "rakeback": 6413.06,
+          "agent": "Circle!",
+          "superAgent": "supadoopa",
+          "agentDisplay": "supadoopa (SA)"
+        },
+        {
+          "username": "BusterScrugs",
+          "nickname": "BusterScrugs",
+          "rake": 131.32,
+          "percentage": 40,
+          "rakeback": 52.53,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "B00BHawk",
+          "nickname": "B00BHawk",
+          "rake": 835.84,
+          "percentage": 55,
+          "rakeback": 459.71,
+          "agent": "B00BHawk",
+          "superAgent": "-",
+          "agentDisplay": "B00BHawk (A)"
+        },
+        {
+          "username": "TDean16",
+          "nickname": "TDean16",
+          "rake": 195.69,
+          "percentage": 50,
+          "rakeback": 97.84,
+          "agent": "TDean16",
+          "superAgent": "-",
+          "agentDisplay": "TDean16 (A)"
+        },
+        {
+          "username": "Geeb goblin",
+          "nickname": "Geeb goblin",
+          "rake": 254.7,
+          "percentage": 30,
+          "rakeback": 76.41,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "shreyg",
+          "nickname": "shreyg",
+          "rake": 67.29,
+          "percentage": 40,
+          "rakeback": 26.92,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "theycallmeT",
+          "nickname": "TheycallmeT",
+          "rake": 19.66,
+          "percentage": 30,
+          "rakeback": 5.9,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "knoxperry",
+          "nickname": "knoxperry",
+          "rake": 229.71,
+          "percentage": 35,
+          "rakeback": 80.4,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Taylorrrr",
+          "nickname": "Taylorrrr",
+          "rake": 337.41,
+          "percentage": 40,
+          "rakeback": 134.96,
+          "agent": "Taylorrrr",
+          "superAgent": "-",
+          "agentDisplay": "Taylorrrr (A)"
+        },
+        {
+          "username": "Chad Penning",
+          "nickname": "Chad Penning",
+          "rake": 78.25,
+          "percentage": 40,
+          "rakeback": 31.3,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "pure[]",
+          "nickname": "pure[]",
+          "rake": 560.66,
+          "percentage": 21,
+          "rakeback": 117.74,
+          "agent": "pure[]",
+          "superAgent": "1ndOnly",
+          "agentDisplay": "1ndOnly (SA)"
+        },
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 579.29,
+          "percentage": 30,
+          "rakeback": 173.79,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "lizzylo",
+          "nickname": "lizzylo",
+          "rake": 117.69,
+          "percentage": 91,
+          "rakeback": 107.1,
+          "agent": "-",
+          "superAgent": "lizzylo",
+          "agentDisplay": "lizzylo (SA)"
+        },
+        {
+          "username": "1ndOnly",
+          "nickname": "1ndOnly",
+          "rake": 2868.14,
+          "percentage": 91,
+          "rakeback": 2610.01,
+          "agent": "-",
+          "superAgent": "1ndOnly",
+          "agentDisplay": "1ndOnly (SA)"
+        },
+        {
+          "username": "Ay0409",
+          "nickname": "Ay0409",
+          "rake": 40.84,
+          "percentage": 30,
+          "rakeback": 12.25,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "anon42",
+          "nickname": "anon42",
+          "rake": 71.98,
+          "percentage": 40,
+          "rakeback": 28.79,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Ryanig100",
+          "nickname": "Ryanig100",
+          "rake": 217.94,
+          "percentage": 55,
+          "rakeback": 119.87,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Chef_Ramsey",
+          "nickname": "Chef_Ramsey",
+          "rake": 1.88,
+          "percentage": 35,
+          "rakeback": 0.66,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "perky",
+          "nickname": "perky",
+          "rake": 92.01,
+          "percentage": 30,
+          "rakeback": 27.6,
+          "agent": "-",
+          "superAgent": "GillyBoy",
+          "agentDisplay": "GillyBoy (SA)"
+        },
+        {
+          "username": "P3011",
+          "nickname": "P3011",
+          "rake": 398.78,
+          "percentage": 35,
+          "rakeback": 139.57,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "jz1222",
+          "nickname": "jz1222",
+          "rake": 163.85,
+          "percentage": 35,
+          "rakeback": 57.35,
+          "agent": "Gillbart",
+          "superAgent": "-",
+          "agentDisplay": "Gillbart (A)"
+        },
+        {
+          "username": "Adamhix106",
+          "nickname": "Adamhix106",
+          "rake": 435.84,
+          "percentage": 50,
+          "rakeback": 217.92,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "zambini",
+          "nickname": "zambini",
+          "rake": 109.09,
+          "percentage": 91,
+          "rakeback": 99.27,
+          "agent": "zambini",
+          "superAgent": "-",
+          "agentDisplay": "zambini (A)"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 172.35,
+          "percentage": 40,
+          "rakeback": 68.94,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "cmonnow",
+          "nickname": "cmonnow",
+          "rake": 6.39,
+          "percentage": 50,
+          "rakeback": 3.19,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Warhead4real",
+          "nickname": "Warhead4real",
+          "rake": 2898.51,
+          "percentage": 25,
+          "rakeback": 724.63,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "faintestgnat",
+          "nickname": "faintestgnat",
+          "rake": 87.13,
+          "percentage": 40,
+          "rakeback": 34.85,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Oledueces",
+          "nickname": "oledueces",
+          "rake": 8.22,
+          "percentage": 30,
+          "rakeback": 2.47,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 982.26,
+          "percentage": 65,
+          "rakeback": 638.47,
+          "agent": "Mangoman11",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "Squatdemonsix9",
+          "nickname": "Squatdemonsix9",
+          "rake": 30.24,
+          "percentage": 40,
+          "rakeback": 12.1,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "CH14",
+          "nickname": "CH14",
+          "rake": 7.68,
+          "percentage": 30,
+          "rakeback": 2.3,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "asainkid444",
+          "nickname": "asainkid444",
+          "rake": 57.41,
+          "percentage": 35,
+          "rakeback": 20.09,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 11.17,
+          "percentage": 45,
+          "rakeback": 5.03,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "GlitchChaser",
+          "nickname": "GlitchChaser",
+          "rake": 64.64,
+          "percentage": 35,
+          "rakeback": 22.62,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Masonmount777",
+          "nickname": "Masonmount777",
+          "rake": 507.8,
+          "percentage": 40,
+          "rakeback": 203.12,
+          "agent": "sentouki",
+          "superAgent": "-",
+          "agentDisplay": "sentouki (A)"
+        },
+        {
+          "username": "badandbougp",
+          "nickname": "badandbougp",
+          "rake": 5.73,
+          "percentage": 30,
+          "rakeback": 1.72,
+          "agent": "sentouki",
+          "superAgent": "-",
+          "agentDisplay": "sentouki (A)"
+        },
+        {
+          "username": "Jlagos45",
+          "nickname": "Jlagos45",
+          "rake": 38.93,
+          "percentage": 30,
+          "rakeback": 11.68,
+          "agent": "Heater Agency",
+          "superAgent": "-",
+          "agentDisplay": "Heater Agency (A)"
+        },
+        {
+          "username": "n420y",
+          "nickname": "n420y",
+          "rake": 586.81,
+          "percentage": 40,
+          "rakeback": 234.72,
+          "agent": "lilmayo",
+          "superAgent": "-",
+          "agentDisplay": "lilmayo (A)"
+        },
+        {
+          "username": "Adolf Chipler",
+          "nickname": "Adolf Chipler",
+          "rake": 43.76,
+          "percentage": 40,
+          "rakeback": 17.5,
+          "agent": "Adolf Chipler",
+          "superAgent": "-",
+          "agentDisplay": "Adolf Chipler (A)"
+        },
+        {
+          "username": "daddy5544",
+          "nickname": "daddy5544",
+          "rake": 9.28,
+          "percentage": 30,
+          "rakeback": 2.78,
+          "agent": "Gillbart",
+          "superAgent": "-",
+          "agentDisplay": "Gillbart (A)"
+        },
+        {
+          "username": "jwjwj323jjwjwjw",
+          "nickname": "jwjwj323jjwjwjw",
+          "rake": 36.2,
+          "percentage": 30,
+          "rakeback": 10.86,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Mondayblues",
+          "nickname": "mondayblues",
+          "rake": 19.6,
+          "percentage": 40,
+          "rakeback": 7.84,
+          "agent": "sentouki",
+          "superAgent": "-",
+          "agentDisplay": "sentouki (A)"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 0.5,
+          "percentage": 35,
+          "rakeback": 0.17,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "ILoveABGs",
+          "nickname": "ILoveABGs",
+          "rake": 5,
+          "percentage": 40,
+          "rakeback": 2,
+          "agent": "sentouki",
+          "superAgent": "-",
+          "agentDisplay": "sentouki (A)"
+        },
+        {
+          "username": "tazoq",
+          "nickname": "tazoq",
+          "rake": 0.41,
+          "percentage": 35,
+          "rakeback": 0.14,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "NoKizz",
+          "nickname": "NoKizz",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "lilmayo",
+          "superAgent": "-",
+          "agentDisplay": "lilmayo (A)"
+        },
+        {
+          "username": "firefairy46",
+          "nickname": "firefairy46",
+          "rake": 0,
+          "percentage": 91,
+          "rakeback": 0,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "billyballsack",
+          "nickname": "Billyballsack",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Kinganish",
+          "nickname": "Kinganish",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "DaMeCabeza",
+          "nickname": "DaMeCabeza",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "sentouki",
+          "superAgent": "-",
+          "agentDisplay": "sentouki (A)"
+        },
+        {
+          "username": "Doughboy47",
+          "nickname": "Doughboy47",
+          "rake": 0,
+          "percentage": 50,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "payNcry",
+          "nickname": "payNcry",
+          "rake": 0,
+          "percentage": 21,
+          "rakeback": 0,
+          "agent": "payNcry",
+          "superAgent": "1ndOnly",
+          "agentDisplay": "1ndOnly (SA)"
+        },
+        {
+          "username": "jaytoven",
+          "nickname": "jaytoven",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Uturn14",
+          "nickname": "Uturn14",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "StuUngarGarment",
+          "percentage": 35,
+          "totalDownlineRake": 28.22,
+          "rakeback": 9.88,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "StuUngarGarment",
+              "rake": 28.22,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "limpforvpip",
+          "percentage": 63,
+          "totalDownlineRake": 1023.0999999999999,
+          "rakeback": 644.55,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "DrewKnight",
+              "rake": 849.16,
+              "contribution": "83.00"
+            },
+            {
+              "username": "limpforvpip",
+              "rake": 173.94,
+              "contribution": "17.00"
+            }
+          ]
+        },
+        {
+          "username": "Daddy12",
+          "percentage": 50,
+          "totalDownlineRake": 645.71,
+          "rakeback": 322.86,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Daddy12",
+              "rake": 617.44,
+              "contribution": "95.62"
+            },
+            {
+              "username": "ShriRadha",
+              "rake": 28.26,
+              "contribution": "4.38"
+            },
+            {
+              "username": "Shas975",
+              "rake": 0.01,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "Whaeger7",
+          "percentage": 30,
+          "totalDownlineRake": 42.25,
+          "rakeback": 12.68,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Whaeger7",
+              "rake": 42.25,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "P7658-9025",
+          "percentage": 40,
+          "totalDownlineRake": 7.08,
+          "rakeback": 2.83,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "P7658-9025",
+              "rake": 7.08,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Swalley",
+          "percentage": 35,
+          "totalDownlineRake": 10.89,
+          "rakeback": 3.81,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Swalley",
+              "rake": 10.89,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Sukmyballs",
+          "percentage": 35,
+          "totalDownlineRake": 117,
+          "rakeback": 40.95,
+          "agentDisplay": "Heater1 (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Sukmyballs",
+              "rake": 9.95,
+              "contribution": "8.50"
+            },
+            {
+              "username": "I am Brooks",
+              "rake": 107.05,
+              "contribution": "91.50"
+            }
+          ]
+        },
+        {
+          "username": "mookboy",
+          "percentage": 50,
+          "totalDownlineRake": 24.47,
+          "rakeback": 12.23,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "mookboy",
+              "rake": 15.7,
+              "contribution": "64.16"
+            },
+            {
+              "username": "izzymiles",
+              "rake": 8.77,
+              "contribution": "35.84"
+            }
+          ]
+        },
+        {
+          "username": "nodna",
+          "percentage": 35,
+          "totalDownlineRake": 23.57,
+          "rakeback": 8.25,
+          "agentDisplay": "24byrd (SA)",
+          "downlinePlayers": [
+            {
+              "username": "nodna",
+              "rake": 23.57,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "WLanders",
+          "percentage": 60,
+          "totalDownlineRake": 261.48,
+          "rakeback": 156.89,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "WLanders",
+              "rake": 261.48,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Huda the tuna",
+          "percentage": 50,
+          "totalDownlineRake": 538.3,
+          "rakeback": 269.15,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Huda the tuna",
+              "rake": 243.13,
+              "contribution": "45.17"
+            },
+            {
+              "username": "goodbyemoney",
+              "rake": 220.99,
+              "contribution": "41.05"
+            },
+            {
+              "username": "Mike the Chef",
+              "rake": 74.18,
+              "contribution": "13.78"
+            }
+          ]
+        },
+        {
+          "username": "sentouki",
+          "percentage": 30,
+          "totalDownlineRake": 2081.99,
+          "rakeback": 624.6,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "sentouki",
+              "rake": 1543.86,
+              "contribution": "74.15"
+            },
+            {
+              "username": "Masonmount777",
+              "rake": 507.8,
+              "contribution": "24.39"
+            },
+            {
+              "username": "badandbougp",
+              "rake": 5.73,
+              "contribution": "0.28"
+            },
+            {
+              "username": "mondayblues",
+              "rake": 19.6,
+              "contribution": "0.94"
+            },
+            {
+              "username": "ILoveABGs",
+              "rake": 5,
+              "contribution": "0.24"
+            },
+            {
+              "username": "DaMeCabeza",
+              "rake": 0,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "Nemo_inthetank",
+          "percentage": 55,
+          "totalDownlineRake": 2349.04,
+          "rakeback": 1291.97,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Nemo_inthetank",
+              "rake": 2269.44,
+              "contribution": "96.61"
+            },
+            {
+              "username": "PetitQuebec",
+              "rake": 79.6,
+              "contribution": "3.39"
+            }
+          ]
+        },
+        {
+          "username": "Venomo",
+          "percentage": 30,
+          "totalDownlineRake": 57.37,
+          "rakeback": 17.21,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "DrMagical",
+              "rake": 57.37,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Arkhah87",
+          "percentage": 60,
+          "totalDownlineRake": 3168.42,
+          "rakeback": 1901.05,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Arkhah87",
+              "rake": 1511.6,
+              "contribution": "47.71"
+            },
+            {
+              "username": "Nick Suzuki",
+              "rake": 1656.82,
+              "contribution": "52.29"
+            }
+          ]
+        },
+        {
+          "username": "Marialvices",
+          "percentage": 50,
+          "totalDownlineRake": 105.78000000000002,
+          "rakeback": 52.89,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Marialvices",
+              "rake": 54.11,
+              "contribution": "51.15"
+            },
+            {
+              "username": "EdenIvy",
+              "rake": 47.38,
+              "contribution": "44.79"
+            },
+            {
+              "username": "Qanaqa",
+              "rake": 4.29,
+              "contribution": "4.06"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 64643.38,
+        "profitLoss": -100293.96,
+        "activePlayers": 284,
+        "totalHands": 236671
+      },
+      "summary": {
+        "totalPlayerRake": 22549.39,
+        "totalPlayerRakeback": 13118.17,
+        "totalAgentRakeback": 5371.8,
+        "grandTotal": 18489.97
+      }
+    },
+    {
+      "id": "38a9",
+      "weekId": "b7b4",
+      "playerResults": [
+        {
+          "username": "Circle!",
+          "nickname": "Circle!",
+          "rake": 9074.18,
+          "percentage": 70,
+          "rakeback": 6351.93,
+          "agent": "Circle!",
+          "superAgent": "supadoopa",
+          "agentDisplay": "supadoopa (SA)"
+        },
+        {
+          "username": "BusterScrugs",
+          "nickname": "BusterScrugs",
+          "rake": 411.28,
+          "percentage": 40,
+          "rakeback": 164.51,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "B00BHawk",
+          "nickname": "B00BHawk",
+          "rake": 211.85,
+          "percentage": 55,
+          "rakeback": 116.52,
+          "agent": "B00BHawk",
+          "superAgent": "-",
+          "agentDisplay": "B00BHawk (A)"
+        },
+        {
+          "username": "Geeb goblin",
+          "nickname": "Geeb goblin",
+          "rake": 59.88,
+          "percentage": 30,
+          "rakeback": 17.96,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "shreyg",
+          "nickname": "shreyg",
+          "rake": 171.56,
+          "percentage": 40,
+          "rakeback": 68.62,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "theycallmeT",
+          "nickname": "TheycallmeT",
+          "rake": 3.58,
+          "percentage": 30,
+          "rakeback": 1.07,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "knoxperry",
+          "nickname": "knoxperry",
+          "rake": 32.64,
+          "percentage": 35,
+          "rakeback": 11.42,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Taylorrrr",
+          "nickname": "Taylorrrr",
+          "rake": 222.14,
+          "percentage": 40,
+          "rakeback": 88.86,
+          "agent": "Taylorrrr",
+          "superAgent": "-",
+          "agentDisplay": "Taylorrrr (A)"
+        },
+        {
+          "username": "Chad Penning",
+          "nickname": "Chad Penning",
+          "rake": 14.87,
+          "percentage": 40,
+          "rakeback": 5.95,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 557.82,
+          "percentage": 50,
+          "rakeback": 278.91,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "TheFreeze404",
+          "nickname": "Thefreeze404",
+          "rake": 2.28,
+          "percentage": 30,
+          "rakeback": 0.68,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "lizzylo",
+          "nickname": "lizzylo",
+          "rake": 340.07,
+          "percentage": 91,
+          "rakeback": 309.46,
+          "agent": "-",
+          "superAgent": "lizzylo",
+          "agentDisplay": "lizzylo (SA)"
+        },
+        {
+          "username": "Yb123",
+          "nickname": "Yb123",
+          "rake": 0.01,
+          "percentage": 50,
+          "rakeback": 0.01,
+          "agent": "Yb123",
+          "superAgent": "GillyBoy",
+          "agentDisplay": "GillyBoy (SA)"
+        },
+        {
+          "username": "Trump All Day",
+          "nickname": "Trump All Day",
+          "rake": 178.33,
+          "percentage": 50,
+          "rakeback": 89.17,
+          "agent": "Trump All Day",
+          "superAgent": "-",
+          "agentDisplay": "Trump All Day (A)"
+        },
+        {
+          "username": "Ay0409",
+          "nickname": "Ay0409",
+          "rake": 830.29,
+          "percentage": 30,
+          "rakeback": 249.09,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Doughboy47",
+          "nickname": "Doughboy47",
+          "rake": 9.71,
+          "percentage": 50,
+          "rakeback": 4.86,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "anon42",
+          "nickname": "anon42",
+          "rake": 60.21,
+          "percentage": 40,
+          "rakeback": 24.08,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "jaytoven",
+          "nickname": "jaytoven",
+          "rake": 36.44,
+          "percentage": 35,
+          "rakeback": 12.75,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Ryanig100",
+          "nickname": "Ryanig100",
+          "rake": 272.31,
+          "percentage": 55,
+          "rakeback": 149.77,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "perky",
+          "nickname": "perky",
+          "rake": 345.81,
+          "percentage": 30,
+          "rakeback": 103.74,
+          "agent": "-",
+          "superAgent": "GillyBoy",
+          "agentDisplay": "GillyBoy (SA)"
+        },
+        {
+          "username": "jz1222",
+          "nickname": "jz1222",
+          "rake": 159.23,
+          "percentage": 35,
+          "rakeback": 55.73,
+          "agent": "Gillbart",
+          "superAgent": "-",
+          "agentDisplay": "Gillbart (A)"
+        },
+        {
+          "username": "Adamhix106",
+          "nickname": "Adamhix106",
+          "rake": 468.81,
+          "percentage": 50,
+          "rakeback": 234.41,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "zambini",
+          "nickname": "zambini",
+          "rake": 125.69,
+          "percentage": 91,
+          "rakeback": 114.38,
+          "agent": "zambini",
+          "superAgent": "-",
+          "agentDisplay": "zambini (A)"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 97.8,
+          "percentage": 40,
+          "rakeback": 39.12,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Sjg1738",
+          "nickname": "Sjg1738",
+          "rake": 74.45,
+          "percentage": 30,
+          "rakeback": 22.34,
+          "agent": "Sjg1738",
+          "superAgent": "-",
+          "agentDisplay": "Sjg1738 (A)"
+        },
+        {
+          "username": "faintestgnat",
+          "nickname": "faintestgnat",
+          "rake": 2.06,
+          "percentage": 40,
+          "rakeback": 0.82,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "billyballsack",
+          "nickname": "Billyballsack",
+          "rake": 6.15,
+          "percentage": 30,
+          "rakeback": 1.84,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 1366.58,
+          "percentage": 65,
+          "rakeback": 888.28,
+          "agent": "Mangoman11",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "Squatdemonsix9",
+          "nickname": "Squatdemonsix9",
+          "rake": 8.17,
+          "percentage": 40,
+          "rakeback": 3.27,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "asainkid444",
+          "nickname": "asainkid444",
+          "rake": 2.65,
+          "percentage": 35,
+          "rakeback": 0.93,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "firefairy46",
+          "nickname": "firefairy46",
+          "rake": 0.4,
+          "percentage": 91,
+          "rakeback": 0.36,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "MoshPoker",
+          "nickname": "MoshPoker",
+          "rake": 1,
+          "percentage": 45,
+          "rakeback": 0.45,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "GlitchChaser",
+          "nickname": "GlitchChaser",
+          "rake": 2.25,
+          "percentage": 35,
+          "rakeback": 0.79,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Jlagos45",
+          "nickname": "Jlagos45",
+          "rake": 0.75,
+          "percentage": 30,
+          "rakeback": 0.23,
+          "agent": "Heater Agency",
+          "superAgent": "-",
+          "agentDisplay": "Heater Agency (A)"
+        },
+        {
+          "username": "Adolf Chipler",
+          "nickname": "Adolf Chipler",
+          "rake": 41.86,
+          "percentage": 40,
+          "rakeback": 16.74,
+          "agent": "Adolf Chipler",
+          "superAgent": "-",
+          "agentDisplay": "Adolf Chipler (A)"
+        },
+        {
+          "username": "jwjwj323jjwjwjw",
+          "nickname": "jwjwj323jjwjwjw",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "cmonnow",
+          "nickname": "cmonnow",
+          "rake": 0,
+          "percentage": 50,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "daddy5544",
+          "nickname": "daddy5544",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "Gillbart",
+          "superAgent": "-",
+          "agentDisplay": "Gillbart (A)"
+        },
+        {
+          "username": "CH14",
+          "nickname": "CH14",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "Warhead4real",
+          "nickname": "Warhead4real",
+          "rake": 0,
+          "percentage": 25,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Chef_Ramsey",
+          "nickname": "Chef_Ramsey",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "Oledueces",
+          "nickname": "oledueces",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Linsanity11",
+          "nickname": "Linsanity11",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "TDean16",
+          "nickname": "TDean16",
+          "rake": 0,
+          "percentage": 50,
+          "rakeback": 0,
+          "agent": "TDean16",
+          "superAgent": "-",
+          "agentDisplay": "TDean16 (A)"
+        },
+        {
+          "username": "P3011",
+          "nickname": "P3011",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "n420y",
+          "nickname": "n420y",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "lilmayo",
+          "superAgent": "-",
+          "agentDisplay": "lilmayo (A)"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "StuUngarGarment",
+          "percentage": 35,
+          "totalDownlineRake": 3.87,
+          "rakeback": 1.35,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "StuUngarGarment",
+              "rake": 3.87,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "limpforvpip",
+          "percentage": 63,
+          "totalDownlineRake": 694.72,
+          "rakeback": 437.67,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "LilDrew",
+              "rake": 8.92,
+              "contribution": "1.28"
+            },
+            {
+              "username": "DrewKnight",
+              "rake": 312.57,
+              "contribution": "44.99"
+            },
+            {
+              "username": "limpforvpip",
+              "rake": 373.23,
+              "contribution": "53.72"
+            }
+          ]
+        },
+        {
+          "username": "Venomo",
+          "percentage": 30,
+          "totalDownlineRake": 16.37,
+          "rakeback": 4.91,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Venomo",
+              "rake": 16.37,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Whaeger7",
+          "percentage": 30,
+          "totalDownlineRake": 3.26,
+          "rakeback": 0.98,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Whaeger7",
+              "rake": 3.26,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "P7658-9025",
+          "percentage": 40,
+          "totalDownlineRake": 236.5,
+          "rakeback": 94.6,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "P7658-9025",
+              "rake": 229.79,
+              "contribution": "97.16"
+            },
+            {
+              "username": "Jmartin00",
+              "rake": 6.71,
+              "contribution": "2.84"
+            }
+          ]
+        },
+        {
+          "username": "Swalley",
+          "percentage": 35,
+          "totalDownlineRake": 47.05,
+          "rakeback": 16.47,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Swalley",
+              "rake": 47.05,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Sukmyballs",
+          "percentage": 35,
+          "totalDownlineRake": 226.01,
+          "rakeback": 79.1,
+          "agentDisplay": "Heater1 (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Sukmyballs",
+              "rake": 19.03,
+              "contribution": "8.42"
+            },
+            {
+              "username": "I am Brooks",
+              "rake": 206.98,
+              "contribution": "91.58"
+            }
+          ]
+        },
+        {
+          "username": "nodna",
+          "percentage": 35,
+          "totalDownlineRake": 0.5,
+          "rakeback": 0.17,
+          "agentDisplay": "24byrd (SA)",
+          "downlinePlayers": [
+            {
+              "username": "nodna",
+              "rake": 0.5,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Sjg1738",
+          "percentage": 35,
+          "totalDownlineRake": 74.45,
+          "rakeback": 26.06,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Sjg1738",
+              "rake": 74.45,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "WLanders",
+          "percentage": 60,
+          "totalDownlineRake": 113.07,
+          "rakeback": 67.84,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "durdy r",
+              "rake": 40.69,
+              "contribution": "35.99"
+            },
+            {
+              "username": "WLanders",
+              "rake": 72.38,
+              "contribution": "64.01"
+            }
+          ]
+        },
+        {
+          "username": "Huda the tuna",
+          "percentage": 50,
+          "totalDownlineRake": 1249.1299999999999,
+          "rakeback": 624.56,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Huda the tuna",
+              "rake": 335.52,
+              "contribution": "26.86"
+            },
+            {
+              "username": "goodbyemoney",
+              "rake": 527.8,
+              "contribution": "42.25"
+            },
+            {
+              "username": "Yoizel325",
+              "rake": 0.01,
+              "contribution": "0.00"
+            },
+            {
+              "username": "Mike the Chef",
+              "rake": 101.26,
+              "contribution": "8.11"
+            },
+            {
+              "username": "madmoney1",
+              "rake": 81.45,
+              "contribution": "6.52"
+            },
+            {
+              "username": "Kev12379",
+              "rake": 203.09,
+              "contribution": "16.26"
+            }
+          ]
+        },
+        {
+          "username": "Nemo_inthetank",
+          "percentage": 55,
+          "totalDownlineRake": 961.27,
+          "rakeback": 528.7,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Nemo_inthetank",
+              "rake": 961.27,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Arkhah87",
+          "percentage": 60,
+          "totalDownlineRake": 1201.08,
+          "rakeback": 720.65,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Arkhah87",
+              "rake": 667.74,
+              "contribution": "55.59"
+            },
+            {
+              "username": "Nick Suzuki",
+              "rake": 533.34,
+              "contribution": "44.41"
+            }
+          ]
+        },
+        {
+          "username": "Marialvices",
+          "percentage": 50,
+          "totalDownlineRake": 77.29,
+          "rakeback": 38.65,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Marialvices",
+              "rake": 68.47,
+              "contribution": "88.59"
+            },
+            {
+              "username": "EdenIvy",
+              "rake": 8.81,
+              "contribution": "11.40"
+            },
+            {
+              "username": "Qanaqa",
+              "rake": 0.01,
+              "contribution": "0.01"
+            }
+          ]
+        },
+        {
+          "username": "Daddy12",
+          "percentage": 50,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Daddy12",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        },
+        {
+          "username": "mookboy",
+          "percentage": 50,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "mookboy",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 46203.86,
+        "profitLoss": -76919.79,
+        "activePlayers": 257,
+        "totalHands": 207948
+      },
+      "summary": {
+        "totalPlayerRake": 15193.109999999995,
+        "totalPlayerRakeback": 9429.05,
+        "totalAgentRakeback": 2641.71,
+        "grandTotal": 12070.76
+      }
+    },
+    {
+      "id": "8804",
+      "weekId": "bae5",
+      "playerResults": [
+        {
+          "username": "Circle!",
+          "nickname": "Circle!",
+          "rake": 1336.41,
+          "percentage": 70,
+          "rakeback": 935.49,
+          "agent": "Circle!",
+          "superAgent": "supadoopa",
+          "agentDisplay": "supadoopa (SA)"
+        },
+        {
+          "username": "BusterScrugs",
+          "nickname": "BusterScrugs",
+          "rake": 170.94,
+          "percentage": 40,
+          "rakeback": 68.38,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Trace13",
+          "nickname": "Trace13",
+          "rake": 61.49,
+          "percentage": 50,
+          "rakeback": 30.75,
+          "agent": "Trace13",
+          "superAgent": "-",
+          "agentDisplay": "Trace13 (A)"
+        },
+        {
+          "username": "B00BHawk",
+          "nickname": "B00BHawk",
+          "rake": 190.82,
+          "percentage": 55,
+          "rakeback": 104.95,
+          "agent": "B00BHawk",
+          "superAgent": "-",
+          "agentDisplay": "B00BHawk (A)"
+        },
+        {
+          "username": "Geeb goblin",
+          "nickname": "Geeb goblin",
+          "rake": 108.71,
+          "percentage": 30,
+          "rakeback": 32.61,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "shreyg",
+          "nickname": "shreyg",
+          "rake": 220.41,
+          "percentage": 40,
+          "rakeback": 88.16,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Taylorrrr",
+          "nickname": "Taylorrrr",
+          "rake": 413.21,
+          "percentage": 40,
+          "rakeback": 165.28,
+          "agent": "Taylorrrr",
+          "superAgent": "-",
+          "agentDisplay": "Taylorrrr (A)"
+        },
+        {
+          "username": "Chad Penning",
+          "nickname": "Chad Penning",
+          "rake": 46.23,
+          "percentage": 40,
+          "rakeback": 18.49,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "PrestonP20",
+          "nickname": "PrestonP20",
+          "rake": 545.16,
+          "percentage": 50,
+          "rakeback": 272.58,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "TheFreeze404",
+          "nickname": "Thefreeze404",
+          "rake": 47.59,
+          "percentage": 30,
+          "rakeback": 14.28,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "lizzylo",
+          "nickname": "lizzylo",
+          "rake": 487,
+          "percentage": 91,
+          "rakeback": 443.17,
+          "agent": "-",
+          "superAgent": "lizzylo",
+          "agentDisplay": "lizzylo (SA)"
+        },
+        {
+          "username": "Yb123",
+          "nickname": "Yb123",
+          "rake": 0.01,
+          "percentage": 50,
+          "rakeback": 0.01,
+          "agent": "Yb123",
+          "superAgent": "GillyBoy",
+          "agentDisplay": "GillyBoy (SA)"
+        },
+        {
+          "username": "Trump All Day",
+          "nickname": "Trump All Day",
+          "rake": 940.91,
+          "percentage": 50,
+          "rakeback": 470.45,
+          "agent": "Trump All Day",
+          "superAgent": "-",
+          "agentDisplay": "Trump All Day (A)"
+        },
+        {
+          "username": "DCHA",
+          "nickname": "DCHA",
+          "rake": 1.33,
+          "percentage": 35,
+          "rakeback": 0.47,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Ay0409",
+          "nickname": "Ay0409",
+          "rake": 120.55,
+          "percentage": 30,
+          "rakeback": 36.16,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Doughboy47",
+          "nickname": "Doughboy47",
+          "rake": 0.32,
+          "percentage": 50,
+          "rakeback": 0.16,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "anon42",
+          "nickname": "anon42",
+          "rake": 58.28,
+          "percentage": 40,
+          "rakeback": 23.31,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "jaytoven",
+          "nickname": "jaytoven",
+          "rake": 70.59,
+          "percentage": 35,
+          "rakeback": 24.71,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Ryanig100",
+          "nickname": "Ryanig100",
+          "rake": 383.74,
+          "percentage": 55,
+          "rakeback": 211.06,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Samb20303",
+          "nickname": "Samb20303",
+          "rake": 153.43,
+          "percentage": 30,
+          "rakeback": 46.03,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "perky",
+          "nickname": "perky",
+          "rake": 39.55,
+          "percentage": 30,
+          "rakeback": 11.87,
+          "agent": "-",
+          "superAgent": "GillyBoy",
+          "agentDisplay": "GillyBoy (SA)"
+        },
+        {
+          "username": "jz1222",
+          "nickname": "jz1222",
+          "rake": 649.34,
+          "percentage": 35,
+          "rakeback": 227.27,
+          "agent": "Gillbart",
+          "superAgent": "-",
+          "agentDisplay": "Gillbart (A)"
+        },
+        {
+          "username": "Adamhix106",
+          "nickname": "Adamhix106",
+          "rake": 461.64,
+          "percentage": 50,
+          "rakeback": 230.82,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "zambini",
+          "nickname": "zambini",
+          "rake": 128.49,
+          "percentage": 91,
+          "rakeback": 116.93,
+          "agent": "zambini",
+          "superAgent": "-",
+          "agentDisplay": "zambini (A)"
+        },
+        {
+          "username": "Kinganish",
+          "nickname": "Kinganish",
+          "rake": 1.6,
+          "percentage": 35,
+          "rakeback": 0.56,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "SharkModeSam",
+          "nickname": "SharkModeSam",
+          "rake": 56.89,
+          "percentage": 40,
+          "rakeback": 22.76,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Sjg1738",
+          "nickname": "Sjg1738",
+          "rake": 66.69,
+          "percentage": 30,
+          "rakeback": 20.01,
+          "agent": "Sjg1738",
+          "superAgent": "-",
+          "agentDisplay": "Sjg1738 (A)"
+        },
+        {
+          "username": "faintestgnat",
+          "nickname": "faintestgnat",
+          "rake": 3.87,
+          "percentage": 40,
+          "rakeback": 1.55,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Oledueces",
+          "nickname": "oledueces",
+          "rake": 133.57,
+          "percentage": 30,
+          "rakeback": 40.07,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "billyballsack",
+          "nickname": "Billyballsack",
+          "rake": 4.76,
+          "percentage": 30,
+          "rakeback": 1.43,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Mangoman11",
+          "nickname": "Mangoman11",
+          "rake": 1055.73,
+          "percentage": 65,
+          "rakeback": 686.22,
+          "agent": "Mangoman11",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "asainkid444",
+          "nickname": "asainkid444",
+          "rake": 290.98,
+          "percentage": 35,
+          "rakeback": 101.84,
+          "agent": "-",
+          "superAgent": "LizzyHeaterPure",
+          "agentDisplay": "LizzyHeaterPure (SA)"
+        },
+        {
+          "username": "AlwaysFold_s",
+          "nickname": "AlwaysFold_s",
+          "rake": 34.16,
+          "percentage": 40,
+          "rakeback": 13.66,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "firefairy46",
+          "nickname": "firefairy46",
+          "rake": 2.85,
+          "percentage": 91,
+          "rakeback": 2.59,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "GlitchChaser",
+          "nickname": "GlitchChaser",
+          "rake": 19.2,
+          "percentage": 35,
+          "rakeback": 6.72,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "JWWWWL",
+          "nickname": "JWWWWL",
+          "rake": 3.84,
+          "percentage": 45,
+          "rakeback": 1.73,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Jlagos45",
+          "nickname": "Jlagos45",
+          "rake": 4.78,
+          "percentage": 30,
+          "rakeback": 1.43,
+          "agent": "Heater Agency",
+          "superAgent": "-",
+          "agentDisplay": "Heater Agency (A)"
+        },
+        {
+          "username": "Adolf Chipler",
+          "nickname": "Adolf Chipler",
+          "rake": 30.68,
+          "percentage": 40,
+          "rakeback": 12.27,
+          "agent": "Adolf Chipler",
+          "superAgent": "-",
+          "agentDisplay": "Adolf Chipler (A)"
+        },
+        {
+          "username": "PreeshP",
+          "nickname": "PreeshP",
+          "rake": 226.38,
+          "percentage": 45,
+          "rakeback": 101.87,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "Squatdemonsix9",
+          "nickname": "Squatdemonsix9",
+          "rake": 0,
+          "percentage": 40,
+          "rakeback": 0,
+          "agent": "firefairy46",
+          "superAgent": "-",
+          "agentDisplay": "firefairy46 (A)"
+        },
+        {
+          "username": "knoxperry",
+          "nickname": "knoxperry",
+          "rake": 0,
+          "percentage": 35,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        },
+        {
+          "username": "theycallmeT",
+          "nickname": "TheycallmeT",
+          "rake": 0,
+          "percentage": 30,
+          "rakeback": 0,
+          "agent": "-",
+          "superAgent": "-",
+          "agentDisplay": "-"
+        }
+      ],
+      "agentResults": [
+        {
+          "username": "limpforvpip",
+          "percentage": 63,
+          "totalDownlineRake": 555.77,
+          "rakeback": 350.14,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "DrewKnight",
+              "rake": 25.63,
+              "contribution": "4.61"
+            },
+            {
+              "username": "limpforvpip",
+              "rake": 530.14,
+              "contribution": "95.39"
+            }
+          ]
+        },
+        {
+          "username": "Venomo",
+          "percentage": 30,
+          "totalDownlineRake": 57.5,
+          "rakeback": 17.25,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Venomo",
+              "rake": 1.62,
+              "contribution": "2.82"
+            },
+            {
+              "username": "DrMagical",
+              "rake": 55.88,
+              "contribution": "97.18"
+            }
+          ]
+        },
+        {
+          "username": "Huda the tuna",
+          "percentage": 50,
+          "totalDownlineRake": 1245.99,
+          "rakeback": 623,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Koeppel123",
+              "rake": 60.5,
+              "contribution": "4.86"
+            },
+            {
+              "username": "Huda the tuna",
+              "rake": 209.52,
+              "contribution": "16.82"
+            },
+            {
+              "username": "goodbyemoney",
+              "rake": 624.78,
+              "contribution": "50.14"
+            },
+            {
+              "username": "Mike the Chef",
+              "rake": 91.32,
+              "contribution": "7.33"
+            },
+            {
+              "username": "madmoney1",
+              "rake": 109.2,
+              "contribution": "8.76"
+            },
+            {
+              "username": "Kev12379",
+              "rake": 150.67,
+              "contribution": "12.09"
+            }
+          ]
+        },
+        {
+          "username": "P7658-9025",
+          "percentage": 40,
+          "totalDownlineRake": 251.57999999999998,
+          "rakeback": 100.63,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "P7658-9025",
+              "rake": 251.57,
+              "contribution": "100.00"
+            },
+            {
+              "username": "BigBen8",
+              "rake": 0.01,
+              "contribution": "0.00"
+            }
+          ]
+        },
+        {
+          "username": "Swalley",
+          "percentage": 35,
+          "totalDownlineRake": 0.58,
+          "rakeback": 0.2,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Swalley",
+              "rake": 0.58,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Sukmyballs",
+          "percentage": 35,
+          "totalDownlineRake": 99.29,
+          "rakeback": 34.75,
+          "agentDisplay": "Heater1 (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Sukmyballs",
+              "rake": 55.61,
+              "contribution": "56.01"
+            },
+            {
+              "username": "I am Brooks",
+              "rake": 43.67,
+              "contribution": "43.98"
+            },
+            {
+              "username": "Sansav1",
+              "rake": 0.01,
+              "contribution": "0.01"
+            }
+          ]
+        },
+        {
+          "username": "mookboy",
+          "percentage": 50,
+          "totalDownlineRake": 883.6700000000001,
+          "rakeback": 441.83,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "mookboy",
+              "rake": 862.72,
+              "contribution": "97.63"
+            },
+            {
+              "username": "Tiddlemouse19",
+              "rake": 20.95,
+              "contribution": "2.37"
+            }
+          ]
+        },
+        {
+          "username": "Sjg1738",
+          "percentage": 35,
+          "totalDownlineRake": 66.69,
+          "rakeback": 23.34,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Sjg1738",
+              "rake": 66.69,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "WLanders",
+          "percentage": 60,
+          "totalDownlineRake": 131.15,
+          "rakeback": 78.69,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "WLanders",
+              "rake": 131.15,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "golden gopher",
+          "percentage": 35,
+          "totalDownlineRake": 0.01,
+          "rakeback": 0,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Mad Max408",
+              "rake": 0.01,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Nemo_inthetank",
+          "percentage": 55,
+          "totalDownlineRake": 1243.26,
+          "rakeback": 683.79,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Nemo_inthetank",
+              "rake": 1243.26,
+              "contribution": "100.00"
+            }
+          ]
+        },
+        {
+          "username": "Arkhah87",
+          "percentage": 60,
+          "totalDownlineRake": 1328.03,
+          "rakeback": 796.82,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Arkhah87",
+              "rake": 573.89,
+              "contribution": "43.21"
+            },
+            {
+              "username": "Nick Suzuki",
+              "rake": 421.46,
+              "contribution": "31.74"
+            },
+            {
+              "username": "PinsoPoker",
+              "rake": 332.68,
+              "contribution": "25.05"
+            }
+          ]
+        },
+        {
+          "username": "Marialvices",
+          "percentage": 50,
+          "totalDownlineRake": 95.8,
+          "rakeback": 47.9,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "Marialvices",
+              "rake": 43.64,
+              "contribution": "45.55"
+            },
+            {
+              "username": "EdenIvy",
+              "rake": 52.16,
+              "contribution": "54.45"
+            }
+          ]
+        },
+        {
+          "username": "StuUngarGarment",
+          "percentage": 35,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "agentDisplay": "-",
+          "downlinePlayers": [
+            {
+              "username": "StuUngarGarment",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        },
+        {
+          "username": "Whaeger7",
+          "percentage": 30,
+          "totalDownlineRake": 0,
+          "rakeback": 0,
+          "agentDisplay": "GillyBoy (SA)",
+          "downlinePlayers": [
+            {
+              "username": "Whaeger7",
+              "rake": 0,
+              "contribution": "NaN"
+            }
+          ]
+        }
+      ],
+      "clubOverview": {
+        "clubName": "Round Table Club",
+        "totalFee": 41549.05,
+        "profitLoss": -47502.41,
+        "activePlayers": 271,
+        "totalHands": 235141
+      },
+      "summary": {
+        "totalPlayerRake": 8572.130000000001,
+        "totalPlayerRakeback": 4588.1,
+        "totalAgentRakeback": 3198.34,
+        "grandTotal": 7786.44
+      }
+    }
+  ]
+}

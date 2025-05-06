@@ -1,0 +1,22 @@
+.status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status.processed {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #43a047;
+}
+
+.status.has-data {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffa000;
+}
+
+.status.no-data {
+    background-color: rgba(158, 158, 158, 0.1);
+    color: #757575;
+}

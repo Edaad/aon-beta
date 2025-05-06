@@ -1,0 +1,76 @@
+.add-item-form {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(100, 181, 246, 0.05), rgba(149, 117, 205, 0.05));
+    border: 1px solid rgba(100, 181, 246, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.form-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.save-btn {
+    background: linear-gradient(90deg, #64b5f6, #9575cd);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(100, 181, 246, 0.2);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(100, 181, 246, 0.3);
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #718096;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn:hover {
+    background-color: #f7fafc;
+}
+
+.error-message {
+    color: #e53e3e;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .form-inputs {
+        grid-template-columns: 1fr;
+    }
+}

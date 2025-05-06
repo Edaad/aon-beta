@@ -1,0 +1,60 @@
+.rakeback-table-container {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rakeback-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Outfit', sans-serif;
+}
+
+.rakeback-table th,
+.rakeback-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.rakeback-table th {
+    background: linear-gradient(90deg, rgba(44, 62, 80, 0.05), rgba(74, 101, 114, 0.05));
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.rakeback-table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background-color 0.2s;
+}
+
+.rakeback-table tr:last-child {
+    border-bottom: none;
+}
+
+.rakeback-table tr:hover {
+    background-color: rgba(100, 181, 246, 0.05);
+}
+
+.rakeback-table td:last-child {
+    text-align: right;
+}
+
+.rakeback-table tfoot {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(100, 181, 246, 0.05);
+}
+
+.rakeback-table tfoot td {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.empty-table-message {
+    text-align: center;
+    padding: 2rem;
+    color: #718096;
+}

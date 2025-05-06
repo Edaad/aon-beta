@@ -1,0 +1,751 @@
+{
+    "players": [
+        {
+            "id": "p001",
+            "username": "Aaron4001",
+            "percentage": 30
+        },
+        {
+            "id": "p002",
+            "username": "Adamhix106",
+            "percentage": 50
+        },
+        {
+            "id": "p003",
+            "username": "Adolf Chipler",
+            "percentage": 40
+        },
+        {
+            "id": "p004",
+            "username": "AlwaysFold_s",
+            "percentage": 40
+        },
+        {
+            "id": "p005",
+            "username": "ANDUC",
+            "percentage": 40
+        },
+        {
+            "id": "p006",
+            "username": "andyttp",
+            "percentage": 30
+        },
+        {
+            "id": "p007",
+            "username": "anon42",
+            "percentage": 40
+        },
+        {
+            "id": "p008",
+            "username": "Arje1726",
+            "percentage": 50
+        },
+        {
+            "id": "p009",
+            "username": "Aryeh_M",
+            "percentage": 50
+        },
+        {
+            "id": "p010",
+            "username": "asainkid444",
+            "percentage": 35
+        },
+        {
+            "id": "p011",
+            "username": "AviFaves",
+            "percentage": 30
+        },
+        {
+            "id": "p012",
+            "username": "Ay0409",
+            "percentage": 30
+        },
+        {
+            "id": "p013",
+            "username": "B00BHawk",
+            "percentage": 55
+        },
+        {
+            "id": "p014",
+            "username": "B3rn",
+            "percentage": 50
+        },
+        {
+            "id": "p015",
+            "username": "Backshots mcgee",
+            "percentage": 35
+        },
+        {
+            "id": "p016",
+            "username": "badandbougp",
+            "percentage": 30
+        },
+        {
+            "id": "p017",
+            "username": "billyballsack",
+            "percentage": 30
+        },
+        {
+            "id": "p018",
+            "username": "bluffer77777",
+            "percentage": 30
+        },
+        {
+            "id": "p019",
+            "username": "bob_s",
+            "percentage": 60
+        },
+        {
+            "id": "p020",
+            "username": "BusterScrugs",
+            "percentage": 40
+        },
+        {
+            "id": "p021",
+            "username": "Ch!pmonk",
+            "percentage": 30
+        },
+        {
+            "id": "p022",
+            "username": "CH14",
+            "percentage": 30
+        },
+        {
+            "id": "p023",
+            "username": "Chad Penning",
+            "percentage": 40
+        },
+        {
+            "id": "p024",
+            "username": "Chef_Ramsey",
+            "percentage": 35
+        },
+        {
+            "id": "p025",
+            "username": "Chilly Willyyyy",
+            "percentage": 40
+        },
+        {
+            "id": "p026",
+            "username": "ChopChoppy",
+            "percentage": 50
+        },
+        {
+            "id": "p027",
+            "username": "cmillions",
+            "percentage": 40
+        },
+        {
+            "id": "p028",
+            "username": "cmonnow",
+            "percentage": 50
+        },
+        {
+            "id": "p029",
+            "username": "daddy5544",
+            "percentage": 30
+        },
+        {
+            "id": "p030",
+            "username": "DaMeCabeza",
+            "percentage": 40
+        },
+        {
+            "id": "p031",
+            "username": "datstick69",
+            "percentage": 30
+        },
+        {
+            "id": "p032",
+            "username": "DCHA",
+            "percentage": 35
+        },
+        {
+            "id": "p033",
+            "username": "Dheucalion",
+            "percentage": 40
+        },
+        {
+            "id": "p034",
+            "username": "donkeybruh",
+            "percentage": 30
+        },
+        {
+            "id": "p035",
+            "username": "Doughboy47",
+            "percentage": 50
+        },
+        {
+            "id": "p036",
+            "username": "DSLi",
+            "percentage": 40
+        },
+        {
+            "id": "p037",
+            "username": "faintestgnat",
+            "percentage": 40
+        },
+        {
+            "id": "p038",
+            "username": "fatherg",
+            "percentage": 30
+        },
+        {
+            "id": "p039",
+            "username": "firefairy46",
+            "percentage": 91
+        },
+        {
+            "id": "p040",
+            "username": "fliptard",
+            "percentage": 40
+        },
+        {
+            "id": "p041",
+            "username": "Geeb goblin",
+            "percentage": 30
+        },
+        {
+            "id": "p042",
+            "username": "GlitchChaser",
+            "percentage": 35
+        },
+        {
+            "id": "p043",
+            "username": "GreatBritton",
+            "percentage": 30
+        },
+        {
+            "id": "p044",
+            "username": "Haholala",
+            "percentage": 40
+        },
+        {
+            "id": "p045",
+            "username": "HT8 Poker",
+            "percentage": 35
+        },
+        {
+            "id": "p046",
+            "username": "hyea 123",
+            "percentage": 40
+        },
+        {
+            "id": "p047",
+            "username": "ILoveABGs",
+            "percentage": 40
+        },
+        {
+            "id": "p048",
+            "username": "imkewl",
+            "percentage": 30
+        },
+        {
+            "id": "p049",
+            "username": "iso77777",
+            "percentage": 30
+        },
+        {
+            "id": "p050",
+            "username": "Jack smat",
+            "percentage": 40
+        },
+        {
+            "id": "p051",
+            "username": "jaytoven",
+            "percentage": 35
+        },
+        {
+            "id": "p052",
+            "username": "jddpoker217",
+            "percentage": 30
+        },
+        {
+            "id": "p053",
+            "username": "Jlagos45",
+            "percentage": 30
+        },
+        {
+            "id": "p054",
+            "username": "Jwang824",
+            "percentage": 30
+        },
+        {
+            "id": "p055",
+            "username": "jwjwj323jjwjwjw",
+            "percentage": 30
+        },
+        {
+            "id": "p056",
+            "username": "JWWWWL",
+            "percentage": 45
+        },
+        {
+            "id": "p057",
+            "username": "jz1222",
+            "percentage": 35
+        },
+        {
+            "id": "p058",
+            "username": "k1mster",
+            "percentage": 40
+        },
+        {
+            "id": "p059",
+            "username": "kadeayer",
+            "percentage": 40
+        },
+        {
+            "id": "p060",
+            "username": "Kinganish",
+            "percentage": 35
+        },
+        {
+            "id": "p061",
+            "username": "kingkingka",
+            "percentage": 35
+        },
+        {
+            "id": "p062",
+            "username": "LaTruiteMorte",
+            "percentage": 35
+        },
+        {
+            "id": "p063",
+            "username": "lizzylo",
+            "percentage": 91
+        },
+        {
+            "id": "p064",
+            "username": "LuckboxWhit",
+            "percentage": 60
+        },
+        {
+            "id": "p065",
+            "username": "luckidagoat",
+            "percentage": 40
+        },
+        {
+            "id": "p066",
+            "username": "Mangoman11",
+            "percentage": 65
+        },
+        {
+            "id": "p067",
+            "username": "MarkSandberg51",
+            "percentage": 30
+        },
+        {
+            "id": "p068",
+            "username": "Masonmount777",
+            "percentage": 40
+        },
+        {
+            "id": "p069",
+            "username": "Mich Ultra",
+            "percentage": 30
+        },
+        {
+            "id": "p070",
+            "username": "MoshPoker",
+            "percentage": 45
+        },
+        {
+            "id": "p071",
+            "username": "mrmzty",
+            "percentage": 30
+        },
+        {
+            "id": "p072",
+            "username": "n420y",
+            "percentage": 40
+        },
+        {
+            "id": "p073",
+            "username": "NicoLeny",
+            "percentage": 33
+        },
+        {
+            "id": "p074",
+            "username": "NoKizz",
+            "percentage": 35
+        },
+        {
+            "id": "p075",
+            "username": "Nutbluff69",
+            "percentage": 35
+        },
+        {
+            "id": "p076",
+            "username": "P3011",
+            "percentage": 35
+        },
+        {
+            "id": "p077",
+            "username": "P4785-7914",
+            "percentage": 40
+        },
+        {
+            "id": "p078",
+            "username": "P5088-1060",
+            "percentage": 40
+        },
+        {
+            "id": "p079",
+            "username": "pakmanity",
+            "percentage": 30
+        },
+        {
+            "id": "p080",
+            "username": "perky",
+            "percentage": 30
+        },
+        {
+            "id": "p081",
+            "username": "PICOLO_HB",
+            "percentage": 35
+        },
+        {
+            "id": "p082",
+            "username": "POKERDORI",
+            "percentage": 30
+        },
+        {
+            "id": "p083",
+            "username": "PrestonP20",
+            "percentage": 50
+        },
+        {
+            "id": "p084",
+            "username": "Ryanig100",
+            "percentage": 55
+        },
+        {
+            "id": "p085",
+            "username": "scoopiedoopie",
+            "percentage": 25
+        },
+        {
+            "id": "p086",
+            "username": "ShankAaron",
+            "percentage": 50
+        },
+        {
+            "id": "p087",
+            "username": "SharkModeSam",
+            "percentage": 40
+        },
+        {
+            "id": "p088",
+            "username": "shreyg",
+            "percentage": 40
+        },
+        {
+            "id": "p089",
+            "username": "Sientelobebe",
+            "percentage": 50
+        },
+        {
+            "id": "p090",
+            "username": "Sjg1738",
+            "percentage": 30
+        },
+        {
+            "id": "p091",
+            "username": "Squatdemonsix9",
+            "percentage": 40
+        },
+        {
+            "id": "p092",
+            "username": "Stylissimo",
+            "percentage": 40
+        },
+        {
+            "id": "p093",
+            "username": "swan_poker",
+            "percentage": 30
+        },
+        {
+            "id": "p094",
+            "username": "TanTanSandMan",
+            "percentage": 30
+        },
+        {
+            "id": "p095",
+            "username": "Taylorrrr",
+            "percentage": 40
+        },
+        {
+            "id": "p096",
+            "username": "tazoq",
+            "percentage": 35
+        },
+        {
+            "id": "p097",
+            "username": "TDean16",
+            "percentage": 50
+        },
+        {
+            "id": "p098",
+            "username": "The_1_Percent",
+            "percentage": 40
+        },
+        {
+            "id": "p099",
+            "username": "TheFreeze404",
+            "percentage": 30
+        },
+        {
+            "id": "p100",
+            "username": "theycallmeT",
+            "percentage": 30
+        },
+        {
+            "id": "p101",
+            "username": "ThiefofCrows",
+            "percentage": 30
+        },
+        {
+            "id": "p102",
+            "username": "Vaxxco",
+            "percentage": 30
+        },
+        {
+            "id": "p103",
+            "username": "willow tree",
+            "percentage": 30
+        },
+        {
+            "id": "p104",
+            "username": "Wmaster2",
+            "percentage": 30
+        },
+        {
+            "id": "p105",
+            "username": "wockynuts",
+            "percentage": 30
+        },
+        {
+            "id": "p106",
+            "username": "xxBSACKxx",
+            "percentage": 30
+        },
+        {
+            "id": "p107",
+            "username": "Yb123",
+            "percentage": 50
+        },
+        {
+            "id": "p108",
+            "username": "Zalnx",
+            "percentage": 30
+        },
+        {
+            "id": "p109",
+            "username": "zambini",
+            "percentage": 91
+        },
+        {
+            "id": "p110",
+            "username": "zpfvids",
+            "percentage": 40
+        },
+        {
+            "id": "p111",
+            "username": "Circle!",
+            "percentage": 70
+        },
+        {
+            "id": "p112",
+            "username": "iluvgambol",
+            "percentage": 50
+        },
+        {
+            "id": "p113",
+            "username": "Uturn14",
+            "percentage": 30
+        },
+        {
+            "id": "p114",
+            "username": "Mondayblues",
+            "percentage": 40
+        },
+        {
+            "id": "p115",
+            "username": "knoxperry",
+            "percentage": 35
+        },
+        {
+            "id": "p116",
+            "username": "Oledueces",
+            "percentage": 30
+        },
+        {
+            "id": "p117",
+            "username": "Warhead4real",
+            "percentage": 25
+        },
+        {
+            "id": "p118",
+            "username": "Trump All Day",
+            "percentage": 50
+        },
+        {
+            "id": "p119",
+            "username": "PreeshP",
+            "percentage": 45
+        },
+        {
+            "id": "p120",
+            "username": "Trace13",
+            "percentage": 50
+        },
+        {
+            "id": "p121",
+            "username": "Samb20303",
+            "percentage": 30
+        }
+    ],
+    "agents": [
+        {
+            "id": "a001",
+            "username": "WLanders",
+            "percentage": 60
+        },
+        {
+            "id": "a002",
+            "username": "Bigpunt69",
+            "percentage": 50
+        },
+        {
+            "id": "a003",
+            "username": "Whaeger7",
+            "percentage": 30
+        },
+        {
+            "id": "a004",
+            "username": "Ved_13",
+            "percentage": 65
+        },
+        {
+            "id": "a005",
+            "username": "daelmf",
+            "percentage": 35
+        },
+        {
+            "id": "a006",
+            "username": "limpforvpip",
+            "percentage": 63
+        },
+        {
+            "id": "a007",
+            "username": "P7658-9025",
+            "percentage": 40
+        },
+        {
+            "id": "a008",
+            "username": "nodna",
+            "percentage": 35
+        },
+        {
+            "id": "a009",
+            "username": "EWD26",
+            "percentage": 35
+        },
+        {
+            "id": "a010",
+            "username": "golden gopher",
+            "percentage": 35
+        },
+        {
+            "id": "a011",
+            "username": "Huda the tuna",
+            "percentage": 50
+        },
+        {
+            "id": "a012",
+            "username": "skibididop",
+            "percentage": 35
+        },
+        {
+            "id": "a013",
+            "username": "KJH726",
+            "percentage": 30
+        },
+        {
+            "id": "a014",
+            "username": "Mcawesome743",
+            "percentage": 30
+        },
+        {
+            "id": "a015",
+            "username": "firefairy47",
+            "percentage": 50
+        },
+        {
+            "id": "a016",
+            "username": "Venomo",
+            "percentage": 30
+        },
+        {
+            "id": "a017",
+            "username": "GTOpoker69",
+            "percentage": 40
+        },
+        {
+            "id": "a018",
+            "username": "mookboy",
+            "percentage": 50
+        },
+        {
+            "id": "a019",
+            "username": "Sukmyballs",
+            "percentage": 35
+        },
+        {
+            "id": "a020",
+            "username": "StuUngarGarment",
+            "percentage": 35
+        },
+        {
+            "id": "a021",
+            "username": "THC34",
+            "percentage": 35
+        },
+        {
+            "id": "a022",
+            "username": "Sjg1738",
+            "percentage": 35
+        },
+        {
+            "id": "a023",
+            "username": "Daddy12",
+            "percentage": 50
+        },
+        {
+            "id": "a024",
+            "username": "Swalley",
+            "percentage": 35
+        },
+        {
+            "id": "a025",
+            "username": "Nemo_inthetank",
+            "percentage": 55
+        },
+        {
+            "id": "a026",
+            "username": "Marialvices",
+            "percentage": 50
+        },
+        {
+            "id": "a027",
+            "username": "Arkhah87",
+            "percentage": 60
+        },
+        {
+            "id": "a028",
+            "username": "chaydodin",
+            "percentage": 35
+        }
+    ]
+}

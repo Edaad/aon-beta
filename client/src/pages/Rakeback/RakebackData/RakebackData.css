@@ -1,0 +1,604 @@
+/* Rakeback Data specific styles */
+.rakeback-data-card {
+    padding: 1.5rem;
+}
+
+/* Week list styles */
+.weeks-list {
+    margin-bottom: 2rem;
+}
+
+.week-item {
+    overflow: visible;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+/* Week header */
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(90deg, rgba(100, 181, 246, 0.05), rgba(149, 117, 205, 0.05));
+}
+
+.week-title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.week-expand-icon {
+    margin-right: 0.75rem;
+    font-size: 0.8rem;
+    color: #64b5f6;
+    transition: transform 0.3s;
+}
+
+.week-expand-icon.expanded {
+    transform: rotate(0deg);
+}
+
+.week-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Status badges */
+.week-status .status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status.processed {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #43a047;
+}
+
+.status.has-data {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #ffa000;
+}
+
+.status.no-data {
+    background-color: rgba(158, 158, 158, 0.1);
+    color: #757575;
+}
+
+/* Week content */
+.week-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.week-content.expanded {
+    height: auto;
+    overflow: visible;
+}
+
+.week-content .rakeback-table-container,
+.week-content .week-actions,
+.week-content .upload-section {
+    padding: 1.5rem;
+}
+
+/* Upload section */
+.upload-section {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.upload-section p {
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(90deg, rgba(100, 181, 246, 0.8), rgba(149, 117, 205, 0.8));
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(100, 181, 246, 0.2);
+}
+
+.upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(100, 181, 246, 0.3);
+}
+
+/* Process button */
+.process-btn {
+    display: block;
+    padding: 0.8rem 2rem;
+    margin: 0 auto;
+    background: linear-gradient(90deg, #64b5f6, #9575cd);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(100, 181, 246, 0.2);
+}
+
+.process-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(100, 181, 246, 0.3);
+}
+
+.process-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Add week button */
+.add-week-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(90deg, #64b5f6, #9575cd);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 6px rgba(100, 181, 246, 0.2);
+    margin: 1rem auto 0;
+}
+
+.add-week-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(100, 181, 246, 0.3);
+}
+
+.add-icon {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+/* Add week form */
+.add-week-form {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(180deg, rgba(100, 181, 246, 0.05), rgba(149, 117, 205, 0.05));
+    border: 1px solid rgba(100, 181, 246, 0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+.add-week-form h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.form-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #4a5568;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #64b5f6;
+    box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.save-btn {
+    background: linear-gradient(90deg, #64b5f6, #9575cd);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(100, 181, 246, 0.2);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(100, 181, 246, 0.3);
+}
+
+.cancel-btn {
+    background: transparent;
+    color: #718096;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn:hover {
+    background-color: #f7fafc;
+}
+
+/* Empty state */
+.empty-weeks {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.placeholder-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #64b5f6, #9575cd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.empty-weeks h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.empty-weeks p {
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #666;
+}
+
+/* Error message */
+.error-message {
+    color: #e53e3e;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Loading state */
+.loading-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #718096;
+}
+
+/* Error state */
+.error-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #e53e3e;
+}
+
+/* Table styles */
+.rakeback-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Outfit', sans-serif;
+}
+
+.rakeback-table th,
+.rakeback-table td {
+    padding: 1rem;
+    text-align: left;
+}
+
+.rakeback-table th {
+    background: linear-gradient(90deg, rgba(44, 62, 80, 0.05), rgba(74, 101, 114, 0.05));
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.rakeback-table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rakeback-table tr:last-child {
+    border-bottom: none;
+}
+
+.rakeback-table tfoot {
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(100, 181, 246, 0.05);
+}
+
+/* Week controls */
+.week-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Delete week button */
+.delete-week-btn {
+    background: transparent;
+    color: #e57373;
+    border: 1px solid #e57373;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.delete-week-btn:hover {
+    background-color: #e57373;
+    color: white;
+}
+
+/* Download Report Button */
+.download-report-btn {
+    background: transparent;
+    color: #64b5f6;
+    border: 1px solid #64b5f6;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.download-report-btn:hover {
+    background-color: #64b5f6;
+    color: white;
+}
+
+.download-icon {
+    font-weight: bold;
+}
+
+/* Tabs for Players and Agents */
+.rakeback-tabs {
+    display: flex;
+    margin: 0 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0;
+}
+
+.tab {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+}
+
+.tab h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #718096;
+    display: flex;
+    align-items: center;
+}
+
+.tab.active {
+    border-bottom: 3px solid #64b5f6;
+}
+
+.tab.active h4 {
+    color: #2c3e50;
+}
+
+.tab-icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.tab:hover:not(.active) {
+    background-color: rgba(100, 181, 246, 0.05);
+}
+
+/* Tab Content */
+.tab-content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-content.expanded {
+    height: auto;
+    overflow: visible;
+}
+
+/* Agent Details */
+.expand-details-btn {
+    background: transparent;
+    border: none;
+    color: #64b5f6;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.expand-details-btn:hover {
+    background-color: rgba(100, 181, 246, 0.1);
+}
+
+.agent-details-row {
+    background-color: rgba(100, 181, 246, 0.03);
+}
+
+.agent-details-row td {
+    padding: 0 !important;
+}
+
+.agent-details {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-details h5 {
+    margin: 0 0 0.75rem;
+    color: #4a5568;
+    font-weight: 500;
+}
+
+.downline-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.downline-table th,
+.downline-table td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.downline-table th {
+    background-color: rgba(100, 181, 246, 0.05);
+    text-align: left;
+    font-weight: 500;
+    color: #4a5568;
+}
+
+/* Table Title */
+.table-title {
+    margin: 1rem 0;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+/* Empty State Small */
+.empty-state.small {
+    padding: 2rem 0;
+    text-align: center;
+    color: #718096;
+}
+
+/* Summary Section */
+.rakeback-summary {
+    margin: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(180deg, rgba(100, 181, 246, 0.05), rgba(149, 117, 205, 0.05));
+    border-radius: 8px;
+    border: 1px solid rgba(100, 181, 246, 0.1);
+}
+
+.rakeback-summary h4 {
+    margin: 0 0 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.summary-item {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-item.total {
+    background-color: rgba(100, 181, 246, 0.1);
+    font-weight: 600;
+}
+
+.summary-label {
+    color: #4a5568;
+}
+
+.summary-value {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .week-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .week-status {
+        margin-top: 0.5rem;
+    }
+}

@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: #333;
+  background-color: #f8f9fc;
+}
+
+code {
+  font-family: 'Outfit', monospace;
+}
+
+/* Add a subtle scrollbar style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Button and interactive element styles */
+button,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Helper classes */
+.text-gradient {
+  background: linear-gradient(90deg, #64b5f6, #9575cd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Outfit', sans-serif;
+}
