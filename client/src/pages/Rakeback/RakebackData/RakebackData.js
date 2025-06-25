@@ -470,7 +470,7 @@ const RakebackData = () => {
                 // Extract player data from columns:
                 // - F (Agent) 
                 // - J (Nickname)
-                // - BL (Rake)
+                // - BM (Rake) // Updated from BL to BM
                 // - D (Super Agent)
                 // Starting from row 7
                 const extractedData = [];
@@ -478,7 +478,7 @@ const RakebackData = () => {
 
                 while (true) {
                     const nicknameCell = statsSheet[`J${row}`];
-                    const rakeCell = statsSheet[`BL${row}`];
+                    const rakeCell = statsSheet[`BM${row}`]; // Changed from BL to BM
                     const agentCell = statsSheet[`F${row}`]; // Column F (A)
                     const superAgentCell = statsSheet[`D${row}`]; // Column D (SA)
 

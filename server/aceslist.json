@@ -1,128 +1,113 @@
 {
     "players": [
         {
-            "id": "p123",
+            "id": "p001",
             "username": "Daddy12",
             "percentage": 50
         },
         {
-            "id": "p124",
+            "id": "p002",
             "username": "Dannypunts",
             "percentage": 40
         },
         {
-            "id": "p125",
-            "username": "PrestonP20",
-            "percentage": 30
-        },
-        {
-            "id": "p126",
+            "id": "p003",
             "username": "HT8 Poker",
             "percentage": 35
         },
         {
-            "id": "p127",
+            "id": "p004",
             "username": "cmonnow",
             "percentage": 40
         },
         {
-            "id": "p128",
+            "id": "p005",
             "username": "ChaChaMa",
             "percentage": 50
         },
         {
-            "id": "p129",
+            "id": "p006",
             "username": "Jwang824",
             "percentage": 30
         },
         {
-            "id": "p130",
+            "id": "p007",
             "username": "imkewl",
             "percentage": 30
         },
         {
-            "id": "p132",
-            "username": "Doughboy47",
-            "percentage": 50
-        },
-        {
-            "id": "p133",
-            "username": "lizzylo",
-            "percentage": 80
-        },
-        {
-            "id": "p134",
-            "username": "Trace13",
-            "percentage": 50
-        },
-        {
-            "id": "p135",
+            "id": "p008",
             "username": "k1mster",
             "percentage": 40
         },
         {
-            "id": "p136",
+            "id": "p009",
             "username": "firefairy46",
             "percentage": 91
         },
         {
-            "id": "p137",
+            "id": "p010",
             "username": "wockynuts",
             "percentage": 30
         },
         {
-            "id": "p138",
+            "id": "p011",
             "username": "Hyea 123",
             "percentage": 30
         },
         {
-            "id": "p139",
+            "id": "p012",
             "username": "Foz2",
             "percentage": 30
         },
         {
-            "id": "p140",
+            "id": "p013",
             "username": "Binkerinio",
             "percentage": 70
         },
         {
-            "id": "p141",
+            "id": "p014",
             "username": "FishBuffet!!",
             "percentage": 40
         },
         {
-            "id": "p142",
+            "id": "p015",
             "username": "r4randon",
             "percentage": 25
         },
         {
-            "id": "p143",
+            "id": "p016",
             "username": "B00BHawk",
             "percentage": 50
         },
         {
-            "id": "p144",
+            "id": "p017",
             "username": "Linsanity11",
-            "percentage": 30
+            "percentage": 50
         },
         {
-            "id": "p146",
+            "id": "p018",
             "username": "MBOOO",
             "percentage": 30
         },
         {
-            "id": "p147",
+            "id": "p019",
             "username": "shreyg",
             "percentage": 40
         },
         {
-            "id": "p148",
+            "id": "p020",
             "username": "PuntCentral",
             "percentage": 35
         },
         {
-            "id": "p149",
+            "id": "p021",
             "username": "getsup",
+            "percentage": 30
+        },
+        {
+            "id": "p022",
+            "username": "Bruhhh123",
             "percentage": 30
         }
     ],
@@ -138,14 +123,14 @@
             "percentage": 67.5
         },
         {
-            "id": "a031",
-            "username": "Trueadidas",
-            "percentage": 40
-        },
-        {
             "id": "a032",
             "username": "limpforvpip",
             "percentage": 63
+        },
+        {
+            "id": "a033",
+            "username": "Trueadidas",
+            "percentage": 40
         }
     ]
 }
