@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { format, parseISO } from 'date-fns';
 import { Line } from 'react-chartjs-2';
 import {
@@ -11,6 +11,8 @@ import {
     Tooltip,
     Legend
 } from 'chart.js';
+import { useClub } from '../../contexts/ClubContext';
+import { fetchWeeks, fetchWeekData } from '../../services/apis';
 import './Dashboard.css';
 
 // Register Chart.js components
@@ -37,14 +39,14 @@ const prepareTrendData = (processedWeeks, weekDataList, fieldToExtract) => {
 
     // Extract data for each week
     const chartData = sortedWeeks.map(week => {
-        const weekData = weekDataList.find(wd => wd.weekId === week.id);
-        if (!weekData || !weekData.clubOverview) {
+        const weekData = weekDataList.find(wd => wd.weekId === week._id);
+        if (!weekData) {
             return null;
         }
 
         return {
             label: format(parseISO(week.startDate), 'MMM d'),
-            value: weekData.clubOverview[fieldToExtract] || 0
+            value: weekData[fieldToExtract] || 0
         };
     }).filter(Boolean);
 
@@ -55,6 +57,7 @@ const prepareTrendData = (processedWeeks, weekDataList, fieldToExtract) => {
 };
 
 const Dashboard = () => {
+    const { currentClub } = useClub();
     const [weekData, setWeekData] = useState(null);
     const [previousWeekData, setPreviousWeekData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -63,73 +66,72 @@ const Dashboard = () => {
     const [processedWeeks, setProcessedWeeks] = useState([]);
     const [allWeekData, setAllWeekData] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setIsLoading(true);
+    const fetchData = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            setError(null);
 
-                // Fetch weeks
-                const weeksResponse = await fetch('http://localhost:3001/weeks');
-                if (!weeksResponse.ok) throw new Error('Failed to fetch weeks');
-                const weeks = await weeksResponse.json();
+            // Fetch weeks for the current club
+            const weeks = await fetchWeeks(currentClub.name);
 
-                // Find processed weeks and sort by date (newest first)
-                const allProcessedWeeks = weeks
-                    .filter(week => week.processed)
-                    .sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
+            // Find processed weeks and sort by date (newest first)
+            const allProcessedWeeks = weeks
+                .filter(week => week.processed)
+                .sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
 
-                setProcessedWeeks(allProcessedWeeks);
+            setProcessedWeeks(allProcessedWeeks);
 
-                if (allProcessedWeeks.length === 0) {
-                    setIsLoading(false);
-                    return;
-                }
-
-                // Fetch the week data
-                const weekDataResponse = await fetch('http://localhost:3001/weekData');
-                if (!weekDataResponse.ok) throw new Error('Failed to fetch week data');
-                const allWeekDataList = await weekDataResponse.json();
-
-                // Store all week data for trends
-                setAllWeekData(allWeekDataList);
-
-                // Get selected week (initially the most recent)
-                const selectedWeek = allProcessedWeeks[selectedWeekIndex];
-                const previousWeek = allProcessedWeeks[selectedWeekIndex + 1] || null;
-
-                // Find the data for the selected and previous weeks
-                const selectedWeekData = allWeekDataList.find(wd => wd.weekId === selectedWeek.id);
-                const previousWeekData = previousWeek
-                    ? allWeekDataList.find(wd => wd.weekId === previousWeek.id)
-                    : null;
-
-                if (!selectedWeekData) throw new Error('Selected week data not found');
-
-                // Set state with the found data
-                setWeekData({
-                    ...selectedWeekData,
-                    startDate: selectedWeek.startDate,
-                    endDate: selectedWeek.endDate
-                });
-
-                if (previousWeekData) {
-                    setPreviousWeekData({
-                        ...previousWeekData,
-                        startDate: previousWeek.startDate,
-                        endDate: previousWeek.endDate
-                    });
-                }
-
+            if (allProcessedWeeks.length === 0) {
                 setIsLoading(false);
-            } catch (err) {
-                console.error('Error fetching dashboard data:', err);
-                setError(err.message);
-                setIsLoading(false);
+                return;
             }
-        };
 
-        fetchData();
-    }, [selectedWeekIndex]);
+            // Fetch the week data for the current club
+            const allWeekDataList = await fetchWeekData(currentClub.name);
+
+            // Store all week data for trends
+            setAllWeekData(allWeekDataList);
+
+            // Get selected week (initially the most recent)
+            const selectedWeek = allProcessedWeeks[selectedWeekIndex];
+            const previousWeek = allProcessedWeeks[selectedWeekIndex + 1] || null;
+
+            // Find the data for the selected and previous weeks
+            const selectedWeekData = allWeekDataList.find(wd => wd.weekId === selectedWeek._id);
+            const previousWeekData = previousWeek
+                ? allWeekDataList.find(wd => wd.weekId === previousWeek._id)
+                : null;
+
+            if (!selectedWeekData) throw new Error('Selected week data not found');
+
+            // Set state with the found data
+            setWeekData({
+                ...selectedWeekData,
+                startDate: selectedWeek.startDate,
+                endDate: selectedWeek.endDate
+            });
+
+            if (previousWeekData) {
+                setPreviousWeekData({
+                    ...previousWeekData,
+                    startDate: previousWeek.startDate,
+                    endDate: previousWeek.endDate
+                });
+            }
+
+            setIsLoading(false);
+        } catch (err) {
+            console.error('Error fetching dashboard data:', err);
+            setError(err.message);
+            setIsLoading(false);
+        }
+    }, [currentClub, selectedWeekIndex]);
+
+    useEffect(() => {
+        if (currentClub) {
+            fetchData();
+        }
+    }, [currentClub, selectedWeekIndex, fetchData]);
 
     const calculateChange = (current, previous) => {
         if (!previous) return null;
@@ -274,9 +276,9 @@ const Dashboard = () => {
                                 </button>
                             </div>
                         </div>
-                        {weekData.clubOverview && (
+                        {weekData && (
                             <div className="club-name">
-                                <span>{weekData.clubOverview.clubName}</span>
+                                <span>{currentClub.displayName}</span>
                             </div>
                         )}
                     </div>
@@ -287,14 +289,14 @@ const Dashboard = () => {
                             <h2>Total Fee</h2>
                             <div className="metric-value-container">
                                 <div className="metric-value primary">
-                                    {weekData.clubOverview ? formatCurrency(weekData.clubOverview.totalFee) : 'N/A'}
+                                    {weekData ? formatCurrency(weekData.totalFee) : 'N/A'}
                                 </div>
-                                {previousWeekData && previousWeekData.clubOverview && (
+                                {previousWeekData && (
                                     <div className="change-indicator">
                                         {(() => {
                                             const change = calculateChange(
-                                                weekData.clubOverview.totalFee,
-                                                previousWeekData.clubOverview.totalFee
+                                                weekData.totalFee,
+                                                previousWeekData.totalFee
                                             );
                                             return (
                                                 <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
@@ -317,16 +319,16 @@ const Dashboard = () => {
                         <div className="metric-card pl">
                             <h2>Profit & Loss</h2>
                             <div className="metric-value-container">
-                                {weekData.clubOverview && (
-                                    <div className={`metric-value ${weekData.clubOverview.profitLoss >= 0 ? 'positive' : 'negative'}`}>
-                                        {formatCurrency(weekData.clubOverview.profitLoss)}
+                                {weekData && (
+                                    <div className={`metric-value ${weekData.totalPL >= 0 ? 'positive' : 'negative'}`}>
+                                        {formatCurrency(weekData.totalPL)}
                                     </div>
                                 )}
-                                {previousWeekData && previousWeekData.clubOverview && (
+                                {previousWeekData && (
                                     <div className="change-indicator">
                                         {(() => {
-                                            const currentPL = weekData.clubOverview.profitLoss;
-                                            const previousPL = previousWeekData.clubOverview.profitLoss;
+                                            const currentPL = weekData.totalPL;
+                                            const previousPL = previousWeekData.totalPL;
 
                                             if (currentPL >= 0 && previousPL >= 0) {
                                                 const change = calculateChange(currentPL, previousPL);
@@ -361,14 +363,14 @@ const Dashboard = () => {
                             <h2>Active Players</h2>
                             <div className="metric-value-container">
                                 <div className="metric-value">
-                                    {weekData.clubOverview ? formatNumber(weekData.clubOverview.activePlayers) : 'N/A'}
+                                    {weekData ? formatNumber(weekData.activePlayers) : 'N/A'}
                                 </div>
-                                {previousWeekData && previousWeekData.clubOverview && (
+                                {previousWeekData && (
                                     <div className="change-indicator">
                                         {(() => {
                                             const change = calculateChange(
-                                                weekData.clubOverview.activePlayers,
-                                                previousWeekData.clubOverview.activePlayers
+                                                weekData.activePlayers,
+                                                previousWeekData.activePlayers
                                             );
                                             return (
                                                 <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
@@ -387,14 +389,14 @@ const Dashboard = () => {
                             <h2>Total Hands</h2>
                             <div className="metric-value-container">
                                 <div className="metric-value">
-                                    {weekData.clubOverview ? formatNumber(weekData.clubOverview.totalHands) : 'N/A'}
+                                    {weekData ? formatNumber(weekData.totalHands) : 'N/A'}
                                 </div>
-                                {previousWeekData && previousWeekData.clubOverview && (
+                                {previousWeekData && (
                                     <div className="change-indicator">
                                         {(() => {
                                             const change = calculateChange(
-                                                weekData.clubOverview.totalHands,
-                                                previousWeekData.clubOverview.totalHands
+                                                weekData.totalHands,
+                                                previousWeekData.totalHands
                                             );
                                             return (
                                                 <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
@@ -415,26 +417,26 @@ const Dashboard = () => {
                             <div className="summary-stat">
                                 <span className="stat-label">Player Rakeback</span>
                                 <span className="stat-value">
-                                    {formatCurrency(weekData.summary.totalPlayerRakeback)}
+                                    {formatCurrency(weekData.totalPlayerRakeback)}
                                 </span>
                             </div>
                             <div className="summary-stat">
                                 <span className="stat-label">Agent Rakeback</span>
                                 <span className="stat-value">
-                                    {formatCurrency(weekData.summary.totalAgentRakeback)}
+                                    {formatCurrency(weekData.totalAgentRakeback)}
                                 </span>
                             </div>
                             <div className="summary-stat total">
                                 <span className="stat-label">Total Rakeback</span>
                                 <span className="stat-value">
-                                    {formatCurrency(weekData.summary.grandTotal)}
+                                    {formatCurrency(weekData.totalRakeback)}
                                 </span>
                             </div>
                             <div className="summary-stat">
                                 <span className="stat-label">Fee to RB Ratio</span>
                                 <span className="stat-value">
-                                    {weekData.clubOverview && (
-                                        `${((weekData.summary.grandTotal / weekData.clubOverview.totalFee) * 100).toFixed(1)}%`
+                                    {weekData && (
+                                        `${((weekData.totalRakeback / weekData.totalFee) * 100).toFixed(1)}%`
                                     )}
                                 </span>
                             </div>

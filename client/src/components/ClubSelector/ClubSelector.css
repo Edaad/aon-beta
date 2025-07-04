@@ -1,0 +1,126 @@
+.club-selector {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.club-selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.club-selector-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.add-club-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.add-club-btn:hover {
+    background: #0056b3;
+}
+
+.clubs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.club-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.club-item:hover {
+    background: #f8f9fa;
+    border-color: #007bff;
+}
+
+.club-item.active {
+    background: #e3f2fd;
+    border-color: #007bff;
+}
+
+.club-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.active-indicator {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.add-club-form {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #f8f9fa;
+}
+
+.add-club-form input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.add-club-form input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.form-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.save-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.save-btn:hover {
+    background: #218838;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.3s;
+}
+
+.cancel-btn:hover {
+    background: #5a6268;
+}

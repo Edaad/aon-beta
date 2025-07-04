@@ -1,13 +1,41 @@
-const API_URL = 'http://localhost:3001';
+const API_URL = 'http://localhost:3002/api';
 
-export const fetchPlayers = async () => {
-    const response = await fetch(`${API_URL}/players`);
+// Club management
+export const fetchClubs = async () => {
+    const response = await fetch(`${API_URL}/clubs`);
+    if (!response.ok) throw new Error('Failed to fetch clubs');
+    return response.json();
+};
+
+export const addClub = async (club) => {
+    const response = await fetch(`${API_URL}/clubs`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(club),
+    });
+    if (!response.ok) throw new Error('Failed to add club');
+    return response.json();
+};
+
+export const deleteClub = async (clubId) => {
+    const response = await fetch(`${API_URL}/clubs/${clubId}`, {
+        method: 'DELETE',
+    });
+    if (!response.ok) throw new Error('Failed to delete club');
+    return true;
+};
+
+// Player management
+export const fetchPlayers = async (clubId) => {
+    const response = await fetch(`${API_URL}/${clubId}/players`);
     if (!response.ok) throw new Error('Failed to fetch players');
     return response.json();
 };
 
-export const addPlayer = async (player) => {
-    const response = await fetch(`${API_URL}/players`, {
+export const addPlayer = async (clubId, player) => {
+    const response = await fetch(`${API_URL}/${clubId}/players`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -18,22 +46,22 @@ export const addPlayer = async (player) => {
     return response.json();
 };
 
-export const deletePlayer = async (id) => {
-    const response = await fetch(`${API_URL}/players/${id}`, {
+export const deletePlayer = async (clubId, id) => {
+    const response = await fetch(`${API_URL}/${clubId}/players/${id}`, {
         method: 'DELETE',
     });
     if (!response.ok) throw new Error('Failed to delete player');
     return true;
 };
 
-export const fetchAgents = async () => {
-    const response = await fetch(`${API_URL}/agents`);
+export const fetchAgents = async (clubId) => {
+    const response = await fetch(`${API_URL}/${clubId}/agents`);
     if (!response.ok) throw new Error('Failed to fetch agents');
     return response.json();
 };
 
-export const addAgent = async (agent) => {
-    const response = await fetch(`${API_URL}/agents`, {
+export const addAgent = async (clubId, agent) => {
+    const response = await fetch(`${API_URL}/${clubId}/agents`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -44,28 +72,28 @@ export const addAgent = async (agent) => {
     return response.json();
 };
 
-export const deleteAgent = async (id) => {
-    const response = await fetch(`${API_URL}/agents/${id}`, {
+export const deleteAgent = async (clubId, id) => {
+    const response = await fetch(`${API_URL}/${clubId}/agents/${id}`, {
         method: 'DELETE',
     });
     if (!response.ok) throw new Error('Failed to delete agent');
     return true;
 };
 
-export const fetchWeeks = async () => {
-    const response = await fetch(`${API_URL}/weeks`);
+export const fetchWeeks = async (clubId) => {
+    const response = await fetch(`${API_URL}/${clubId}/weeks`);
     if (!response.ok) throw new Error('Failed to fetch weeks');
     return response.json();
 };
 
-export const fetchWeekData = async () => {
-    const response = await fetch(`${API_URL}/weekData`);
+export const fetchWeekData = async (clubId) => {
+    const response = await fetch(`${API_URL}/${clubId}/weekData`);
     if (!response.ok) throw new Error('Failed to fetch week data');
     return response.json();
 };
 
-export const addWeek = async (week) => {
-    const response = await fetch(`${API_URL}/weeks`, {
+export const addWeek = async (clubId, week) => {
+    const response = await fetch(`${API_URL}/${clubId}/weeks`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -76,8 +104,8 @@ export const addWeek = async (week) => {
     return response.json();
 };
 
-export const updateWeek = async (id, data) => {
-    const response = await fetch(`${API_URL}/weeks/${id}`, {
+export const updateWeek = async (clubId, id, data) => {
+    const response = await fetch(`${API_URL}/${clubId}/weeks/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -88,24 +116,24 @@ export const updateWeek = async (id, data) => {
     return response.json();
 };
 
-export const deleteWeek = async (id) => {
-    const response = await fetch(`${API_URL}/weeks/${id}`, {
+export const deleteWeek = async (clubId, id) => {
+    const response = await fetch(`${API_URL}/${clubId}/weeks/${id}`, {
         method: 'DELETE',
     });
     if (!response.ok) throw new Error('Failed to delete week');
     return true;
 };
 
-export const deleteWeekData = async (id) => {
-    const response = await fetch(`${API_URL}/weekData/${id}`, {
+export const deleteWeekData = async (clubId, id) => {
+    const response = await fetch(`${API_URL}/${clubId}/weekData/${id}`, {
         method: 'DELETE',
     });
     if (!response.ok) throw new Error('Failed to delete week data');
     return true;
 };
 
-export const addWeekData = async (data) => {
-    const response = await fetch(`${API_URL}/weekData`, {
+export const addWeekData = async (clubId, data) => {
+    const response = await fetch(`${API_URL}/${clubId}/weekData`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

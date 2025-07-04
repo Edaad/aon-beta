@@ -10,6 +10,7 @@ import {
     FaChevronDown,
     FaChevronUp
 } from 'react-icons/fa';
+import ClubSelector from '../ClubSelector/ClubSelector';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -42,6 +43,10 @@ const Sidebar = () => {
                     {sidebarCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
                 </button>
             </div>
+
+            {/* Club Selector */}
+            {!sidebarCollapsed && <ClubSelector />}
+
             <nav className="sidebar-nav">
                 <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
                     <span className="nav-icon"><FaTachometerAlt /></span>

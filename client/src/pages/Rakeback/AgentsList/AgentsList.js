@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PageHeader from '../../../components/PageHeader/PageHeader';
 import ContentCard from '../../../components/ContentCard/ContentCard';
 import LoadingState from '../../../components/LoadingState/LoadingState';
@@ -9,10 +9,12 @@ import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
+import { useClub } from '../../../contexts/ClubContext';
 import { fetchAgents, addAgent, deleteAgent } from '../../../services/apis';
 import './AgentsList.css';
 
 const AgentsList = () => {
+    const { currentClub } = useClub();
     const [agents, setAgents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -22,21 +24,24 @@ const AgentsList = () => {
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
 
-    // Fetch data on component mount
-    useEffect(() => {
-        const loadAgents = async () => {
-            try {
-                const data = await fetchAgents();
-                setAgents(data);
-                setIsLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setIsLoading(false);
-            }
-        };
+    const loadAgents = useCallback(async () => {
+        if (!currentClub) return;
+        try {
+            const data = await fetchAgents(currentClub.name);
+            setAgents(data);
+            setIsLoading(false);
+        } catch (err) {
+            setError(err.message);
+            setIsLoading(false);
+        }
+    }, [currentClub]);
 
-        loadAgents();
-    }, []);
+    // Fetch data on component mount and when club changes
+    useEffect(() => {
+        if (currentClub) {
+            loadAgents();
+        }
+    }, [currentClub, loadAgents]);
 
     // Add agent with API
     const handleAddAgent = async () => {
@@ -58,12 +63,12 @@ const AgentsList = () => {
         }
 
         const newAgent = {
-            username: newUsername,
-            percentage: percentageNum
+            nickname: newUsername,
+            rakeback: percentageNum
         };
 
         try {
-            const savedAgent = await addAgent(newAgent);
+            const savedAgent = await addAgent(currentClub.name, newAgent);
             setAgents([...agents, savedAgent]);
 
             // Reset form
@@ -87,8 +92,8 @@ const AgentsList = () => {
     // Delete agent with API
     const handleDeleteAgent = async (id) => {
         try {
-            await deleteAgent(id);
-            setAgents(agents.filter(agent => agent.id !== id));
+            await deleteAgent(currentClub.name, id);
+            setAgents(agents.filter(agent => agent._id !== id));
         } catch (err) {
             console.error('Error deleting agent:', err);
         }
@@ -96,25 +101,25 @@ const AgentsList = () => {
 
     // Table columns configuration
     const columns = [
-        { header: 'Username', accessor: 'username' },
+        { header: 'Username', accessor: 'nickname' },
         {
             header: 'Percentage (%)',
-            accessor: 'percentage',
-            render: (agent) => `${agent.percentage}%`
+            accessor: 'rakeback',
+            render: (agent) => `${agent.rakeback}%`
         },
         {
             header: 'Actions',
             render: (agent) => (
                 <DeleteButton
-                    onDelete={() => handleDeleteAgent(agent.id)}
-                    itemName={agent.username}
+                    onDelete={() => handleDeleteAgent(agent._id)}
+                    itemName={agent.nickname}
                 />
             )
         }
     ];
 
     const renderContent = () => {
-        if (isLoading) {
+        if (!currentClub || isLoading) {
             return <LoadingState message="Loading agents..." />;
         }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PageHeader from '../../../components/PageHeader/PageHeader';
 import ContentCard from '../../../components/ContentCard/ContentCard';
 import LoadingState from '../../../components/LoadingState/LoadingState';
@@ -9,10 +9,12 @@ import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
+import { useClub } from '../../../contexts/ClubContext';
 import { fetchPlayers, addPlayer, deletePlayer } from '../../../services/apis';
 import './PlayersList.css';
 
 const PlayersList = () => {
+    const { currentClub } = useClub();
     const [players, setPlayers] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -22,21 +24,24 @@ const PlayersList = () => {
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
 
-    // Fetch data on component mount
-    useEffect(() => {
-        const loadPlayers = async () => {
-            try {
-                const data = await fetchPlayers();
-                setPlayers(data);
-                setIsLoading(false);
-            } catch (err) {
-                setError(err.message);
-                setIsLoading(false);
-            }
-        };
+    const loadPlayers = useCallback(async () => {
+        if (!currentClub) return;
+        try {
+            const data = await fetchPlayers(currentClub.name);
+            setPlayers(data);
+            setIsLoading(false);
+        } catch (err) {
+            setError(err.message);
+            setIsLoading(false);
+        }
+    }, [currentClub]);
 
-        loadPlayers();
-    }, []);
+    // Fetch data on component mount and when club changes
+    useEffect(() => {
+        if (currentClub) {
+            loadPlayers();
+        }
+    }, [currentClub, loadPlayers]);
 
     // Add player with API
     const handleAddPlayer = async () => {
@@ -58,12 +63,12 @@ const PlayersList = () => {
         }
 
         const newPlayer = {
-            username: newUsername,
-            percentage: percentageNum
+            nickname: newUsername,
+            rakeback: percentageNum
         };
 
         try {
-            const savedPlayer = await addPlayer(newPlayer);
+            const savedPlayer = await addPlayer(currentClub.name, newPlayer);
             setPlayers([...players, savedPlayer]);
 
             // Reset form
@@ -87,8 +92,8 @@ const PlayersList = () => {
     // Delete player with API
     const handleDeletePlayer = async (id) => {
         try {
-            await deletePlayer(id);
-            setPlayers(players.filter(player => player.id !== id));
+            await deletePlayer(currentClub.name, id);
+            setPlayers(players.filter(player => player._id !== id));
         } catch (err) {
             console.error('Error deleting player:', err);
         }
@@ -96,25 +101,25 @@ const PlayersList = () => {
 
     // Table columns configuration
     const columns = [
-        { header: 'Username', accessor: 'username' },
+        { header: 'Username', accessor: 'nickname' },
         {
             header: 'Percentage (%)',
-            accessor: 'percentage',
-            render: (player) => `${player.percentage}%`
+            accessor: 'rakeback',
+            render: (player) => `${player.rakeback}%`
         },
         {
             header: 'Actions',
             render: (player) => (
                 <DeleteButton
-                    onDelete={() => handleDeletePlayer(player.id)}
-                    itemName={player.username}
+                    onDelete={() => handleDeletePlayer(player._id)}
+                    itemName={player.nickname}
                 />
             )
         }
     ];
 
     const renderContent = () => {
-        if (isLoading) {
+        if (!currentClub || isLoading) {
             return <LoadingState message="Loading players..." />;
         }
 

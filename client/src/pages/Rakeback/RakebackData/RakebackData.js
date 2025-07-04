@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { format, parseISO } from 'date-fns';
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
@@ -15,6 +15,7 @@ import AddItemForm from '../../../components/AddItemForm/AddItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
 import StatusBadge from '../../../components/StatusBadge/StatusBadge';
+import { useClub } from '../../../contexts/ClubContext';
 
 import {
     fetchWeeks,
@@ -56,9 +57,9 @@ const WeekItem = ({
     return (
         <div className="week-item">
             <div className="week-header">
-                <div className="week-title" onClick={() => toggleWeekExpansion(week.id)}>
-                    <span className={`week-expand-icon ${expandedWeekId === week.id ? 'expanded' : ''}`}>
-                        {expandedWeekId === week.id ? '▼' : '►'}
+                <div className="week-title" onClick={() => toggleWeekExpansion(week._id)}>
+                    <span className={`week-expand-icon ${expandedWeekId === week._id ? 'expanded' : ''}`}>
+                        {expandedWeekId === week._id ? '▼' : '►'}
                     </span>
                     <h3>
                         Week of {formatDate(week.startDate)} - {formatDate(week.endDate)}
@@ -88,13 +89,13 @@ const WeekItem = ({
                         </button>
                     )}
                     <DeleteButton
-                        onDelete={(e) => deleteWeek(week.id, e)}
+                        onDelete={(e) => deleteWeek(week._id, e)}
                         itemName="week"
                     />
                 </div>
             </div>
 
-            <div className={`week-content ${expandedWeekId === week.id ? 'expanded' : ''}`}>
+            <div className={`week-content ${expandedWeekId === week._id ? 'expanded' : ''}`}>
                 {week.processed && week.data ? (
                     <ProcessedWeekContent
                         week={week}
@@ -109,10 +110,10 @@ const WeekItem = ({
                     <div className="week-actions">
                         <button
                             className="process-btn"
-                            onClick={() => processRakeback(week.id)}
-                            disabled={processingWeekId === week.id}
+                            onClick={() => processRakeback(week._id)}
+                            disabled={processingWeekId === week._id}
                         >
-                            {processingWeekId === week.id ? 'Processing...' : 'Process Rakeback'}
+                            {processingWeekId === week._id ? 'Processing...' : 'Process Rakeback'}
                         </button>
                     </div>
                 ) : (
@@ -123,8 +124,8 @@ const WeekItem = ({
                             <input
                                 type="file"
                                 accept=".xlsx, .xls"
-                                onChange={(e) => handleFileUpload(week.id, e)}
-                                ref={el => fileInputRefs.current[week.id] = el}
+                                onChange={(e) => handleFileUpload(week._id, e)}
+                                ref={el => fileInputRefs.current[week._id] = el}
                                 style={{ display: 'none' }}
                             />
                         </label>
@@ -336,6 +337,8 @@ const AddWeekForm = ({
 };
 
 const RakebackData = () => {
+    const { currentClub } = useClub();
+
     // State management
     const [weeks, setWeeks] = useState([]);
     const [players, setPlayers] = useState([]);
@@ -361,41 +364,95 @@ const RakebackData = () => {
     const [processingWeekId, setProcessingWeekId] = useState(null);
     const [expandedWeekId, setExpandedWeekId] = useState(null);
 
-    // Fetch data on component mount
-    useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true);
-            try {
-                // Fetch all necessary data
-                const [weeksData, weekDataList, playersData, agentsData] = await Promise.all([
-                    fetchWeeks(),
-                    fetchWeekData(),
-                    fetchPlayers(),
-                    fetchAgents()
-                ]);
+    const fetchData = useCallback(async () => {
+        if (!currentClub) return;
+        setIsLoading(true);
+        try {
+            // Fetch all necessary data for the current club
+            const [weeksData, weekDataList, playersData, agentsData] = await Promise.all([
+                fetchWeeks(currentClub.name),
+                fetchWeekData(currentClub.name),
+                fetchPlayers(currentClub.name),
+                fetchAgents(currentClub.name)
+            ]);
 
-                // Merge week data into weeks
-                const mergedWeeks = weeksData.map(week => {
-                    const data = weekDataList.find(wd => wd.weekId === week.id);
+            // Merge week data into weeks
+            const mergedWeeks = weeksData.map(week => {
+                const data = weekDataList.find(wd => wd.weekId === week._id);
+
+                if (data) {
+                    // Convert backend data structure to frontend format
+                    const frontendData = {
+                        ...data,
+                        playerResults: data.playersData?.map(player => ({
+                            username: player.nickname,
+                            nickname: player.nickname,
+                            rake: player.rake,
+                            percentage: player.rakebackPercent,
+                            rakeback: player.rakebackAmount,
+                            agent: player.agent || '-',
+                            superAgent: player.superAgent || '-',
+                            agentDisplay: player.superAgent && player.superAgent !== '-'
+                                ? `${player.superAgent} (SA)`
+                                : player.agent && player.agent !== '-'
+                                    ? `${player.agent} (A)`
+                                    : "-"
+                        })) || [],
+                        agentResults: data.agentsData?.map(agent => ({
+                            username: agent.nickname || 'Unknown Agent',
+                            percentage: agent.rakebackPercent || 0,
+                            totalDownlineRake: agent.totalRake || 0,
+                            rakeback: agent.rakebackAmount || 0,
+                            downlinePlayers: agent.downlinePlayers || [] // Preserve downline players data
+                        })) || [],
+                        clubOverview: {
+                            clubName: currentClub.name,
+                            totalFee: data.totalFee,
+                            profitLoss: data.totalPL,
+                            activePlayers: data.activePlayers,
+                            totalHands: data.totalHands
+                        },
+                        summary: {
+                            totalPlayerRake: data.playersData?.reduce((sum, player) => sum + player.rake, 0) || 0,
+                            totalPlayerRakeback: data.totalPlayerRakeback,
+                            totalAgentRakeback: data.totalAgentRakeback,
+                            grandTotal: data.totalRakeback
+                        }
+                    };
+
                     return {
                         ...week,
-                        data: data || null
+                        data: frontendData,
+                        hasData: true,
+                        processed: true
                     };
-                });
+                }
 
-                setWeeks(mergedWeeks);
-                setPlayers(playersData);
-                setAgents(agentsData);
-                setIsLoading(false);
-            } catch (err) {
-                console.error('Error fetching data:', err);
-                setError(err.message);
-                setIsLoading(false);
-            }
-        };
+                return {
+                    ...week,
+                    data: null,
+                    hasData: false,
+                    processed: false
+                };
+            });
 
-        fetchData();
-    }, []);
+            setWeeks(mergedWeeks);
+            setPlayers(playersData);
+            setAgents(agentsData);
+            setIsLoading(false);
+        } catch (err) {
+            console.error('Error fetching data:', err);
+            setError(err.message);
+            setIsLoading(false);
+        }
+    }, [currentClub]);
+
+    // Fetch data on component mount and when club changes
+    useEffect(() => {
+        if (currentClub) {
+            fetchData();
+        }
+    }, [currentClub, fetchData]);
 
     // Add a new week
     const addWeek = async () => {
@@ -413,13 +470,13 @@ const RakebackData = () => {
         try {
             // Create new week
             const newWeek = {
+                weekNumber: weeks.length + 1,
                 startDate,
                 endDate,
-                hasData: false,
-                processed: false
+                status: 'active'
             };
 
-            const savedWeek = await addWeekAPI(newWeek);
+            const savedWeek = await addWeekAPI(currentClub.name, newWeek);
             setWeeks([...weeks, savedWeek]);
 
             // Reset form
@@ -516,11 +573,11 @@ const RakebackData = () => {
                 };
 
                 // Save extracted data to the week
-                const updatedWeek = weeks.find(w => w.id === weekId);
+                const updatedWeek = weeks.find(w => w._id === weekId);
                 if (!updatedWeek) return;
 
                 const updatedWeeks = weeks.map(w => {
-                    if (w.id === weekId) {
+                    if (w._id === weekId) {
                         return {
                             ...w,
                             hasData: true,
@@ -532,7 +589,7 @@ const RakebackData = () => {
                 });
 
                 // Update week on server
-                await updateWeek(weekId, { hasData: true });
+                await updateWeek(currentClub.name, weekId, { hasData: true });
 
                 // Store extracted data temporarily with the week
                 setWeeks(updatedWeeks);
@@ -552,7 +609,7 @@ const RakebackData = () => {
         setProcessingWeekId(weekId);
 
         try {
-            const week = weeks.find(w => w.id === weekId);
+            const week = weeks.find(w => w._id === weekId);
             if (!week || !week.extractedData) {
                 throw new Error('No data available to process');
             }
@@ -561,11 +618,11 @@ const RakebackData = () => {
             const playerResults = week.extractedData.map(player => {
                 // Find matching player in rakeback list
                 const matchedPlayer = players.find(p =>
-                    p.username.toLowerCase() === player.nickname.toLowerCase()
+                    p.nickname.toLowerCase() === player.nickname.toLowerCase()
                 );
 
                 if (matchedPlayer) {
-                    const rakeback = (player.rake * matchedPlayer.percentage / 100).toFixed(2);
+                    const rakeback = (player.rake * matchedPlayer.rakeback / 100).toFixed(2);
 
                     // Determine agent display
                     let agentDisplay = "-";
@@ -576,10 +633,10 @@ const RakebackData = () => {
                     }
 
                     return {
-                        username: matchedPlayer.username,
+                        username: matchedPlayer.nickname,
                         nickname: player.nickname,
                         rake: player.rake,
-                        percentage: matchedPlayer.percentage,
+                        percentage: matchedPlayer.rakeback,
                         rakeback: parseFloat(rakeback),
                         agent: player.agent || '-',
                         superAgent: player.superAgent || '-',
@@ -619,12 +676,12 @@ const RakebackData = () => {
             const agentResults = Object.entries(agentDownlines).map(([agentName, data]) => {
                 // Find agent's percentage from agents list
                 const matchedAgent = agents.find(a =>
-                    a.username.toLowerCase() === agentName.toLowerCase()
+                    a.nickname.toLowerCase() === agentName.toLowerCase()
                 );
 
                 if (matchedAgent) {
                     const totalDownlineRake = data.totalRake;
-                    const rakeback = (totalDownlineRake * matchedAgent.percentage / 100).toFixed(2);
+                    const rakeback = (totalDownlineRake * matchedAgent.rakeback / 100).toFixed(2);
 
                     // Check if this agent has a super agent (similar to player logic)
                     // Use the first player's agent/superAgent info as reference
@@ -640,8 +697,8 @@ const RakebackData = () => {
                     }
 
                     return {
-                        username: matchedAgent.username,
-                        percentage: matchedAgent.percentage,
+                        username: matchedAgent.nickname,
+                        percentage: matchedAgent.rakeback,
                         totalDownlineRake,
                         rakeback: parseFloat(rakeback),
                         agentDisplay: agentDisplay,
@@ -656,37 +713,71 @@ const RakebackData = () => {
             }).filter(Boolean); // Remove null entries (unmatched agents)
 
             // Calculate totals
-            const totalPlayerRake = playerResults.reduce((sum, item) => sum + item.rake, 0);
             const totalPlayerRakeback = playerResults.reduce((sum, item) => sum + item.rakeback, 0);
             const totalAgentRakeback = agentResults.reduce((sum, item) => sum + parseFloat(item.rakeback), 0);
 
             // Create week data object
             const weekData = {
-                weekId,
+                weekId: weekId,
+                weekNumber: week.weekNumber,
+                startDate: week.startDate,
+                endDate: week.endDate,
+                totalFee: week.clubOverview?.totalFee || 0,
+                totalPL: week.clubOverview?.profitLoss || 0,
+                activePlayers: week.clubOverview?.activePlayers || 0,
+                totalHands: week.clubOverview?.totalHands || 0,
+                playersData: playerResults.map(player => ({
+                    nickname: player.nickname,
+                    agent: player.agent,
+                    rake: player.rake,
+                    rakebackPercent: player.percentage,
+                    rakebackAmount: player.rakeback,
+                    superAgent: player.superAgent
+                })),
+                agentsData: agentResults.map(agent => ({
+                    nickname: agent.username,
+                    totalRake: agent.totalDownlineRake,
+                    rakebackPercent: agent.percentage,
+                    rakebackAmount: agent.rakeback,
+                    playersCount: agent.downlinePlayers.length,
+                    downlinePlayers: agent.downlinePlayers.map(player => ({
+                        username: player.username,
+                        rake: player.rake,
+                        contribution: parseFloat(player.contribution)
+                    }))
+                })),
+                totalPlayerRakeback: parseFloat(totalPlayerRakeback.toFixed(2)),
+                totalAgentRakeback: parseFloat(totalAgentRakeback.toFixed(2)),
+                totalRakeback: parseFloat((totalPlayerRakeback + totalAgentRakeback).toFixed(2))
+            };
+
+            // Save to server
+            const savedData = await addWeekDataAPI(currentClub.name, weekData);
+
+            // Create frontend-friendly data structure
+            const frontendData = {
+                ...savedData,
                 playerResults,
                 agentResults,
                 clubOverview: week.clubOverview || null,
                 summary: {
-                    totalPlayerRake,
+                    totalPlayerRake: playerResults.reduce((sum, item) => sum + item.rake, 0),
                     totalPlayerRakeback: parseFloat(totalPlayerRakeback.toFixed(2)),
                     totalAgentRakeback: parseFloat(totalAgentRakeback.toFixed(2)),
                     grandTotal: parseFloat((totalPlayerRakeback + totalAgentRakeback).toFixed(2))
                 }
             };
 
-            // Save to server
-            const savedData = await addWeekDataAPI(weekData);
-
             // Update week processed status
-            await updateWeek(weekId, { processed: true });
+            await updateWeek(currentClub.name, weekId, { processed: true });
 
             // Update local state
             setWeeks(weeks.map(w => {
-                if (w.id === weekId) {
+                if (w._id === weekId) {
                     return {
                         ...w,
                         processed: true,
-                        data: savedData
+                        data: frontendData
                     };
                 }
                 return w;
@@ -731,16 +822,16 @@ const RakebackData = () => {
 
         try {
             // First check if there is week data and delete it
-            const weekDataToDelete = weeks.find(w => w.id === weekId)?.data;
-            if (weekDataToDelete) {
-                await deleteWeekDataAPI(weekDataToDelete.id);
+            const weekToDelete = weeks.find(w => w._id === weekId);
+            if (weekToDelete?.data) {
+                await deleteWeekDataAPI(currentClub.name, weekToDelete.data._id);
             }
 
             // Then delete the week
-            await deleteWeekAPI(weekId);
+            await deleteWeekAPI(currentClub.name, weekId);
 
             // Update state
-            setWeeks(weeks.filter(week => week.id !== weekId));
+            setWeeks(weeks.filter(week => week._id !== weekId));
 
             // If the deleted week was expanded, reset expandedWeekId
             if (expandedWeekId === weekId) {
@@ -958,7 +1049,7 @@ const RakebackData = () => {
                             {weeks.length > 0 ? (
                                 weeks.map(week => (
                                     <WeekItem
-                                        key={week.id}
+                                        key={week._id}
                                         week={week}
                                         expandedWeekId={expandedWeekId}
                                         toggleWeekExpansion={toggleWeekExpansion}
