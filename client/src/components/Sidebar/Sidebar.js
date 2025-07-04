@@ -44,9 +44,6 @@ const Sidebar = () => {
                 </button>
             </div>
 
-            {/* Club Selector */}
-            {!sidebarCollapsed && <ClubSelector />}
-
             <nav className="sidebar-nav">
                 <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
                     <span className="nav-icon"><FaTachometerAlt /></span>
@@ -82,6 +79,10 @@ const Sidebar = () => {
                     </div>
                 </div>
             </nav>
+
+            {/* Club Selector at bottom */}
+            {!sidebarCollapsed && <ClubSelector />}
+
             <div className="sidebar-footer">
                 <span className="footer-text">© 2025 Round Table</span>
             </div>
