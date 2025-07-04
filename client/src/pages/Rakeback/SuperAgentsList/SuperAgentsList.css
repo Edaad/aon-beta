@@ -1,0 +1,11 @@
+/* SuperAgentsList.css */
+
+/* Add any specific styles for Super Agents here if needed */
+.super-agent-badge {
+    background-color: #ffd700;
+    color: #333;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}

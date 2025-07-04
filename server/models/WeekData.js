@@ -53,6 +53,25 @@ const weekDataSchema = new mongoose.Schema({
         rakebackPercent: Number,
         rakebackAmount: Number,
         playersCount: Number,
+        superAgent: String,
+        downlinePlayers: [{
+            username: String,
+            rake: Number,
+            contribution: Number
+        }]
+    }],
+    superAgentsData: [{
+        nickname: String,
+        totalRake: Number,
+        rakebackPercent: Number,
+        rakebackAmount: Number,
+        agentsCount: Number,
+        playersCount: Number,
+        downlineAgents: [{
+            username: String,
+            rake: Number,
+            contribution: Number
+        }],
         downlinePlayers: [{
             username: String,
             rake: Number,
@@ -68,6 +87,10 @@ const weekDataSchema = new mongoose.Schema({
         default: 0
     },
     totalRakeback: {
+        type: Number,
+        default: 0
+    },
+    totalSuperAgentRakeback: {
         type: Number,
         default: 0
     },

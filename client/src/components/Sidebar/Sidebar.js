@@ -8,7 +8,8 @@ import {
     FaChevronRight,
     FaUserTie,
     FaChevronDown,
-    FaChevronUp
+    FaChevronUp,
+    FaCrown
 } from 'react-icons/fa';
 import ClubSelector from '../ClubSelector/ClubSelector';
 import './Sidebar.css';
@@ -29,7 +30,8 @@ const Sidebar = () => {
     // Check if any rakeback-related page is active
     const isRakebackActive = location.pathname === '/rakeback-data' ||
         location.pathname === '/players-rb-list' ||
-        location.pathname === '/agents-rb-list';
+        location.pathname === '/agents-rb-list' ||
+        location.pathname === '/super-agents-rb-list';
 
     return (
         <aside className={`sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
@@ -75,6 +77,10 @@ const Sidebar = () => {
                         <Link to="/agents-rb-list" className={`dropdown-item ${location.pathname === '/agents-rb-list' ? 'active' : ''}`}>
                             <span className="nav-icon small"><FaUserTie /></span>
                             <span className="nav-text">Agents RB List</span>
+                        </Link>
+                        <Link to="/super-agents-rb-list" className={`dropdown-item ${location.pathname === '/super-agents-rb-list' ? 'active' : ''}`}>
+                            <span className="nav-icon small"><FaCrown /></span>
+                            <span className="nav-text">Super Agents RB List</span>
                         </Link>
                     </div>
                 </div>

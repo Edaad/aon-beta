@@ -22,6 +22,7 @@ import {
     fetchWeekData,
     fetchPlayers,
     fetchAgents,
+    fetchSuperAgents,
     updateWeek,
     addWeek as addWeekAPI,
     deleteWeek as deleteWeekAPI,
@@ -44,8 +45,10 @@ const WeekItem = ({
     generatePDF,
     expandedPlayersTab,
     expandedAgentsTab,
+    expandedSuperAgentsTab,
     togglePlayersTab,
     toggleAgentsTab,
+    toggleSuperAgentsTab,
     expandedAgentId,
     toggleAgentDetails
 }) => {
@@ -101,8 +104,10 @@ const WeekItem = ({
                         week={week}
                         expandedPlayersTab={expandedPlayersTab}
                         expandedAgentsTab={expandedAgentsTab}
+                        expandedSuperAgentsTab={expandedSuperAgentsTab}
                         togglePlayersTab={togglePlayersTab}
                         toggleAgentsTab={toggleAgentsTab}
+                        toggleSuperAgentsTab={toggleSuperAgentsTab}
                         expandedAgentId={expandedAgentId}
                         toggleAgentDetails={toggleAgentDetails}
                     />
@@ -140,8 +145,10 @@ const ProcessedWeekContent = ({
     week,
     expandedPlayersTab,
     expandedAgentsTab,
+    expandedSuperAgentsTab,
     togglePlayersTab,
     toggleAgentsTab,
+    toggleSuperAgentsTab,
     expandedAgentId,
     toggleAgentDetails
 }) => {
@@ -159,6 +166,12 @@ const ProcessedWeekContent = ({
                     onClick={toggleAgentsTab}
                 >
                     <h4>Agents Rakeback</h4>
+                </div>
+                <div
+                    className={`tab ${expandedSuperAgentsTab ? 'active' : ''}`}
+                    onClick={toggleSuperAgentsTab}
+                >
+                    <h4>Super Agents Rakeback</h4>
                 </div>
             </div>
 
@@ -206,6 +219,7 @@ const ProcessedWeekContent = ({
                         <table className="rakeback-table">
                             <thead>
                                 <tr>
+                                    <th>Super Agent</th>
                                     <th>Agent</th>
                                     <th>Rakeback</th>
                                     <th>Percentage (%)</th>
@@ -217,6 +231,7 @@ const ProcessedWeekContent = ({
                                 {week.data.agentResults.map((agent, index) => (
                                     <React.Fragment key={index}>
                                         <tr>
+                                            <td>{agent.superAgent !== '-' ? agent.superAgent : '-'}</td>
                                             <td>{agent.username}</td>
                                             <td>${agent.rakeback.toFixed(0)}</td>
                                             <td>{agent.percentage}%</td>
@@ -279,6 +294,114 @@ const ProcessedWeekContent = ({
                         />
                     )}
                 </div>
+            </div>
+
+            <div className={`tab-content ${expandedSuperAgentsTab ? 'expanded' : ''}`}>
+                <div className="rakeback-table-container">
+                    <h4 className="table-title">Super Agent Rakeback</h4>
+                    {week.data.superAgentResults && week.data.superAgentResults.length > 0 ? (
+                        <table className="rakeback-table">
+                            <thead>
+                                <tr>
+                                    <th>Super Agent</th>
+                                    <th>Rakeback</th>
+                                    <th>Percentage (%)</th>
+                                    <th>Downline Rake</th>
+                                    <th>Agents</th>
+                                    <th>Players</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {week.data.superAgentResults.map((superAgent, index) => (
+                                    <React.Fragment key={`sa-${index}`}>
+                                        <tr>
+                                            <td>{superAgent.username}</td>
+                                            <td>${superAgent.rakeback.toFixed(0)}</td>
+                                            <td>{superAgent.percentage}%</td>
+                                            <td>${superAgent.totalDownlineRake.toFixed(2)}</td>
+                                            <td>{superAgent.agentsCount}</td>
+                                            <td>{superAgent.playersCount}</td>
+                                            <td>
+                                                <button
+                                                    className="expand-details-btn"
+                                                    onClick={() => toggleAgentDetails(`sa-${index}`)}
+                                                    aria-label="Show downline details"
+                                                >
+                                                    {expandedAgentId === `sa-${index}` ? '▼' : '▶'}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {expandedAgentId === `sa-${index}` && (
+                                            <tr className="agent-details-row">
+                                                <td colSpan="7">
+                                                    <div className="agent-details">
+                                                        <h5>Downline Agents</h5>
+                                                        <table className="downline-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Agent</th>
+                                                                    <th>Rake</th>
+                                                                    <th>Contribution (%)</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {superAgent.downlineAgents.map((agent, idx) => (
+                                                                    <tr key={idx}>
+                                                                        <td>{agent.username}</td>
+                                                                        <td>${agent.rake.toFixed(2)}</td>
+                                                                        <td>{agent.contribution}%</td>
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+
+                                                        <h5>Downline Players</h5>
+                                                        <table className="downline-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Player</th>
+                                                                    <th>Rake</th>
+                                                                    <th>Contribution (%)</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {superAgent.downlinePlayers.map((player, idx) => (
+                                                                    <tr key={idx}>
+                                                                        <td>{player.username}</td>
+                                                                        <td>${player.rake.toFixed(2)}</td>
+                                                                        <td>{player.contribution}%</td>
+                                                                    </tr>
+                                                                ))}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </React.Fragment>
+                                ))}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>${week.data.summary.totalSuperAgentRakeback.toFixed(2)}</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    ) : (
+                        <EmptyState
+                            small={true}
+                            title="No Super Agent Data"
+                            message="No super agent data available for this week"
+                        />
+                    )}
+                </div>
 
                 <div className="rakeback-summary">
                     <h4>Weekly Summary</h4>
@@ -290,6 +413,10 @@ const ProcessedWeekContent = ({
                         <div className="summary-item">
                             <span className="summary-label">Agents Rakeback:</span>
                             <span className="summary-value">${week.data.summary.totalAgentRakeback.toFixed(2)}</span>
+                        </div>
+                        <div className="summary-item">
+                            <span className="summary-label">Super Agents Rakeback:</span>
+                            <span className="summary-value">${week.data.summary.totalSuperAgentRakeback.toFixed(2)}</span>
                         </div>
                         <div className="summary-item total">
                             <span className="summary-label">Grand Total:</span>
@@ -343,12 +470,14 @@ const RakebackData = () => {
     const [weeks, setWeeks] = useState([]);
     const [players, setPlayers] = useState([]);
     const [agents, setAgents] = useState([]);
+    const [superAgents, setSuperAgents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     // View control
     const [expandedPlayersTab, setExpandedPlayersTab] = useState(true);
     const [expandedAgentsTab, setExpandedAgentsTab] = useState(false);
+    const [expandedSuperAgentsTab, setExpandedSuperAgentsTab] = useState(false);
     const [expandedAgentId, setExpandedAgentId] = useState(null);
 
     // Week adding state
@@ -369,11 +498,12 @@ const RakebackData = () => {
         setIsLoading(true);
         try {
             // Fetch all necessary data for the current club
-            const [weeksData, weekDataList, playersData, agentsData] = await Promise.all([
+            const [weeksData, weekDataList, playersData, agentsData, superAgentsData] = await Promise.all([
                 fetchWeeks(currentClub.name),
                 fetchWeekData(currentClub.name),
                 fetchPlayers(currentClub.name),
-                fetchAgents(currentClub.name)
+                fetchAgents(currentClub.name),
+                fetchSuperAgents(currentClub.name)
             ]);
 
             // Merge week data into weeks
@@ -403,7 +533,18 @@ const RakebackData = () => {
                             percentage: agent.rakebackPercent || 0,
                             totalDownlineRake: agent.totalRake || 0,
                             rakeback: agent.rakebackAmount || 0,
+                            superAgent: agent.superAgent || '-',
                             downlinePlayers: agent.downlinePlayers || [] // Preserve downline players data
+                        })) || [],
+                        superAgentResults: data.superAgentsData?.map(superAgent => ({
+                            username: superAgent.nickname || 'Unknown Super Agent',
+                            percentage: superAgent.rakebackPercent || 0,
+                            totalDownlineRake: superAgent.totalRake || 0,
+                            rakeback: superAgent.rakebackAmount || 0,
+                            agentsCount: superAgent.agentsCount || 0,
+                            playersCount: superAgent.playersCount || 0,
+                            downlineAgents: superAgent.downlineAgents || [],
+                            downlinePlayers: superAgent.downlinePlayers || []
                         })) || [],
                         clubOverview: {
                             clubName: currentClub.name,
@@ -416,6 +557,7 @@ const RakebackData = () => {
                             totalPlayerRake: data.playersData?.reduce((sum, player) => sum + player.rake, 0) || 0,
                             totalPlayerRakeback: data.totalPlayerRakeback,
                             totalAgentRakeback: data.totalAgentRakeback,
+                            totalSuperAgentRakeback: data.totalSuperAgentRakeback || 0,
                             grandTotal: data.totalRakeback
                         }
                     };
@@ -439,6 +581,7 @@ const RakebackData = () => {
             setWeeks(mergedWeeks);
             setPlayers(playersData);
             setAgents(agentsData);
+            setSuperAgents(superAgentsData);
             setIsLoading(false);
         } catch (err) {
             console.error('Error fetching data:', err);
@@ -560,6 +703,9 @@ const RakebackData = () => {
                     return;
                 }
 
+                console.log('Extracted data from Excel:', extractedData);
+                console.log('Super agents found in data:', [...new Set(extractedData.map(d => d.superAgent).filter(sa => sa && sa !== '-'))]);
+
                 // Get the Club Overview sheet
                 const overviewSheet = workbook.Sheets['Club Overview'];
 
@@ -659,7 +805,8 @@ const RakebackData = () => {
                     if (!agentDownlines[agentName]) {
                         agentDownlines[agentName] = {
                             totalRake: 0,
-                            players: []
+                            players: [],
+                            superAgent: player.superAgent || '-'
                         };
                     }
 
@@ -683,25 +830,12 @@ const RakebackData = () => {
                     const totalDownlineRake = data.totalRake;
                     const rakeback = (totalDownlineRake * matchedAgent.rakeback / 100).toFixed(2);
 
-                    // Check if this agent has a super agent (similar to player logic)
-                    // Use the first player's agent/superAgent info as reference
-                    let agentDisplay = "-";
-                    const referencePlayer = week.extractedData.find(p =>
-                        p.agent?.toLowerCase() === agentName.toLowerCase()
-                    );
-
-                    if (referencePlayer) {
-                        if (referencePlayer.superAgent && referencePlayer.superAgent !== '-') {
-                            agentDisplay = `${referencePlayer.superAgent} (SA)`;
-                        }
-                    }
-
                     return {
                         username: matchedAgent.nickname,
                         percentage: matchedAgent.rakeback,
                         totalDownlineRake,
                         rakeback: parseFloat(rakeback),
-                        agentDisplay: agentDisplay,
+                        superAgent: data.superAgent,
                         downlinePlayers: data.players.map(player => ({
                             ...player,
                             contribution: ((player.rake / totalDownlineRake) * 100).toFixed(2)
@@ -712,9 +846,107 @@ const RakebackData = () => {
                 return null;
             }).filter(Boolean); // Remove null entries (unmatched agents)
 
+            // 3. Process super agent rakeback
+            const superAgentDownlines = {};
+
+            // Group players directly by their super agents (from Excel data)
+            week.extractedData.forEach(player => {
+                const superAgentName = player.superAgent;
+
+                if (superAgentName && superAgentName.trim() !== '' && superAgentName !== '-') {
+                    // Initialize super agent downline if not exists
+                    if (!superAgentDownlines[superAgentName]) {
+                        superAgentDownlines[superAgentName] = {
+                            totalRake: 0,
+                            agents: new Set(),
+                            players: []
+                        };
+                    }
+
+                    // Add player's rake to super agent's total
+                    superAgentDownlines[superAgentName].totalRake += player.rake;
+
+                    // Track the player
+                    superAgentDownlines[superAgentName].players.push({
+                        username: player.nickname,
+                        rake: player.rake
+                    });
+
+                    // Track the agent if exists
+                    if (player.agent && player.agent.trim() !== '' && player.agent !== '-') {
+                        superAgentDownlines[superAgentName].agents.add(player.agent);
+                    }
+                }
+            });
+
+            // Convert agent sets to arrays with rake totals
+            Object.keys(superAgentDownlines).forEach(superAgentName => {
+                const agentSet = superAgentDownlines[superAgentName].agents;
+                const agentArray = [];
+
+                agentSet.forEach(agentName => {
+                    // Calculate total rake for this agent under this super agent
+                    const agentRake = week.extractedData
+                        .filter(player => player.superAgent === superAgentName && player.agent === agentName)
+                        .reduce((sum, player) => sum + player.rake, 0);
+
+                    agentArray.push({
+                        username: agentName,
+                        rake: agentRake
+                    });
+                });
+
+                superAgentDownlines[superAgentName].agents = agentArray;
+            });
+
+            console.log('Super agent downlines (corrected):', superAgentDownlines);
+            console.log('Available super agents:', superAgents.map(a => a.nickname));
+            console.log('Current club:', currentClub.name);
+
+            // Calculate rakeback for each super agent
+            const superAgentResults = Object.entries(superAgentDownlines).map(([superAgentName, data]) => {
+                console.log('Processing super agent:', superAgentName);
+                console.log('Super agent data:', data);
+
+                // Find super agent's percentage from super agents list
+                const matchedSuperAgent = superAgents.find(a =>
+                    a.nickname.toLowerCase() === superAgentName.toLowerCase()
+                );
+
+                console.log('Matched super agent:', matchedSuperAgent);
+
+                if (matchedSuperAgent) {
+                    const totalDownlineRake = data.totalRake;
+                    const rakeback = (totalDownlineRake * matchedSuperAgent.rakeback / 100).toFixed(2);
+
+                    return {
+                        username: matchedSuperAgent.nickname,
+                        percentage: matchedSuperAgent.rakeback,
+                        totalDownlineRake,
+                        rakeback: parseFloat(rakeback),
+                        agentsCount: data.agents.length,
+                        playersCount: data.players.length,
+                        downlineAgents: data.agents.map(agent => ({
+                            ...agent,
+                            contribution: ((agent.rake / totalDownlineRake) * 100).toFixed(2)
+                        })),
+                        downlinePlayers: data.players.map(player => ({
+                            ...player,
+                            contribution: ((player.rake / totalDownlineRake) * 100).toFixed(2)
+                        }))
+                    };
+                }
+
+                console.log('No match found for super agent:', superAgentName);
+                return null;
+            }).filter(Boolean); // Remove null entries (unmatched super agents)
+
+            console.log('Final super agent results:', superAgentResults);
+
             // Calculate totals
             const totalPlayerRakeback = playerResults.reduce((sum, item) => sum + item.rakeback, 0);
             const totalAgentRakeback = agentResults.reduce((sum, item) => sum + parseFloat(item.rakeback), 0);
+            const totalSuperAgentRakeback = superAgentResults.reduce((sum, item) => sum + parseFloat(item.rakeback), 0);
 
             // Create week data object
             const weekData = {
@@ -740,7 +972,26 @@ const RakebackData = () => {
                     rakebackPercent: agent.percentage,
                     rakebackAmount: agent.rakeback,
                     playersCount: agent.downlinePlayers.length,
+                    superAgent: agent.superAgent,
                     downlinePlayers: agent.downlinePlayers.map(player => ({
+                        username: player.username,
+                        rake: player.rake,
+                        contribution: parseFloat(player.contribution)
+                    }))
+                })),
+                superAgentsData: superAgentResults.map(superAgent => ({
+                    nickname: superAgent.username,
+                    totalRake: superAgent.totalDownlineRake,
+                    rakebackPercent: superAgent.percentage,
+                    rakebackAmount: superAgent.rakeback,
+                    agentsCount: superAgent.agentsCount,
+                    playersCount: superAgent.playersCount,
+                    downlineAgents: superAgent.downlineAgents.map(agent => ({
+                        username: agent.username,
+                        rake: agent.rake,
+                        contribution: parseFloat(agent.contribution)
+                    })),
+                    downlinePlayers: superAgent.downlinePlayers.map(player => ({
                         username: player.username,
                         rake: player.rake,
                         contribution: parseFloat(player.contribution)
@@ -748,7 +999,8 @@ const RakebackData = () => {
                 })),
                 totalPlayerRakeback: parseFloat(totalPlayerRakeback.toFixed(2)),
                 totalAgentRakeback: parseFloat(totalAgentRakeback.toFixed(2)),
-                totalRakeback: parseFloat((totalPlayerRakeback + totalAgentRakeback).toFixed(2))
+                totalSuperAgentRakeback: parseFloat(totalSuperAgentRakeback.toFixed(2)),
+                totalRakeback: parseFloat((totalPlayerRakeback + totalAgentRakeback + totalSuperAgentRakeback).toFixed(2))
             };
 
             // Save to server
@@ -759,12 +1011,14 @@ const RakebackData = () => {
                 ...savedData,
                 playerResults,
                 agentResults,
+                superAgentResults,
                 clubOverview: week.clubOverview || null,
                 summary: {
                     totalPlayerRake: playerResults.reduce((sum, item) => sum + item.rake, 0),
                     totalPlayerRakeback: parseFloat(totalPlayerRakeback.toFixed(2)),
                     totalAgentRakeback: parseFloat(totalAgentRakeback.toFixed(2)),
-                    grandTotal: parseFloat((totalPlayerRakeback + totalAgentRakeback).toFixed(2))
+                    totalSuperAgentRakeback: parseFloat(totalSuperAgentRakeback.toFixed(2)),
+                    grandTotal: parseFloat((totalPlayerRakeback + totalAgentRakeback + totalSuperAgentRakeback).toFixed(2))
                 }
             };
 
@@ -850,6 +1104,10 @@ const RakebackData = () => {
 
     const toggleAgentsTab = () => {
         setExpandedAgentsTab(!expandedAgentsTab);
+    };
+
+    const toggleSuperAgentsTab = () => {
+        setExpandedSuperAgentsTab(!expandedSuperAgentsTab);
     };
 
     // Generate PDF report
@@ -1061,8 +1319,10 @@ const RakebackData = () => {
                                         generatePDF={generatePDF}
                                         expandedPlayersTab={expandedPlayersTab}
                                         expandedAgentsTab={expandedAgentsTab}
+                                        expandedSuperAgentsTab={expandedSuperAgentsTab}
                                         togglePlayersTab={togglePlayersTab}
                                         toggleAgentsTab={toggleAgentsTab}
+                                        toggleSuperAgentsTab={toggleSuperAgentsTab}
                                         expandedAgentId={expandedAgentId}
                                         toggleAgentDetails={toggleAgentDetails}
                                     />

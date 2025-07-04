@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const agentSchema = new mongoose.Schema({
+const superAgentSchema = new mongoose.Schema({
     clubId: {
         type: String,
         required: true,
@@ -16,10 +16,6 @@ const agentSchema = new mongoose.Schema({
         min: 0,
         max: 100
     },
-    superAgent: {
-        type: String,
-        default: null
-    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -27,6 +23,6 @@ const agentSchema = new mongoose.Schema({
 });
 
 // Compound index for efficient club-specific queries
-agentSchema.index({ clubId: 1, nickname: 1 });
+superAgentSchema.index({ clubId: 1, nickname: 1 });
 
-module.exports = mongoose.model('Agent', agentSchema);
+module.exports = mongoose.model('SuperAgent', superAgentSchema);

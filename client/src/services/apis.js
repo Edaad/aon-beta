@@ -80,6 +80,33 @@ export const deleteAgent = async (clubId, id) => {
     return true;
 };
 
+// Super Agent management
+export const fetchSuperAgents = async (clubId) => {
+    const response = await fetch(`${API_URL}/${clubId}/super-agents`);
+    if (!response.ok) throw new Error('Failed to fetch super agents');
+    return response.json();
+};
+
+export const addSuperAgent = async (clubId, superAgent) => {
+    const response = await fetch(`${API_URL}/${clubId}/super-agents`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(superAgent),
+    });
+    if (!response.ok) throw new Error('Failed to add super agent');
+    return response.json();
+};
+
+export const deleteSuperAgent = async (clubId, id) => {
+    const response = await fetch(`${API_URL}/${clubId}/super-agents/${id}`, {
+        method: 'DELETE',
+    });
+    if (!response.ok) throw new Error('Failed to delete super agent');
+    return true;
+};
+
 export const fetchWeeks = async (clubId) => {
     const response = await fetch(`${API_URL}/${clubId}/weeks`);
     if (!response.ok) throw new Error('Failed to fetch weeks');

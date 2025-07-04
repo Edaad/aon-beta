@@ -23,6 +23,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 const clubRoutes = require('./routes/clubs');
 const playerRoutes = require('./routes/players');
 const agentRoutes = require('./routes/agents');
+const superAgentRoutes = require('./routes/superAgents');
 const weekRoutes = require('./routes/weeks');
 const weekDataRoutes = require('./routes/weekData');
 
@@ -30,6 +31,7 @@ const weekDataRoutes = require('./routes/weekData');
 app.use('/api/clubs', clubRoutes);
 app.use('/api/:clubId/players', playerRoutes);
 app.use('/api/:clubId/agents', agentRoutes);
+app.use('/api/:clubId/super-agents', superAgentRoutes);
 app.use('/api/:clubId/weeks', weekRoutes);
 app.use('/api/:clubId/weekData', weekDataRoutes);
 
