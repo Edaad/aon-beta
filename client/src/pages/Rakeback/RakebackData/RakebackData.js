@@ -703,9 +703,6 @@ const RakebackData = () => {
                     return;
                 }
 
-                console.log('Extracted data from Excel:', extractedData);
-                console.log('Super agents found in data:', [...new Set(extractedData.map(d => d.superAgent).filter(sa => sa && sa !== '-'))]);
-
                 // Get the Club Overview sheet
                 const overviewSheet = workbook.Sheets['Club Overview'];
 
@@ -899,21 +896,12 @@ const RakebackData = () => {
                 superAgentDownlines[superAgentName].agents = agentArray;
             });
 
-            console.log('Super agent downlines (corrected):', superAgentDownlines);
-            console.log('Available super agents:', superAgents.map(a => a.nickname));
-            console.log('Current club:', currentClub.name);
-
             // Calculate rakeback for each super agent
             const superAgentResults = Object.entries(superAgentDownlines).map(([superAgentName, data]) => {
-                console.log('Processing super agent:', superAgentName);
-                console.log('Super agent data:', data);
-
                 // Find super agent's percentage from super agents list
                 const matchedSuperAgent = superAgents.find(a =>
                     a.nickname.toLowerCase() === superAgentName.toLowerCase()
                 );
-
-                console.log('Matched super agent:', matchedSuperAgent);
 
                 if (matchedSuperAgent) {
                     const totalDownlineRake = data.totalRake;
@@ -937,11 +925,8 @@ const RakebackData = () => {
                     };
                 }
 
-                console.log('No match found for super agent:', superAgentName);
                 return null;
             }).filter(Boolean); // Remove null entries (unmatched super agents)
-
-            console.log('Final super agent results:', superAgentResults);
 
             // Calculate totals
             const totalPlayerRakeback = playerResults.reduce((sum, item) => sum + item.rakeback, 0);
@@ -1041,7 +1026,6 @@ const RakebackData = () => {
             setExpandedWeekId(weekId);
         } catch (err) {
             alert('Error processing rakeback: ' + err.message);
-            console.error('Error processing rakeback:', err);
         } finally {
             setProcessingWeekId(null);
         }

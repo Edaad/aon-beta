@@ -46,6 +46,18 @@ export const addPlayer = async (clubId, player) => {
     return response.json();
 };
 
+export const updatePlayer = async (clubId, id, player) => {
+    const response = await fetch(`${API_URL}/${clubId}/players/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(player),
+    });
+    if (!response.ok) throw new Error('Failed to update player');
+    return response.json();
+};
+
 export const deletePlayer = async (clubId, id) => {
     const response = await fetch(`${API_URL}/${clubId}/players/${id}`, {
         method: 'DELETE',
@@ -69,6 +81,18 @@ export const addAgent = async (clubId, agent) => {
         body: JSON.stringify(agent),
     });
     if (!response.ok) throw new Error('Failed to add agent');
+    return response.json();
+};
+
+export const updateAgent = async (clubId, id, agent) => {
+    const response = await fetch(`${API_URL}/${clubId}/agents/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(agent),
+    });
+    if (!response.ok) throw new Error('Failed to update agent');
     return response.json();
 };
 
@@ -96,6 +120,18 @@ export const addSuperAgent = async (clubId, superAgent) => {
         body: JSON.stringify(superAgent),
     });
     if (!response.ok) throw new Error('Failed to add super agent');
+    return response.json();
+};
+
+export const updateSuperAgent = async (clubId, id, superAgent) => {
+    const response = await fetch(`${API_URL}/${clubId}/super-agents/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(superAgent),
+    });
+    if (!response.ok) throw new Error('Failed to update super agent');
     return response.json();
 };
 

@@ -7,10 +7,12 @@ import EmptyState from '../../../components/EmptyState/EmptyState';
 import RakebackTable from '../../../components/RakebackTable/RakebackTable';
 import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
+import EditItemForm from '../../../components/EditItemForm/EditItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
+import EditButton from '../../../components/EditButton/EditButton';
 import { useClub } from '../../../contexts/ClubContext';
-import { fetchPlayers, addPlayer, deletePlayer } from '../../../services/apis';
+import { fetchPlayers, addPlayer, updatePlayer, deletePlayer } from '../../../services/apis';
 import './PlayersList.css';
 
 const PlayersList = () => {
@@ -23,6 +25,13 @@ const PlayersList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
+
+    // Edit state
+    const [isEditing, setIsEditing] = useState(false);
+    const [editingPlayer, setEditingPlayer] = useState(null);
+    const [editUsername, setEditUsername] = useState('');
+    const [editPercentage, setEditPercentage] = useState('');
+    const [editError, setEditError] = useState('');
 
     const loadPlayers = useCallback(async () => {
         if (!currentClub) return;
@@ -90,12 +99,60 @@ const PlayersList = () => {
     };
 
     // Delete player with API
-    const handleDeletePlayer = async (id) => {
+    const handleDeletePlayer = async (playerId) => {
         try {
-            await deletePlayer(currentClub.name, id);
-            setPlayers(players.filter(player => player._id !== id));
+            await deletePlayer(currentClub.name, playerId);
+            loadPlayers();
         } catch (err) {
             console.error('Error deleting player:', err);
+            alert('Error deleting player: ' + err.message);
+        }
+    };
+
+    // Start editing a player
+    const startEditPlayer = (player) => {
+        setEditingPlayer(player);
+        setEditUsername(player.nickname);
+        setEditPercentage(player.rakeback.toString());
+        setEditError('');
+        setIsEditing(true);
+    };
+
+    // Cancel editing
+    const cancelEditPlayer = () => {
+        setIsEditing(false);
+        setEditingPlayer(null);
+        setEditUsername('');
+        setEditPercentage('');
+        setEditError('');
+    };
+
+    // Update player with API
+    const handleUpdatePlayer = async () => {
+        // Validation
+        if (!editUsername.trim()) {
+            setEditError('Username cannot be empty');
+            return;
+        }
+
+        const percentage = parseFloat(editPercentage);
+        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+            setEditError('Percentage must be between 0 and 100');
+            return;
+        }
+
+        try {
+            const updatedPlayer = {
+                nickname: editUsername.trim(),
+                rakeback: percentage
+            };
+
+            await updatePlayer(currentClub.name, editingPlayer._id, updatedPlayer);
+            loadPlayers();
+            cancelEditPlayer();
+        } catch (err) {
+            console.error('Error updating player:', err);
+            setEditError('Error updating player: ' + err.message);
         }
     };
 
@@ -110,10 +167,16 @@ const PlayersList = () => {
         {
             header: 'Actions',
             render: (player) => (
-                <DeleteButton
-                    onDelete={() => handleDeletePlayer(player._id)}
-                    itemName={player.nickname}
-                />
+                <div style={{ display: 'flex', gap: '8px' }}>
+                    <EditButton
+                        onEdit={() => startEditPlayer(player)}
+                        itemName={player.nickname}
+                    />
+                    <DeleteButton
+                        onDelete={() => handleDeletePlayer(player._id)}
+                        itemName={player.nickname}
+                    />
+                </div>
             )
         }
     ];
@@ -174,6 +237,31 @@ const PlayersList = () => {
                             placeholder="Enter percentage"
                         />
                     </AddItemForm>
+                ) : isEditing ? (
+                    <EditItemForm
+                        error={editError}
+                        onCancel={cancelEditPlayer}
+                        onSubmit={handleUpdatePlayer}
+                        submitLabel="Update"
+                    >
+                        <InputGroup
+                            label="Username"
+                            id="edit-username"
+                            value={editUsername}
+                            onChange={(e) => setEditUsername(e.target.value)}
+                            placeholder="Enter username"
+                        />
+                        <InputGroup
+                            label="Percentage (%)"
+                            id="edit-percentage"
+                            type="number"
+                            value={editPercentage}
+                            onChange={(e) => setEditPercentage(e.target.value)}
+                            min="0"
+                            max="100"
+                            placeholder="Enter percentage"
+                        />
+                    </EditItemForm>
                 ) : (
                     <AddButton
                         onClick={() => setIsAdding(true)}

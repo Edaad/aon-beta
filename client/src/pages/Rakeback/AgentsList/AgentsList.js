@@ -7,10 +7,12 @@ import EmptyState from '../../../components/EmptyState/EmptyState';
 import RakebackTable from '../../../components/RakebackTable/RakebackTable';
 import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
+import EditItemForm from '../../../components/EditItemForm/EditItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
+import EditButton from '../../../components/EditButton/EditButton';
 import { useClub } from '../../../contexts/ClubContext';
-import { fetchAgents, addAgent, deleteAgent } from '../../../services/apis';
+import { fetchAgents, addAgent, updateAgent, deleteAgent } from '../../../services/apis';
 import './AgentsList.css';
 
 const AgentsList = () => {
@@ -23,6 +25,13 @@ const AgentsList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
+
+    // Edit state
+    const [isEditing, setIsEditing] = useState(false);
+    const [editingAgent, setEditingAgent] = useState(null);
+    const [editUsername, setEditUsername] = useState('');
+    const [editPercentage, setEditPercentage] = useState('');
+    const [editError, setEditError] = useState('');
 
     const loadAgents = useCallback(async () => {
         if (!currentClub) return;
@@ -90,12 +99,60 @@ const AgentsList = () => {
     };
 
     // Delete agent with API
-    const handleDeleteAgent = async (id) => {
+    const handleDeleteAgent = async (agentId) => {
         try {
-            await deleteAgent(currentClub.name, id);
-            setAgents(agents.filter(agent => agent._id !== id));
+            await deleteAgent(currentClub.name, agentId);
+            loadAgents();
         } catch (err) {
             console.error('Error deleting agent:', err);
+            alert('Error deleting agent: ' + err.message);
+        }
+    };
+
+    // Start editing an agent
+    const startEditAgent = (agent) => {
+        setEditingAgent(agent);
+        setEditUsername(agent.nickname);
+        setEditPercentage(agent.rakeback.toString());
+        setEditError('');
+        setIsEditing(true);
+    };
+
+    // Cancel editing
+    const cancelEditAgent = () => {
+        setIsEditing(false);
+        setEditingAgent(null);
+        setEditUsername('');
+        setEditPercentage('');
+        setEditError('');
+    };
+
+    // Update agent with API
+    const handleUpdateAgent = async () => {
+        // Validation
+        if (!editUsername.trim()) {
+            setEditError('Username cannot be empty');
+            return;
+        }
+
+        const percentage = parseFloat(editPercentage);
+        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+            setEditError('Percentage must be between 0 and 100');
+            return;
+        }
+
+        try {
+            const updatedAgent = {
+                nickname: editUsername.trim(),
+                rakeback: percentage
+            };
+
+            await updateAgent(currentClub.name, editingAgent._id, updatedAgent);
+            loadAgents();
+            cancelEditAgent();
+        } catch (err) {
+            console.error('Error updating agent:', err);
+            setEditError('Error updating agent: ' + err.message);
         }
     };
 
@@ -110,10 +167,16 @@ const AgentsList = () => {
         {
             header: 'Actions',
             render: (agent) => (
-                <DeleteButton
-                    onDelete={() => handleDeleteAgent(agent._id)}
-                    itemName={agent.nickname}
-                />
+                <div style={{ display: 'flex', gap: '8px' }}>
+                    <EditButton
+                        onEdit={() => startEditAgent(agent)}
+                        itemName={agent.nickname}
+                    />
+                    <DeleteButton
+                        onDelete={() => handleDeleteAgent(agent._id)}
+                        itemName={agent.nickname}
+                    />
+                </div>
             )
         }
     ];
@@ -174,6 +237,31 @@ const AgentsList = () => {
                             placeholder="Enter percentage"
                         />
                     </AddItemForm>
+                ) : isEditing ? (
+                    <EditItemForm
+                        error={editError}
+                        onCancel={cancelEditAgent}
+                        onSubmit={handleUpdateAgent}
+                        submitLabel="Update"
+                    >
+                        <InputGroup
+                            label="Username"
+                            id="edit-username"
+                            value={editUsername}
+                            onChange={(e) => setEditUsername(e.target.value)}
+                            placeholder="Enter username"
+                        />
+                        <InputGroup
+                            label="Percentage (%)"
+                            id="edit-percentage"
+                            type="number"
+                            value={editPercentage}
+                            onChange={(e) => setEditPercentage(e.target.value)}
+                            min="0"
+                            max="100"
+                            placeholder="Enter percentage"
+                        />
+                    </EditItemForm>
                 ) : (
                     <AddButton
                         onClick={() => setIsAdding(true)}
