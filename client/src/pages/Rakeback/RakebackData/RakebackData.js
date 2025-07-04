@@ -566,10 +566,10 @@ const RakebackData = () => {
                 // Extract club overview data
                 const clubOverview = {
                     clubName: overviewSheet['D6']?.v || 'Unknown Club',
-                    totalFee: overviewSheet['I6']?.v || 0,
-                    profitLoss: overviewSheet['Q6']?.v || 0,
-                    activePlayers: overviewSheet['G6']?.v || 0,
-                    totalHands: overviewSheet['H6']?.v || 0
+                    totalFee: overviewSheet['I7']?.v || 0,
+                    profitLoss: overviewSheet['R7']?.v || 0,
+                    activePlayers: overviewSheet['G7']?.v || 0,
+                    totalHands: overviewSheet['H7']?.v || 0
                 };
 
                 // Save extracted data to the week

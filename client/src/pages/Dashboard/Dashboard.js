@@ -74,9 +74,12 @@ const Dashboard = () => {
             // Fetch weeks for the current club
             const weeks = await fetchWeeks(currentClub.name);
 
-            // Find processed weeks and sort by date (newest first)
+            // Fetch the week data for the current club
+            const allWeekDataList = await fetchWeekData(currentClub.name);
+
+            // Find processed weeks (weeks that have corresponding week data) and sort by date (newest first)
             const allProcessedWeeks = weeks
-                .filter(week => week.processed)
+                .filter(week => allWeekDataList.some(wd => wd.weekId === week._id))
                 .sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
 
             setProcessedWeeks(allProcessedWeeks);
@@ -85,9 +88,6 @@ const Dashboard = () => {
                 setIsLoading(false);
                 return;
             }
-
-            // Fetch the week data for the current club
-            const allWeekDataList = await fetchWeekData(currentClub.name);
 
             // Store all week data for trends
             setAllWeekData(allWeekDataList);
