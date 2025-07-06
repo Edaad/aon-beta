@@ -6,8 +6,22 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// CORS configuration for production
+const corsOptions = {
+    origin: process.env.NODE_ENV === 'production'
+        ? [
+            process.env.FRONTEND_URL || 'https://aon-rakeback.vercel.app',
+            'https://aon-rakeback-git-main.vercel.app',
+            'https://aon-rakeback-preview.vercel.app'
+        ]
+        : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3003'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB connection
@@ -37,7 +51,20 @@ app.use('/api/:clubId/weekData', weekDataRoutes);
 
 // Default route
 app.get('/', (req, res) => {
-    res.json({ message: 'AON Rakeback Management API' });
+    res.json({
+        message: 'AON Rakeback Management API',
+        version: '1.0.0',
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+    });
 });
 
 app.listen(PORT, () => {
