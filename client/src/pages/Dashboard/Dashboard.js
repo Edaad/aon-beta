@@ -13,6 +13,7 @@ import {
 } from 'chart.js';
 import { useClub } from '../../contexts/ClubContext';
 import { fetchWeeks, fetchWeekData } from '../../services/apis';
+import PinProtection from '../../components/PinProtection/PinProtection';
 import './Dashboard.css';
 
 // Register Chart.js components
@@ -226,225 +227,227 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="page-container">
-            <header className="page-header">
-                <h1>Dashboard</h1>
-                <p className="page-description">Weekly performance overview</p>
-            </header>
+        <PinProtection requiredPin="2024">
+            <div className="page-container">
+                <header className="page-header">
+                    <h1>Dashboard</h1>
+                    <p className="page-description">Weekly performance overview</p>
+                </header>
 
-            {isLoading ? (
-                <div className="dashboard-loading">
-                    <div className="loading-spinner"></div>
-                    <p>Loading dashboard data...</p>
-                </div>
-            ) : error ? (
-                <div className="dashboard-error">
-                    <h2>Error Loading Dashboard</h2>
-                    <p>{error}</p>
-                    <p>Please check your connection and try again.</p>
-                </div>
-            ) : !weekData ? (
-                <div className="dashboard-empty">
-                    <div className="placeholder-icon">📊</div>
-                    <h2>No Data Available</h2>
-                    <p>Process your first week's data to view the dashboard statistics.</p>
-                </div>
-            ) : (
-                <>
-                    <div className="dashboard-header">
-                        <div className="current-week">
-                            <div className="week-navigation">
-                                <button
-                                    className="week-nav-btn"
-                                    onClick={navigateToPreviousWeek}
-                                    disabled={selectedWeekIndex >= processedWeeks.length - 1}
-                                    title="View previous week"
-                                >
-                                    &lt;
-                                </button>
-                                <div className="week-info">
-                                    <span className="week-label">Current Week:</span>
-                                    <span className="week-value">{getWeekDateRange()}</span>
-                                </div>
-                                <button
-                                    className="week-nav-btn"
-                                    onClick={navigateToNextWeek}
-                                    disabled={selectedWeekIndex <= 0}
-                                    title="View more recent week"
-                                >
-                                    &gt;
-                                </button>
-                            </div>
-                        </div>
-                        {weekData && (
-                            <div className="club-name">
-                                <span>{currentClub.displayName}</span>
-                            </div>
-                        )}
+                {isLoading ? (
+                    <div className="dashboard-loading">
+                        <div className="loading-spinner"></div>
+                        <p>Loading dashboard data...</p>
                     </div>
-
-                    <div className="dashboard-grid">
-                        {/* Total Fee Card - Expanded with larger font and chart */}
-                        <div className="metric-card total-fee">
-                            <h2>Total Fee</h2>
-                            <div className="metric-value-container">
-                                <div className="metric-value primary">
-                                    {weekData ? formatCurrency(weekData.totalFee) : 'N/A'}
-                                </div>
-                                {previousWeekData && (
-                                    <div className="change-indicator">
-                                        {(() => {
-                                            const change = calculateChange(
-                                                weekData.totalFee,
-                                                previousWeekData.totalFee
-                                            );
-                                            return (
-                                                <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
-                                                    {change.indicator} {change.value}%
-                                                </span>
-                                            );
-                                        })()}
+                ) : error ? (
+                    <div className="dashboard-error">
+                        <h2>Error Loading Dashboard</h2>
+                        <p>{error}</p>
+                        <p>Please check your connection and try again.</p>
+                    </div>
+                ) : !weekData ? (
+                    <div className="dashboard-empty">
+                        <div className="placeholder-icon">📊</div>
+                        <h2>No Data Available</h2>
+                        <p>Process your first week's data to view the dashboard statistics.</p>
+                    </div>
+                ) : (
+                    <>
+                        <div className="dashboard-header">
+                            <div className="current-week">
+                                <div className="week-navigation">
+                                    <button
+                                        className="week-nav-btn"
+                                        onClick={navigateToPreviousWeek}
+                                        disabled={selectedWeekIndex >= processedWeeks.length - 1}
+                                        title="View previous week"
+                                    >
+                                        &lt;
+                                    </button>
+                                    <div className="week-info">
+                                        <span className="week-label">Current Week:</span>
+                                        <span className="week-value">{getWeekDateRange()}</span>
                                     </div>
-                                )}
+                                    <button
+                                        className="week-nav-btn"
+                                        onClick={navigateToNextWeek}
+                                        disabled={selectedWeekIndex <= 0}
+                                        title="View more recent week"
+                                    >
+                                        &gt;
+                                    </button>
+                                </div>
                             </div>
-                            {/* <span className="previous-label">vs previous week</span> */}
-
-                            <div className="trend-chart-container">
-                                <Line options={chartOptions} data={chartData} />
-                                {/* <div className="trend-label">Weekly Trend</div> */}
-                            </div>
+                            {weekData && (
+                                <div className="club-name">
+                                    <span>{currentClub.displayName}</span>
+                                </div>
+                            )}
                         </div>
 
-                        {/* P&L Card */}
-                        <div className="metric-card pl">
-                            <h2>Profit & Loss</h2>
-                            <div className="metric-value-container">
-                                {weekData && (
-                                    <div className={`metric-value ${weekData.totalPL >= 0 ? 'positive' : 'negative'}`}>
-                                        {formatCurrency(weekData.totalPL)}
+                        <div className="dashboard-grid">
+                            {/* Total Fee Card - Expanded with larger font and chart */}
+                            <div className="metric-card total-fee">
+                                <h2>Total Fee</h2>
+                                <div className="metric-value-container">
+                                    <div className="metric-value primary">
+                                        {weekData ? formatCurrency(weekData.totalFee) : 'N/A'}
                                     </div>
-                                )}
-                                {previousWeekData && (
-                                    <div className="change-indicator">
-                                        {(() => {
-                                            const currentPL = weekData.totalPL;
-                                            const previousPL = previousWeekData.totalPL;
-
-                                            if (currentPL >= 0 && previousPL >= 0) {
-                                                const change = calculateChange(currentPL, previousPL);
+                                    {previousWeekData && (
+                                        <div className="change-indicator">
+                                            {(() => {
+                                                const change = calculateChange(
+                                                    weekData.totalFee,
+                                                    previousWeekData.totalFee
+                                                );
                                                 return (
                                                     <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
                                                         {change.indicator} {change.value}%
                                                     </span>
                                                 );
-                                            } else if (currentPL < 0 && previousPL < 0) {
-                                                const change = calculateChange(Math.abs(currentPL), Math.abs(previousPL));
-                                                return (
-                                                    <span className={`change ${!change.isPositive ? 'positive' : 'negative'}`}>
-                                                        {!change.isPositive ? '↑' : '↓'} {change.value}%
-                                                    </span>
-                                                );
-                                            } else {
-                                                return (
-                                                    <span className={`change ${currentPL >= 0 ? 'positive' : 'negative'}`}>
-                                                        {currentPL >= 0 ? '↑' : '↓'}
-                                                    </span>
-                                                );
-                                            }
-                                        })()}
-                                    </div>
-                                )}
-                            </div>
-                            {/* <span className="previous-label">vs previous week</span> */}
-                        </div>
-
-                        {/* Active Players Card */}
-                        <div className="metric-card active-players">
-                            <h2>Active Players</h2>
-                            <div className="metric-value-container">
-                                <div className="metric-value">
-                                    {weekData ? formatNumber(weekData.activePlayers) : 'N/A'}
-                                </div>
-                                {previousWeekData && (
-                                    <div className="change-indicator">
-                                        {(() => {
-                                            const change = calculateChange(
-                                                weekData.activePlayers,
-                                                previousWeekData.activePlayers
-                                            );
-                                            return (
-                                                <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
-                                                    {change.indicator} {change.value}%
-                                                </span>
-                                            );
-                                        })()}
-                                    </div>
-                                )}
-                            </div>
-                            {/* <span className="previous-label">vs previous week</span> */}
-                        </div>
-
-                        {/* Total Hands Card */}
-                        <div className="metric-card total-hands">
-                            <h2>Total Hands</h2>
-                            <div className="metric-value-container">
-                                <div className="metric-value">
-                                    {weekData ? formatNumber(weekData.totalHands) : 'N/A'}
-                                </div>
-                                {previousWeekData && (
-                                    <div className="change-indicator">
-                                        {(() => {
-                                            const change = calculateChange(
-                                                weekData.totalHands,
-                                                previousWeekData.totalHands
-                                            );
-                                            return (
-                                                <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
-                                                    {change.indicator} {change.value}%
-                                                </span>
-                                            );
-                                        })()}
-                                    </div>
-                                )}
-                            </div>
-                            {/* <span className="previous-label">vs previous week</span> */}
-                        </div>
-                    </div>
-
-                    <div className="dashboard-section">
-                        <h2 className="section-title">Rakeback Summary</h2>
-                        <div className="summary-stats">
-                            <div className="summary-stat">
-                                <span className="stat-label">Player Rakeback</span>
-                                <span className="stat-value">
-                                    {formatCurrency(weekData.totalPlayerRakeback)}
-                                </span>
-                            </div>
-                            <div className="summary-stat">
-                                <span className="stat-label">Agent Rakeback</span>
-                                <span className="stat-value">
-                                    {formatCurrency(weekData.totalAgentRakeback)}
-                                </span>
-                            </div>
-                            <div className="summary-stat total">
-                                <span className="stat-label">Total Rakeback</span>
-                                <span className="stat-value">
-                                    {formatCurrency(weekData.totalRakeback)}
-                                </span>
-                            </div>
-                            <div className="summary-stat">
-                                <span className="stat-label">Fee to RB Ratio</span>
-                                <span className="stat-value">
-                                    {weekData && (
-                                        `${((weekData.totalRakeback / weekData.totalFee) * 100).toFixed(1)}%`
+                                            })()}
+                                        </div>
                                     )}
-                                </span>
+                                </div>
+                                {/* <span className="previous-label">vs previous week</span> */}
+
+                                <div className="trend-chart-container">
+                                    <Line options={chartOptions} data={chartData} />
+                                    {/* <div className="trend-label">Weekly Trend</div> */}
+                                </div>
+                            </div>
+
+                            {/* P&L Card */}
+                            <div className="metric-card pl">
+                                <h2>Profit & Loss</h2>
+                                <div className="metric-value-container">
+                                    {weekData && (
+                                        <div className={`metric-value ${weekData.totalPL >= 0 ? 'positive' : 'negative'}`}>
+                                            {formatCurrency(weekData.totalPL)}
+                                        </div>
+                                    )}
+                                    {previousWeekData && (
+                                        <div className="change-indicator">
+                                            {(() => {
+                                                const currentPL = weekData.totalPL;
+                                                const previousPL = previousWeekData.totalPL;
+
+                                                if (currentPL >= 0 && previousPL >= 0) {
+                                                    const change = calculateChange(currentPL, previousPL);
+                                                    return (
+                                                        <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
+                                                            {change.indicator} {change.value}%
+                                                        </span>
+                                                    );
+                                                } else if (currentPL < 0 && previousPL < 0) {
+                                                    const change = calculateChange(Math.abs(currentPL), Math.abs(previousPL));
+                                                    return (
+                                                        <span className={`change ${!change.isPositive ? 'positive' : 'negative'}`}>
+                                                            {!change.isPositive ? '↑' : '↓'} {change.value}%
+                                                        </span>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <span className={`change ${currentPL >= 0 ? 'positive' : 'negative'}`}>
+                                                            {currentPL >= 0 ? '↑' : '↓'}
+                                                        </span>
+                                                    );
+                                                }
+                                            })()}
+                                        </div>
+                                    )}
+                                </div>
+                                {/* <span className="previous-label">vs previous week</span> */}
+                            </div>
+
+                            {/* Active Players Card */}
+                            <div className="metric-card active-players">
+                                <h2>Active Players</h2>
+                                <div className="metric-value-container">
+                                    <div className="metric-value">
+                                        {weekData ? formatNumber(weekData.activePlayers) : 'N/A'}
+                                    </div>
+                                    {previousWeekData && (
+                                        <div className="change-indicator">
+                                            {(() => {
+                                                const change = calculateChange(
+                                                    weekData.activePlayers,
+                                                    previousWeekData.activePlayers
+                                                );
+                                                return (
+                                                    <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
+                                                        {change.indicator} {change.value}%
+                                                    </span>
+                                                );
+                                            })()}
+                                        </div>
+                                    )}
+                                </div>
+                                {/* <span className="previous-label">vs previous week</span> */}
+                            </div>
+
+                            {/* Total Hands Card */}
+                            <div className="metric-card total-hands">
+                                <h2>Total Hands</h2>
+                                <div className="metric-value-container">
+                                    <div className="metric-value">
+                                        {weekData ? formatNumber(weekData.totalHands) : 'N/A'}
+                                    </div>
+                                    {previousWeekData && (
+                                        <div className="change-indicator">
+                                            {(() => {
+                                                const change = calculateChange(
+                                                    weekData.totalHands,
+                                                    previousWeekData.totalHands
+                                                );
+                                                return (
+                                                    <span className={`change ${change.isPositive ? 'positive' : 'negative'}`}>
+                                                        {change.indicator} {change.value}%
+                                                    </span>
+                                                );
+                                            })()}
+                                        </div>
+                                    )}
+                                </div>
+                                {/* <span className="previous-label">vs previous week</span> */}
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </div>
+
+                        <div className="dashboard-section">
+                            <h2 className="section-title">Rakeback Summary</h2>
+                            <div className="summary-stats">
+                                <div className="summary-stat">
+                                    <span className="stat-label">Player Rakeback</span>
+                                    <span className="stat-value">
+                                        {formatCurrency(weekData.totalPlayerRakeback)}
+                                    </span>
+                                </div>
+                                <div className="summary-stat">
+                                    <span className="stat-label">Agent Rakeback</span>
+                                    <span className="stat-value">
+                                        {formatCurrency(weekData.totalAgentRakeback)}
+                                    </span>
+                                </div>
+                                <div className="summary-stat total">
+                                    <span className="stat-label">Total Rakeback</span>
+                                    <span className="stat-value">
+                                        {formatCurrency(weekData.totalRakeback)}
+                                    </span>
+                                </div>
+                                <div className="summary-stat">
+                                    <span className="stat-label">Fee to RB Ratio</span>
+                                    <span className="stat-value">
+                                        {weekData && (
+                                            `${((weekData.totalRakeback / weekData.totalFee) * 100).toFixed(1)}%`
+                                        )}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </div>
+        </PinProtection>
     );
 };
 
