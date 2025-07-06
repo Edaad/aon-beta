@@ -1,9 +1,20 @@
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3002/api';
 
+// Debug logging
+console.log('API_URL:', API_URL);
+console.log('Environment:', process.env.NODE_ENV);
+
 // Club management
 export const fetchClubs = async () => {
+    console.log('Fetching clubs from:', `${API_URL}/clubs`);
     const response = await fetch(`${API_URL}/clubs`);
-    if (!response.ok) throw new Error('Failed to fetch clubs');
+    console.log('Response status:', response.status);
+    console.log('Response headers:', response.headers);
+    if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error(`Failed to fetch clubs: ${response.status} ${response.statusText}`);
+    }
     return response.json();
 };
 
