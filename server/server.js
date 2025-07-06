@@ -10,11 +10,9 @@ const PORT = process.env.PORT || 3001;
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production'
         ? [
-            process.env.FRONTEND_URL || 'https://aon-rakeback.vercel.app',
-            'https://aon-rakeback-git-main.vercel.app',
-            'https://aon-rakeback-preview.vercel.app'
+            process.env.FRONTEND_URL || 'https://aon-beta.vercel.app/'
         ]
-        : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3003'],
+        : ['http://localhost:3000', 'http://localhost:3001', 'http://localhost:3002'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
