@@ -227,7 +227,7 @@ const Dashboard = () => {
     };
 
     return (
-        <PinProtection requiredPin="2024">
+        <PinProtection requiredPin="8104">
             <div className="page-container">
                 <header className="page-header">
                     <h1>Dashboard</h1>
