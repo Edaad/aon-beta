@@ -21,9 +21,15 @@ export const ClubProvider = ({ children }) => {
             const clubsData = await fetchClubs();
             setClubs(clubsData);
 
-            // Set default club if none selected
+            // Set Round Table as default club if none selected
             if (!currentClub && clubsData.length > 0) {
-                setCurrentClub(clubsData[0]);
+                const roundTableClub = clubsData.find(club => club.name === 'round-table');
+                if (roundTableClub) {
+                    setCurrentClub(roundTableClub);
+                } else {
+                    // Fallback to first club if Round Table doesn't exist
+                    setCurrentClub(clubsData[0]);
+                }
             }
         } catch (error) {
             console.error('Error loading clubs:', error);
