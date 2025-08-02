@@ -44,7 +44,7 @@ input[type="submit"] {
 /* Helper classes */
 .text-gradient {
   background: linear-gradient(90deg, #64b5f6, #9575cd);
-  /* -webkit-background-clip: text; */
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
