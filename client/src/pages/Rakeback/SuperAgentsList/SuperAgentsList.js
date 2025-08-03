@@ -7,10 +7,8 @@ import EmptyState from '../../../components/EmptyState/EmptyState';
 import RakebackTable from '../../../components/RakebackTable/RakebackTable';
 import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
-import EditItemForm from '../../../components/EditItemForm/EditItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
-import EditButton from '../../../components/EditButton/EditButton';
 import { useClub } from '../../../contexts/ClubContext';
 import { fetchSuperAgents, addSuperAgent, updateSuperAgent, deleteSuperAgent } from '../../../services/apis';
 import './SuperAgentsList.css';
@@ -26,13 +24,6 @@ const SuperAgentsList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
-
-    // Edit state
-    const [isEditing, setIsEditing] = useState(false);
-    const [editingSuperAgent, setEditingSuperAgent] = useState(null);
-    const [editUsername, setEditUsername] = useState('');
-    const [editPercentage, setEditPercentage] = useState('');
-    const [editError, setEditError] = useState('');
 
     const loadSuperAgents = useCallback(async () => {
         if (!currentClub) return;
@@ -121,50 +112,19 @@ const SuperAgentsList = () => {
         }
     };
 
-    // Start editing a super agent
-    const startEditSuperAgent = (superAgent) => {
-        setEditingSuperAgent(superAgent);
-        setEditUsername(superAgent.nickname);
-        setEditPercentage(superAgent.rakeback.toString());
-        setEditError('');
-        setIsEditing(true);
-    };
-
-    // Cancel editing
-    const cancelEditSuperAgent = () => {
-        setIsEditing(false);
-        setEditingSuperAgent(null);
-        setEditUsername('');
-        setEditPercentage('');
-        setEditError('');
-    };
-
-    // Update super agent with API
-    const handleUpdateSuperAgent = async () => {
-        // Validation
-        if (!editUsername.trim()) {
-            setEditError('Username cannot be empty');
-            return;
-        }
-
-        const percentage = parseFloat(editPercentage);
-        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
-            setEditError('Percentage must be between 0 and 100');
-            return;
-        }
-
+    // Update super agent with inline editing
+    const handleUpdateSuperAgent = async (superAgentId, updatedData) => {
         try {
             const updatedSuperAgent = {
-                nickname: editUsername.trim(),
-                rakeback: percentage
+                nickname: updatedData.nickname.trim(),
+                rakeback: parseFloat(updatedData.rakeback)
             };
 
-            await updateSuperAgent(currentClub.name, editingSuperAgent._id, updatedSuperAgent);
+            await updateSuperAgent(currentClub.name, superAgentId, updatedSuperAgent);
             loadSuperAgents();
-            cancelEditSuperAgent();
         } catch (err) {
             console.error('Error updating super agent:', err);
-            setEditError('Error updating super agent: ' + err.message);
+            throw err;
         }
     };
 
@@ -173,21 +133,32 @@ const SuperAgentsList = () => {
         { header: 'Username', accessor: 'nickname' },
         {
             header: 'Percentage (%)',
-            accessor: 'rakeback',
-            render: (agent) => `${agent.rakeback}%`
+            accessor: 'rakeback'
         },
         {
             header: 'Actions',
-            render: (agent) => (
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    <EditButton
-                        onEdit={() => startEditSuperAgent(agent)}
-                        itemName={agent.nickname}
-                    />
-                    <DeleteButton
-                        onDelete={() => handleDeleteSuperAgent(agent._id)}
-                        itemName={agent.nickname}
-                    />
+            render: (agent, isEditing, startEdit, cancelEdit, saveEdit) => (
+                <div className="inline-edit-actions">
+                    {isEditing ? (
+                        <>
+                            <button className="inline-edit-btn save" onClick={saveEdit}>
+                                Save
+                            </button>
+                            <button className="inline-edit-btn cancel" onClick={cancelEdit}>
+                                Cancel
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button className="inline-edit-btn edit" onClick={() => startEdit(agent)}>
+                                Edit
+                            </button>
+                            <DeleteButton
+                                onDelete={() => handleDeleteSuperAgent(agent._id)}
+                                itemName={agent.nickname}
+                            />
+                        </>
+                    )}
                 </div>
             )
         }
@@ -203,7 +174,14 @@ const SuperAgentsList = () => {
         }
 
         if (superAgents.length > 0) {
-            return <RakebackTable data={superAgents} columns={columns} />;
+            return (
+                <RakebackTable
+                    data={superAgents}
+                    columns={columns}
+                    onUpdate={handleUpdateSuperAgent}
+                    editableFields={['nickname', 'rakeback']}
+                />
+            );
         }
 
         return (
@@ -250,31 +228,6 @@ const SuperAgentsList = () => {
                             placeholder="Enter percentage"
                         />
                     </AddItemForm>
-                ) : isEditing ? (
-                    <EditItemForm
-                        error={editError}
-                        onCancel={cancelEditSuperAgent}
-                        onSubmit={handleUpdateSuperAgent}
-                        submitLabel="Update"
-                    >
-                        <InputGroup
-                            label="Username"
-                            id="edit-username"
-                            value={editUsername}
-                            onChange={(e) => setEditUsername(e.target.value)}
-                            placeholder="Enter username"
-                        />
-                        <InputGroup
-                            label="Percentage (%)"
-                            id="edit-percentage"
-                            type="number"
-                            value={editPercentage}
-                            onChange={(e) => setEditPercentage(e.target.value)}
-                            min="0"
-                            max="100"
-                            placeholder="Enter percentage"
-                        />
-                    </EditItemForm>
                 ) : (
                     <AddButton
                         onClick={() => setIsAdding(true)}

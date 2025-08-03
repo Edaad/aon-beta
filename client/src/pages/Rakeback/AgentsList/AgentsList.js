@@ -7,10 +7,8 @@ import EmptyState from '../../../components/EmptyState/EmptyState';
 import RakebackTable from '../../../components/RakebackTable/RakebackTable';
 import AddButton from '../../../components/AddButton/AddButton';
 import AddItemForm from '../../../components/AddItemForm/AddItemForm';
-import EditItemForm from '../../../components/EditItemForm/EditItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
-import EditButton from '../../../components/EditButton/EditButton';
 import { useClub } from '../../../contexts/ClubContext';
 import { fetchAgents, addAgent, updateAgent, deleteAgent } from '../../../services/apis';
 import './AgentsList.css';
@@ -25,13 +23,6 @@ const AgentsList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [inputError, setInputError] = useState('');
-
-    // Edit state
-    const [isEditing, setIsEditing] = useState(false);
-    const [editingAgent, setEditingAgent] = useState(null);
-    const [editUsername, setEditUsername] = useState('');
-    const [editPercentage, setEditPercentage] = useState('');
-    const [editError, setEditError] = useState('');
 
     const loadAgents = useCallback(async () => {
         if (!currentClub) return;
@@ -109,50 +100,19 @@ const AgentsList = () => {
         }
     };
 
-    // Start editing an agent
-    const startEditAgent = (agent) => {
-        setEditingAgent(agent);
-        setEditUsername(agent.nickname);
-        setEditPercentage(agent.rakeback.toString());
-        setEditError('');
-        setIsEditing(true);
-    };
-
-    // Cancel editing
-    const cancelEditAgent = () => {
-        setIsEditing(false);
-        setEditingAgent(null);
-        setEditUsername('');
-        setEditPercentage('');
-        setEditError('');
-    };
-
-    // Update agent with API
-    const handleUpdateAgent = async () => {
-        // Validation
-        if (!editUsername.trim()) {
-            setEditError('Username cannot be empty');
-            return;
-        }
-
-        const percentage = parseFloat(editPercentage);
-        if (isNaN(percentage) || percentage < 0 || percentage > 100) {
-            setEditError('Percentage must be between 0 and 100');
-            return;
-        }
-
+    // Update agent with inline editing
+    const handleUpdateAgent = async (agentId, updatedData) => {
         try {
             const updatedAgent = {
-                nickname: editUsername.trim(),
-                rakeback: percentage
+                nickname: updatedData.nickname.trim(),
+                rakeback: parseFloat(updatedData.rakeback)
             };
 
-            await updateAgent(currentClub.name, editingAgent._id, updatedAgent);
+            await updateAgent(currentClub.name, agentId, updatedAgent);
             loadAgents();
-            cancelEditAgent();
         } catch (err) {
             console.error('Error updating agent:', err);
-            setEditError('Error updating agent: ' + err.message);
+            throw err;
         }
     };
 
@@ -161,21 +121,32 @@ const AgentsList = () => {
         { header: 'Username', accessor: 'nickname' },
         {
             header: 'Percentage (%)',
-            accessor: 'rakeback',
-            render: (agent) => `${agent.rakeback}%`
+            accessor: 'rakeback'
         },
         {
             header: 'Actions',
-            render: (agent) => (
-                <div style={{ display: 'flex', gap: '8px' }}>
-                    <EditButton
-                        onEdit={() => startEditAgent(agent)}
-                        itemName={agent.nickname}
-                    />
-                    <DeleteButton
-                        onDelete={() => handleDeleteAgent(agent._id)}
-                        itemName={agent.nickname}
-                    />
+            render: (agent, isEditing, startEdit, cancelEdit, saveEdit) => (
+                <div className="inline-edit-actions">
+                    {isEditing ? (
+                        <>
+                            <button className="inline-edit-btn save" onClick={saveEdit}>
+                                Save
+                            </button>
+                            <button className="inline-edit-btn cancel" onClick={cancelEdit}>
+                                Cancel
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <button className="inline-edit-btn edit" onClick={() => startEdit(agent)}>
+                                Edit
+                            </button>
+                            <DeleteButton
+                                onDelete={() => handleDeleteAgent(agent._id)}
+                                itemName={agent.nickname}
+                            />
+                        </>
+                    )}
                 </div>
             )
         }
@@ -191,7 +162,14 @@ const AgentsList = () => {
         }
 
         if (agents.length > 0) {
-            return <RakebackTable data={agents} columns={columns} />;
+            return (
+                <RakebackTable
+                    data={agents}
+                    columns={columns}
+                    onUpdate={handleUpdateAgent}
+                    editableFields={['nickname', 'rakeback']}
+                />
+            );
         }
 
         return (
@@ -237,31 +215,6 @@ const AgentsList = () => {
                             placeholder="Enter percentage"
                         />
                     </AddItemForm>
-                ) : isEditing ? (
-                    <EditItemForm
-                        error={editError}
-                        onCancel={cancelEditAgent}
-                        onSubmit={handleUpdateAgent}
-                        submitLabel="Update"
-                    >
-                        <InputGroup
-                            label="Username"
-                            id="edit-username"
-                            value={editUsername}
-                            onChange={(e) => setEditUsername(e.target.value)}
-                            placeholder="Enter username"
-                        />
-                        <InputGroup
-                            label="Percentage (%)"
-                            id="edit-percentage"
-                            type="number"
-                            value={editPercentage}
-                            onChange={(e) => setEditPercentage(e.target.value)}
-                            min="0"
-                            max="100"
-                            placeholder="Enter percentage"
-                        />
-                    </EditItemForm>
                 ) : (
                     <AddButton
                         onClick={() => setIsAdding(true)}
