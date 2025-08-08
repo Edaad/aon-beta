@@ -30,13 +30,11 @@ const PlayersList = () => {
     const [inputError, setInputError] = useState('');
 
     // Edit state
-    const [isEditing, setIsEditing] = useState(false);
     const [editingPlayer, setEditingPlayer] = useState(null);
     const [editUsername, setEditUsername] = useState('');
     const [editPercentage, setEditPercentage] = useState('');
     const [editUseThresholds, setEditUseThresholds] = useState(false);
     const [editThresholds, setEditThresholds] = useState([{ start: '', end: '', percentage: '' }]);
-    const [editError, setEditError] = useState('');
 
     const loadPlayers = useCallback(async () => {
         if (!currentClub) return;
@@ -191,40 +189,38 @@ const PlayersList = () => {
             setEditThresholds([{ start: '', end: '', percentage: '' }]);
         }
 
-        setIsEditing(true);
-        setEditError('');
+        setInputError('');
     };
 
     // Cancel editing
     const cancelEdit = () => {
-        setIsEditing(false);
         setEditingPlayer(null);
         setEditUsername('');
         setEditPercentage('');
         setEditUseThresholds(false);
         setEditThresholds([{ start: '', end: '', percentage: '' }]);
-        setEditError('');
+        setInputError('');
     };
 
     // Save edited player
     const saveEditedPlayer = async () => {
         // Validation
         if (!editUsername.trim()) {
-            setEditError('Username cannot be empty');
+            setInputError('Username cannot be empty');
             return;
         }
 
         if (editUseThresholds) {
             // Validate thresholds
             if (editThresholds.length === 0) {
-                setEditError('At least one threshold is required');
+                setInputError('At least one threshold is required');
                 return;
             }
 
             for (let i = 0; i < editThresholds.length; i++) {
                 const threshold = editThresholds[i];
                 if (!threshold.start || !threshold.end || !threshold.percentage) {
-                    setEditError(`All threshold fields are required for threshold ${i + 1}`);
+                    setInputError(`All threshold fields are required for threshold ${i + 1}`);
                     return;
                 }
 
@@ -233,29 +229,29 @@ const PlayersList = () => {
                 const percentage = parseFloat(threshold.percentage);
 
                 if (isNaN(start) || isNaN(end) || isNaN(percentage)) {
-                    setEditError(`All threshold values must be numbers for threshold ${i + 1}`);
+                    setInputError(`All threshold values must be numbers for threshold ${i + 1}`);
                     return;
                 }
 
                 if (start >= end) {
-                    setEditError(`Start value must be less than end value for threshold ${i + 1}`);
+                    setInputError(`Start value must be less than end value for threshold ${i + 1}`);
                     return;
                 }
 
                 if (percentage < 0 || percentage > 100) {
-                    setEditError(`Percentage must be between 0 and 100 for threshold ${i + 1}`);
+                    setInputError(`Percentage must be between 0 and 100 for threshold ${i + 1}`);
                     return;
                 }
             }
         } else {
             if (!editPercentage.trim()) {
-                setEditError('Percentage cannot be empty');
+                setInputError('Percentage cannot be empty');
                 return;
             }
 
             const percentageNum = parseFloat(editPercentage);
             if (isNaN(percentageNum) || percentageNum < 0 || percentageNum > 100) {
-                setEditError('Percentage must be a number between 0 and 100');
+                setInputError('Percentage must be a number between 0 and 100');
                 return;
             }
         }
@@ -276,7 +272,7 @@ const PlayersList = () => {
             loadPlayers();
             cancelEdit();
         } catch (err) {
-            setEditError('Error updating player: ' + err.message);
+            setInputError('Error updating player: ' + err.message);
         }
     };
 
