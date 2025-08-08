@@ -8,10 +8,45 @@
     flex: 1;
     padding: 2rem;
     overflow-y: auto;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+/* Desktop styles */
+@media (min-width: 769px) {
+    .app-container {
+        flex-direction: row;
+    }
+
     .content {
-        margin-left: 80px;
+        margin-left: 0;
+        padding-bottom: 2rem;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .content {
+        margin-left: 0;
+        margin-bottom: 70px;
+        /* Space for bottom navigation */
+        padding: 1rem;
+        padding-bottom: 1rem;
+        order: 1;
+    }
+
+    /* Adjust content when club selector is visible */
+    .content.club-selector-open {
+        margin-bottom: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: 0.75rem;
+        margin-bottom: 70px;
     }
 }

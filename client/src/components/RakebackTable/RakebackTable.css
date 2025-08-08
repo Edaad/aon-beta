@@ -98,13 +98,17 @@
 }
 
 .inline-edit-btn {
-    padding: 0.25rem 0.5rem;
+    padding: 0.5rem;
     border: none;
-    border-radius: 4px;
-    font-size: 0.75rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
     cursor: pointer;
     transition: all 0.2s;
-    min-width: 50px;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inline-edit-btn.save {
@@ -114,15 +118,17 @@
 
 .inline-edit-btn.save:hover {
     background-color: #38a169;
+    transform: translateY(-1px);
 }
 
 .inline-edit-btn.cancel {
-    background-color: #e2e8f0;
-    color: #4a5568;
+    background-color: #e53e3e;
+    color: white;
 }
 
 .inline-edit-btn.cancel:hover {
-    background-color: #cbd5e0;
+    background-color: #c53030;
+    transform: translateY(-1px);
 }
 
 .inline-edit-btn.edit {
@@ -132,4 +138,154 @@
 
 .inline-edit-btn.edit:hover {
     background-color: #42a5f5;
+    transform: translateY(-1px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .rakeback-table-container {
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .rakeback-table {
+        font-size: 14px;
+    }
+
+    .rakeback-table th,
+    .rakeback-table td {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+
+    .rakeback-table th {
+        font-size: 13px;
+        padding: 10px 8px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(44, 62, 80, 0.08);
+    }
+
+    /* Horizontal scroll for tables */
+    .rakeback-table-container {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Compact table on mobile */
+    .rakeback-table td:last-child {
+        text-align: center;
+        min-width: 120px;
+    }
+
+    /* Better inline editing on mobile */
+    .inline-edit-input {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        min-height: 44px;
+        /* Touch target size */
+    }
+
+    .inline-edit-input:focus {
+        border-color: #64b5f6;
+        box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.15);
+    }
+
+    .inline-edit-actions {
+        flex-direction: column;
+        gap: 8px;
+        min-width: 140px;
+        padding: 8px;
+    }
+
+    .inline-edit-btn {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 14px;
+        min-height: 44px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .inline-edit-error {
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .editing-row {
+        background-color: rgba(100, 181, 246, 0.08) !important;
+        border: 2px solid rgba(100, 181, 246, 0.2);
+    }
+
+    /* Make table rows more touch-friendly */
+    .rakeback-table tr {
+        min-height: 60px;
+    }
+
+    .rakeback-table tr:hover {
+        background-color: rgba(100, 181, 246, 0.03);
+    }
+}
+
+@media (max-width: 480px) {
+
+    .rakeback-table th,
+    .rakeback-table td {
+        padding: 10px 6px;
+        font-size: 13px;
+    }
+
+    .rakeback-table th {
+        font-size: 12px;
+        padding: 8px 6px;
+    }
+
+    .inline-edit-input {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .inline-edit-actions {
+        min-width: 120px;
+        padding: 6px;
+    }
+
+    .inline-edit-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+        min-height: 40px;
+    }
+
+    .empty-table-message {
+        padding: 1.5rem 1rem;
+        font-size: 14px;
+    }
+}
+
+/* Landscape mobile orientation */
+@media (max-width: 768px) and (orientation: landscape) {
+
+    .rakeback-table th,
+    .rakeback-table td {
+        padding: 8px 6px;
+    }
+
+    .inline-edit-actions {
+        flex-direction: row;
+        gap: 6px;
+        min-width: 160px;
+    }
+
+    .inline-edit-btn {
+        width: auto;
+        padding: 8px 12px;
+        min-height: 36px;
+        font-size: 12px;
+    }
 }

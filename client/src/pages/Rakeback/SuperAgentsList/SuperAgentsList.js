@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { FaEdit, FaSave, FaTimes } from 'react-icons/fa';
 import PageHeader from '../../../components/PageHeader/PageHeader';
 import ContentCard from '../../../components/ContentCard/ContentCard';
 import LoadingState from '../../../components/LoadingState/LoadingState';
@@ -142,16 +143,16 @@ const SuperAgentsList = () => {
                     {isEditing ? (
                         <>
                             <button className="inline-edit-btn save" onClick={saveEdit}>
-                                Save
+                                <FaSave />
                             </button>
                             <button className="inline-edit-btn cancel" onClick={cancelEdit}>
-                                Cancel
+                                <FaTimes />
                             </button>
                         </>
                     ) : (
                         <>
                             <button className="inline-edit-btn edit" onClick={() => startEdit(agent)}>
-                                Edit
+                                <FaEdit />
                             </button>
                             <DeleteButton
                                 onDelete={() => handleDeleteSuperAgent(agent._id)}
