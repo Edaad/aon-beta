@@ -30,6 +30,9 @@ const SuperAgentsList = () => {
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
+    // Search state
+    const [searchTerm, setSearchTerm] = useState('');
+
     // Edit states for modal editing
     const [editingSuperAgent, setEditingSuperAgent] = useState(null);
     const [editUsername, setEditUsername] = useState('');
@@ -297,6 +300,11 @@ const SuperAgentsList = () => {
         }
     ];
 
+    // Filter super agents based on search term
+    const filteredSuperAgents = superAgents.filter(agent =>
+        agent.nickname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const renderContent = () => {
         if (!currentClub || isLoading) {
             return <LoadingState message="Loading super agents..." />;
@@ -306,10 +314,10 @@ const SuperAgentsList = () => {
             return <ErrorState message={error} />;
         }
 
-        if (superAgents.length > 0) {
+        if (filteredSuperAgents.length > 0) {
             return (
                 <RakebackTable
-                    data={superAgents}
+                    data={filteredSuperAgents}
                     columns={columns}
                     onUpdate={handleUpdateSuperAgent}
                     editableFields={['nickname', 'rakeback']}
@@ -320,8 +328,8 @@ const SuperAgentsList = () => {
         return (
             <EmptyState
                 icon="👑"
-                title="No Super Agents Yet"
-                message="Add your first super agent to the rakeback list"
+                title={searchTerm ? "No Super Agents Found" : "No Super Agents Yet"}
+                message={searchTerm ? "No super agents match your search" : "Add your first super agent to the rakeback list"}
             />
         );
     };
@@ -332,6 +340,17 @@ const SuperAgentsList = () => {
                 title="Super Agents RB List"
                 description="Manage rakeback percentages for super agents"
             />
+
+            {/* Search Bar */}
+            <div className="search-container">
+                <InputGroup
+                    label="Search Super Agents"
+                    id="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search by username..."
+                />
+            </div>
 
             <ContentCard className="rakeback-card">
                 {renderContent()}

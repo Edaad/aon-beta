@@ -29,6 +29,9 @@ const PlayersList = () => {
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
+    // Search state
+    const [searchTerm, setSearchTerm] = useState('');
+
     // Edit state
     const [editingPlayer, setEditingPlayer] = useState(null);
     const [editUsername, setEditUsername] = useState('');
@@ -327,6 +330,11 @@ const PlayersList = () => {
         }
     ];
 
+    // Filter players based on search term
+    const filteredPlayers = players.filter(player =>
+        player.nickname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const renderContent = () => {
         if (!currentClub || isLoading) {
             return <LoadingState message="Loading players..." />;
@@ -336,10 +344,10 @@ const PlayersList = () => {
             return <ErrorState message={error} />;
         }
 
-        if (players.length > 0) {
+        if (filteredPlayers.length > 0) {
             return (
                 <RakebackTable
-                    data={players}
+                    data={filteredPlayers}
                     columns={columns}
                     onUpdate={handleUpdatePlayer}
                     editableFields={['nickname', 'rakeback']}
@@ -349,8 +357,8 @@ const PlayersList = () => {
 
         return (
             <EmptyState
-                title="No Players Yet"
-                message="Add your first player to the rakeback list"
+                title={searchTerm ? "No Players Found" : "No Players Yet"}
+                message={searchTerm ? "No players match your search" : "Add your first player to the rakeback list"}
             />
         );
     };
@@ -361,6 +369,17 @@ const PlayersList = () => {
                 title="Players RB List"
                 description="Manage rakeback percentages for players"
             />
+
+            {/* Search Bar */}
+            <div className="search-container">
+                <InputGroup
+                    label="Search Players"
+                    id="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search by username..."
+                />
+            </div>
 
             <ContentCard className="rakeback-card">
                 {renderContent()}

@@ -3,6 +3,11 @@
     margin-bottom: 2rem;
 }
 
+.search-container {
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
 /* Add hover effect to table rows */
 .rakeback-table tbody tr:hover {
     background-color: rgba(100, 181, 246, 0.05);

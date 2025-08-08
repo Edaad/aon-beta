@@ -1,5 +1,10 @@
 /* SuperAgentsList.css */
 
+.search-container {
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
 /* Add any specific styles for Super Agents here if needed */
 .super-agent-badge {
     background-color: #ffd700;

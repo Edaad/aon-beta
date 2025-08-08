@@ -29,6 +29,9 @@ const AgentsList = () => {
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
+    // Search state
+    const [searchTerm, setSearchTerm] = useState('');
+
     // Edit states for modal editing
     const [editingAgent, setEditingAgent] = useState(null);
     const [editUsername, setEditUsername] = useState('');
@@ -287,6 +290,11 @@ const AgentsList = () => {
         }
     ];
 
+    // Filter agents based on search term
+    const filteredAgents = agents.filter(agent =>
+        agent.nickname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const renderContent = () => {
         if (!currentClub || isLoading) {
             return <LoadingState message="Loading agents..." />;
@@ -296,10 +304,10 @@ const AgentsList = () => {
             return <ErrorState message={error} />;
         }
 
-        if (agents.length > 0) {
+        if (filteredAgents.length > 0) {
             return (
                 <RakebackTable
-                    data={agents}
+                    data={filteredAgents}
                     columns={columns}
                     onUpdate={handleUpdateAgent}
                     editableFields={['nickname', 'rakeback']}
@@ -309,8 +317,8 @@ const AgentsList = () => {
 
         return (
             <EmptyState
-                title="No Agents Yet"
-                message="Add your first agent to the rakeback list"
+                title={searchTerm ? "No Agents Found" : "No Agents Yet"}
+                message={searchTerm ? "No agents match your search" : "Add your first agent to the rakeback list"}
             />
         );
     };
@@ -321,6 +329,17 @@ const AgentsList = () => {
                 title="Agents RB List"
                 description="Manage rakeback percentages for agents"
             />
+
+            {/* Search Bar */}
+            <div className="search-container">
+                <InputGroup
+                    label="Search Agents"
+                    id="search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search by username..."
+                />
+            </div>
 
             <ContentCard className="rakeback-card">
                 {renderContent()}
