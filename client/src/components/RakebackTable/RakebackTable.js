@@ -22,6 +22,10 @@ const RakebackTable = ({
         setEditingRow(item._id || item.id);
         const initialValues = {};
         editableFields.forEach(field => {
+            // Don't allow editing rakeback field for threshold-based items
+            if (field === 'rakeback' && item.rakebackType === 'threshold') {
+                return;
+            }
             initialValues[field] = item[field];
         });
         setEditValues(initialValues);
@@ -71,6 +75,15 @@ const RakebackTable = ({
         const fieldName = column.accessor;
 
         if (isEditing && editableFields.includes(fieldName)) {
+            // Don't allow editing rakeback field for threshold-based items
+            if (fieldName === 'rakeback' && item.rakebackType === 'threshold') {
+                // Just show the threshold indicator, don't allow editing
+                if (column.render) {
+                    return column.render(item, isEditing, startEdit, cancelEdit, saveEdit);
+                }
+                return <span className="threshold-indicator">Thresholds</span>;
+            }
+
             if (fieldName === 'rakeback') {
                 return (
                     <input

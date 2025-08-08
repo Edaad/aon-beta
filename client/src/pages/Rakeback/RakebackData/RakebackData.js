@@ -757,6 +757,26 @@ const RakebackData = () => {
                 throw new Error('No data available to process');
             }
 
+            // Helper function to calculate rakeback percentage for threshold-based players
+            const calculateThresholdPercentage = (rakeAmount, thresholds) => {
+                if (!thresholds || thresholds.length === 0) {
+                    return 0;
+                }
+
+                // Sort thresholds by start amount to ensure proper ordering
+                const sortedThresholds = [...thresholds].sort((a, b) => a.start - b.start);
+
+                // Find the applicable threshold
+                for (const threshold of sortedThresholds) {
+                    if (rakeAmount >= threshold.start && rakeAmount <= threshold.end) {
+                        return threshold.percentage;
+                    }
+                }
+
+                // If no threshold matches, return 0
+                return 0;
+            };
+
             // 1. Process player rakeback
             const playerResults = week.extractedData.map(player => {
                 // Find matching player in rakeback list
@@ -765,7 +785,17 @@ const RakebackData = () => {
                 );
 
                 if (matchedPlayer) {
-                    const rakeback = (player.rake * matchedPlayer.rakeback / 100).toFixed(2);
+                    let rakebackPercentage;
+
+                    if (matchedPlayer.rakebackType === 'threshold' && matchedPlayer.thresholds) {
+                        // Calculate percentage based on thresholds
+                        rakebackPercentage = calculateThresholdPercentage(player.rake, matchedPlayer.thresholds);
+                    } else {
+                        // Use flat percentage
+                        rakebackPercentage = matchedPlayer.rakeback;
+                    }
+
+                    const rakeback = (player.rake * rakebackPercentage / 100).toFixed(2);
 
                     // Determine agent display
                     let agentDisplay = "-";
@@ -779,7 +809,7 @@ const RakebackData = () => {
                         username: matchedPlayer.nickname,
                         nickname: player.nickname,
                         rake: player.rake,
-                        percentage: matchedPlayer.rakeback,
+                        percentage: rakebackPercentage,
                         rakeback: parseFloat(rakeback),
                         agent: player.agent || '-',
                         superAgent: player.superAgent || '-',
@@ -825,11 +855,21 @@ const RakebackData = () => {
 
                 if (matchedAgent) {
                     const totalDownlineRake = data.totalRake;
-                    const rakeback = (totalDownlineRake * matchedAgent.rakeback / 100).toFixed(2);
+
+                    let rakebackPercentage;
+                    if (matchedAgent.rakebackType === 'threshold' && matchedAgent.thresholds) {
+                        // Calculate percentage based on thresholds
+                        rakebackPercentage = calculateThresholdPercentage(totalDownlineRake, matchedAgent.thresholds);
+                    } else {
+                        // Use flat percentage
+                        rakebackPercentage = matchedAgent.rakeback;
+                    }
+
+                    const rakeback = (totalDownlineRake * rakebackPercentage / 100).toFixed(2);
 
                     return {
                         username: matchedAgent.nickname,
-                        percentage: matchedAgent.rakeback,
+                        percentage: rakebackPercentage,
                         totalDownlineRake,
                         rakeback: parseFloat(rakeback),
                         superAgent: data.superAgent,
@@ -905,11 +945,21 @@ const RakebackData = () => {
 
                 if (matchedSuperAgent) {
                     const totalDownlineRake = data.totalRake;
-                    const rakeback = (totalDownlineRake * matchedSuperAgent.rakeback / 100).toFixed(2);
+
+                    let rakebackPercentage;
+                    if (matchedSuperAgent.rakebackType === 'threshold' && matchedSuperAgent.thresholds) {
+                        // Calculate percentage based on thresholds
+                        rakebackPercentage = calculateThresholdPercentage(totalDownlineRake, matchedSuperAgent.thresholds);
+                    } else {
+                        // Use flat percentage
+                        rakebackPercentage = matchedSuperAgent.rakeback;
+                    }
+
+                    const rakeback = (totalDownlineRake * rakebackPercentage / 100).toFixed(2);
 
                     return {
                         username: matchedSuperAgent.nickname,
-                        percentage: matchedSuperAgent.rakeback,
+                        percentage: rakebackPercentage,
                         totalDownlineRake,
                         rakeback: parseFloat(rakeback),
                         agentsCount: data.agents.length,

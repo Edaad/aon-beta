@@ -9,3 +9,40 @@
     font-size: 0.8em;
     margin-left: 5px;
 }
+
+.threshold-checkbox-container {
+    margin: 16px 0;
+}
+
+.threshold-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+.threshold-checkbox input[type="checkbox"] {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.threshold-section {
+    margin-top: 16px;
+}
+
+.threshold-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.threshold-indicator {
+    color: #007bff;
+    font-weight: 600;
+    font-style: italic;
+}
