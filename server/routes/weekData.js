@@ -47,8 +47,7 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const weekData = await WeekData.findOneAndDelete({
-            _id: req.params.id,
-            clubId: req.params.clubId
+            _id: req.params.id
         });
         if (!weekData) {
             return res.status(404).json({ error: 'Week data not found' });

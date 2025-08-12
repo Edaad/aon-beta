@@ -1102,7 +1102,9 @@ const RakebackData = () => {
     // Delete a week and its associated data
     const deleteWeek = async (weekId, event) => {
         // Stop event from triggering toggleWeekExpansion
-        event.stopPropagation();
+        if (event && event.stopPropagation) {
+            event.stopPropagation();
+        }
 
         // Confirm deletion
         const confirmed = window.confirm('Are you sure you want to delete this week and all associated data?');
