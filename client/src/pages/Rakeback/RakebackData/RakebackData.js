@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { format, parseISO } from 'date-fns';
 import * as XLSX from 'xlsx';
-import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import { FaDownload } from 'react-icons/fa';
 
 // Import shared components
 import PageHeader from '../../../components/PageHeader/PageHeader';
@@ -42,7 +41,7 @@ const WeekItem = ({
     handleFileUpload,
     processRakeback,
     processingWeekId,
-    generatePDF,
+    generateExcel,
     expandedPlayersTab,
     expandedAgentsTab,
     expandedSuperAgentsTab,
@@ -83,12 +82,12 @@ const WeekItem = ({
                             className="download-report-btn"
                             onClick={(e) => {
                                 e.stopPropagation();
-                                generatePDF(week);
+                                generateExcel(week);
                             }}
                             aria-label="Download report"
-                            title="Download PDF Report"
+                            title="Download Excel Report"
                         >
-                            <span className="download-icon">↓</span>
+                            <FaDownload />
                         </button>
                     )}
                     <DeleteButton
@@ -1147,181 +1146,165 @@ const RakebackData = () => {
     };
 
     // Generate PDF report
-    const generatePDF = (week) => {
-        // Create new PDF document in portrait, A4 format
-        const doc = new jsPDF();
-
-        // Add company logo/title
-        doc.setFontSize(18);
-        doc.setTextColor(64, 81, 137);
-        doc.text('Round Table Rakeback Report', 105, 15, { align: 'center' });
-
-        // Add report title with date range
-        doc.setFontSize(14);
-        doc.setTextColor(0, 0, 0);
-        doc.text(`Weekly Rakeback Report: ${format(parseISO(week.startDate), 'MMM d, yyyy')} - ${format(parseISO(week.endDate), 'MMM d, yyyy')}`, 105, 25, { align: 'center' });
-
-        // Add date generated
-        doc.setFontSize(10);
-        doc.setTextColor(100, 100, 100);
-        doc.text(`Generated on: ${format(new Date(), 'MMM d, yyyy, h:mm a')}`, 105, 32, { align: 'center' });
-
-        // Add summary section
-        doc.setFontSize(12);
-        doc.setTextColor(0, 0, 0);
-        doc.text('Weekly Summary', 14, 45);
-
-        doc.setDrawColor(200, 200, 200);
-        doc.line(14, 47, 196, 47);
-
-        // Summary table
-        const summaryBody = [
-            ['Players Rakeback:', `$${week.data.summary.totalPlayerRakeback.toFixed(2)}`],
-            ['Agents Rakeback:', `$${week.data.summary.totalAgentRakeback.toFixed(2)}`],
-            ['Total Rakeback:', `$${week.data.summary.grandTotal.toFixed(2)}`]
-        ];
-
-        // Track the current Y position after each table
-        let currentY = 50;
-
-        // Using a try-catch to handle any issues with table generation
+    const generateExcel = (week) => {
         try {
-            // Generate summary table
-            autoTable(doc, {
-                startY: currentY,
-                head: [['Category', 'Amount']],
-                body: summaryBody,
-                headStyles: {
-                    fillColor: [100, 149, 237],
-                    textColor: [255, 255, 255],
-                    fontStyle: 'bold'
-                },
-                alternateRowStyles: {
-                    fillColor: [240, 245, 255]
-                },
-                margin: { left: 14, right: 14 },
-                didDrawPage: (data) => {
-                    // Update the current Y position after table is drawn
-                    currentY = data.cursor.y + 15;
-                }
-            });
+            // Create a new workbook
+            const wb = XLSX.utils.book_new();
 
-            // Players Section
-            doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text('Player Rakeback Details', 14, currentY);
-            doc.setDrawColor(200, 200, 200);
-            doc.line(14, currentY + 2, 196, currentY + 2);
-            currentY += 10;
+            // Summary Data
+            const summaryData = [
+                ['Category', 'Amount'],
+                ['Players Rakeback', `$${week.data.summary.totalPlayerRakeback.toFixed(2)}`],
+                ['Agents Rakeback', `$${week.data.summary.totalAgentRakeback.toFixed(2)}`],
+                ['Super Agents Rakeback', `$${(week.data.summary.totalSuperAgentRakeback || 0).toFixed(2)}`],
+                ['Grand Total', `$${week.data.summary.grandTotal.toFixed(2)}`],
+                [''],
+                ['Report Period'],
+                ['Start Date', format(parseISO(week.startDate), 'MMM d, yyyy')],
+                ['End Date', format(parseISO(week.endDate), 'MMM d, yyyy')],
+                ['Generated On', format(new Date(), 'MMM d, yyyy, h:mm a')]
+            ];
 
-            // Player data table
-            const playerHeaders = [['Agent', 'Username', 'Rakeback ($)', 'Percentage (%)', 'Rake ($)']];
-            const playerBody = week.data.playerResults.map(player => [
-                player.agentDisplay,
-                player.username,
-                player.rakeback.toFixed(2),
-                player.percentage,
-                player.rake.toFixed(2)
-            ]);
+            // Create Summary worksheet
+            const summaryWS = XLSX.utils.aoa_to_sheet(summaryData);
 
-            // Generate player table
-            autoTable(doc, {
-                startY: currentY,
-                head: playerHeaders,
-                body: playerBody,
-                headStyles: {
-                    fillColor: [100, 181, 246],
-                    textColor: [255, 255, 255],
-                    fontStyle: 'bold'
-                },
-                alternateRowStyles: {
-                    fillColor: [240, 248, 255]
-                },
-                foot: [['', 'Total', week.data.summary.totalPlayerRakeback.toFixed(2), '', week.data.summary.totalPlayerRake.toFixed(2)]],
-                footStyles: {
-                    fillColor: [220, 237, 255],
-                    fontStyle: 'bold'
-                },
-                margin: { left: 14, right: 14 },
-                didDrawPage: (data) => {
-                    // Update the current Y position after table is drawn
-                    currentY = data.cursor.y + 15;
-                }
-            });
+            // Style the summary sheet
+            summaryWS['!cols'] = [
+                { width: 20 },
+                { width: 15 }
+            ];
 
-            // Agents Section (if there are agents)
-            if (week.data.agentResults && week.data.agentResults.length > 0) {
-                // Check if we need a new page
-                if (currentY > 220) {
-                    doc.addPage();
+            XLSX.utils.book_append_sheet(wb, summaryWS, 'Summary');
 
-                    // Add page header to new page
-                    doc.setFontSize(12);
-                    doc.setTextColor(64, 81, 137);
-                    doc.text(`Rakeback Report - ${format(parseISO(week.startDate), 'MMM d')} to ${format(parseISO(week.endDate), 'MMM d, yyyy')}`, 105, 15, { align: 'center' });
-                    doc.setDrawColor(200, 200, 200);
-                    doc.line(14, 17, 196, 17);
+            // Players Data
+            if (week.data.playerResults && week.data.playerResults.length > 0) {
+                const playersData = [
+                    ['Agent', 'Username', 'Rakeback ($)', 'Percentage (%)', 'Rake ($)']
+                ];
 
-                    currentY = 30;
-                }
+                week.data.playerResults.forEach(player => {
+                    playersData.push([
+                        player.agentDisplay || 'Direct',
+                        player.username,
+                        parseFloat(player.rakeback.toFixed(2)),
+                        player.percentage,
+                        parseFloat(player.rake.toFixed(2))
+                    ]);
+                });
 
-                // Add agent table data
-                const agentHeaders = [['Agent', 'Rakeback ($)', 'Percentage (%)', 'Downline Rake ($)']];
-                const agentBody = week.data.agentResults.map(agent => [
-                    agent.username,
-                    agent.rakeback.toFixed(2),
-                    agent.percentage,
-                    agent.totalDownlineRake.toFixed(2)
+                // Add totals row
+                playersData.push([
+                    '',
+                    'TOTAL',
+                    parseFloat(week.data.summary.totalPlayerRakeback.toFixed(2)),
+                    '',
+                    parseFloat(week.data.summary.totalPlayerRake.toFixed(2))
                 ]);
 
-                // Generate agent table
-                autoTable(doc, {
-                    startY: currentY,
-                    head: agentHeaders,
-                    body: agentBody,
-                    headStyles: {
-                        fillColor: [100, 181, 246],
-                        textColor: [255, 255, 255],
-                        fontStyle: 'bold'
-                    },
-                    alternateRowStyles: {
-                        fillColor: [240, 248, 255]
-                    },
-                    foot: [['Total', week.data.summary.totalAgentRakeback.toFixed(2), '', '']],
-                    footStyles: {
-                        fillColor: [220, 237, 255],
-                        fontStyle: 'bold'
-                    },
-                    margin: { left: 14, right: 14 },
-                    didDrawPage: (data) => {
-                        // Update the current Y position after table is drawn
-                        currentY = data.cursor.y + 15;
-                    }
+                const playersWS = XLSX.utils.aoa_to_sheet(playersData);
+
+                // Style the players sheet
+                playersWS['!cols'] = [
+                    { width: 15 },
+                    { width: 15 },
+                    { width: 12 },
+                    { width: 12 },
+                    { width: 12 }
+                ];
+
+                XLSX.utils.book_append_sheet(wb, playersWS, 'Players');
+            }
+
+            // Agents Data
+            if (week.data.agentResults && week.data.agentResults.length > 0) {
+                const agentsData = [
+                    ['Agent', 'Rakeback ($)', 'Percentage (%)', 'Downline Rake ($)', 'Player Count']
+                ];
+
+                week.data.agentResults.forEach(agent => {
+                    agentsData.push([
+                        agent.username,
+                        parseFloat(agent.rakeback.toFixed(2)),
+                        agent.percentage,
+                        parseFloat(agent.totalDownlineRake.toFixed(2)),
+                        agent.playerCount || 0
+                    ]);
                 });
+
+                // Add totals row
+                agentsData.push([
+                    'TOTAL',
+                    parseFloat(week.data.summary.totalAgentRakeback.toFixed(2)),
+                    '',
+                    '',
+                    ''
+                ]);
+
+                const agentsWS = XLSX.utils.aoa_to_sheet(agentsData);
+
+                // Style the agents sheet
+                agentsWS['!cols'] = [
+                    { width: 15 },
+                    { width: 12 },
+                    { width: 12 },
+                    { width: 15 },
+                    { width: 12 }
+                ];
+
+                XLSX.utils.book_append_sheet(wb, agentsWS, 'Agents');
             }
 
-            // Add footer
-            const pageCount = doc.internal.getNumberOfPages();
-            for (let i = 1; i <= pageCount; i++) {
-                doc.setPage(i);
-                doc.setFontSize(8);
-                doc.setTextColor(150, 150, 150);
-                doc.text(`Round Table Rakeback Report - Page ${i} of ${pageCount}`, 105, 287, { align: 'center' });
-            }
-        } catch (err) {
-            console.error("Error generating PDF:", err);
-            alert("There was a problem generating the PDF. Please try again.");
-            return;
-        }
+            // Super Agents Data
+            if (week.data.superAgentResults && week.data.superAgentResults.length > 0) {
+                const superAgentsData = [
+                    ['Super Agent', 'Rakeback ($)', 'Percentage (%)', 'Downline Rake ($)', 'Agent Count']
+                ];
 
-        // Save PDF with filename based on date range
-        try {
+                week.data.superAgentResults.forEach(superAgent => {
+                    superAgentsData.push([
+                        superAgent.username,
+                        parseFloat(superAgent.rakeback.toFixed(2)),
+                        superAgent.percentage,
+                        parseFloat(superAgent.totalDownlineRake.toFixed(2)),
+                        superAgent.agentCount || 0
+                    ]);
+                });
+
+                // Add totals row
+                superAgentsData.push([
+                    'TOTAL',
+                    parseFloat((week.data.summary.totalSuperAgentRakeback || 0).toFixed(2)),
+                    '',
+                    '',
+                    ''
+                ]);
+
+                const superAgentsWS = XLSX.utils.aoa_to_sheet(superAgentsData);
+
+                // Style the super agents sheet
+                superAgentsWS['!cols'] = [
+                    { width: 15 },
+                    { width: 12 },
+                    { width: 12 },
+                    { width: 15 },
+                    { width: 12 }
+                ];
+
+                XLSX.utils.book_append_sheet(wb, superAgentsWS, 'Super Agents');
+            }
+
+
+            // Generate filename
             const startDateStr = format(parseISO(week.startDate), 'yyyy-MM-dd');
             const endDateStr = format(parseISO(week.endDate), 'yyyy-MM-dd');
-            doc.save(`Rakeback_Report_${startDateStr}_to_${endDateStr}.pdf`);
+            const filename = `Rakeback_Report_${startDateStr}_to_${endDateStr}.xlsx`;
+
+            // Save the file
+            XLSX.writeFile(wb, filename);
+
         } catch (err) {
-            console.error("Error saving PDF:", err);
-            alert("The PDF was generated but could not be downloaded. Please try again.");
+            console.error("Error generating Excel file:", err);
+            alert("There was a problem generating the Excel file. Please try again.");
         }
     };
 
@@ -1352,7 +1335,7 @@ const RakebackData = () => {
                                         handleFileUpload={handleFileUpload}
                                         processRakeback={processRakeback}
                                         processingWeekId={processingWeekId}
-                                        generatePDF={generatePDF}
+                                        generateExcel={generateExcel}
                                         expandedPlayersTab={expandedPlayersTab}
                                         expandedAgentsTab={expandedAgentsTab}
                                         expandedSuperAgentsTab={expandedSuperAgentsTab}
