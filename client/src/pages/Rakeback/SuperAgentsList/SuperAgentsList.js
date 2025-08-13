@@ -27,6 +27,7 @@ const SuperAgentsList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [useThresholds, setUseThresholds] = useState(false);
+    const [useTaxRebate, setUseTaxRebate] = useState(false);
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
@@ -37,6 +38,7 @@ const SuperAgentsList = () => {
     const [editingSuperAgent, setEditingSuperAgent] = useState(null);
     const [editUsername, setEditUsername] = useState('');
     const [editPercentage, setEditPercentage] = useState('');
+    const [editUseTaxRebate, setEditUseTaxRebate] = useState(false);
     const [editThresholds, setEditThresholds] = useState([{ start: '', end: '', percentage: '' }]);
 
     const loadSuperAgents = useCallback(async () => {
@@ -125,6 +127,7 @@ const SuperAgentsList = () => {
             nickname: newUsername,
             rakebackType: useThresholds ? 'threshold' : 'flat',
             rakeback: useThresholds ? 0 : parseFloat(newPercentage),
+            taxRebate: useTaxRebate,
             thresholds: useThresholds ? newThresholds.map(t => ({
                 start: parseFloat(t.start),
                 end: parseFloat(t.end),
@@ -140,6 +143,7 @@ const SuperAgentsList = () => {
             setNewUsername('');
             setNewPercentage('');
             setUseThresholds(false);
+            setUseTaxRebate(false);
             setNewThresholds([{ start: '', end: '', percentage: '' }]);
             setIsAdding(false);
             setInputError('');
@@ -154,6 +158,7 @@ const SuperAgentsList = () => {
         setNewUsername('');
         setNewPercentage('');
         setUseThresholds(false);
+        setUseTaxRebate(false);
         setNewThresholds([{ start: '', end: '', percentage: '' }]);
         setInputError('');
     };
@@ -189,6 +194,7 @@ const SuperAgentsList = () => {
     const startEditSuperAgent = (superAgent) => {
         setEditingSuperAgent(superAgent);
         setEditUsername(superAgent.nickname);
+        setEditUseTaxRebate(superAgent.taxRebate || false);
 
         if (superAgent.rakebackType === 'threshold') {
             setEditThresholds(superAgent.thresholds || [{ start: '', end: '', percentage: '' }]);
@@ -201,6 +207,7 @@ const SuperAgentsList = () => {
         setEditingSuperAgent(null);
         setEditUsername('');
         setEditPercentage('');
+        setEditUseTaxRebate(false);
         setEditThresholds([{ start: '', end: '', percentage: '' }]);
     };
 
@@ -208,7 +215,10 @@ const SuperAgentsList = () => {
         if (!editingSuperAgent) return;
 
         try {
-            let updateData = { nickname: editUsername };
+            let updateData = { 
+                nickname: editUsername,
+                taxRebate: editUseTaxRebate
+            };
 
             if (editingSuperAgent.rakebackType === 'threshold') {
                 // Validate thresholds
@@ -257,9 +267,13 @@ const SuperAgentsList = () => {
             accessor: 'rakeback',
             render: (agent) => {
                 if (agent.rakebackType === 'threshold') {
-                    return <span className="threshold-indicator">Thresholds</span>;
+                    return (
+                        <span className="threshold-indicator">
+                            Thresholds{agent.taxRebate ? ' + T/R' : ''}
+                        </span>
+                    );
                 }
-                return `${agent.rakeback}%`;
+                return `${agent.rakeback}%${agent.taxRebate ? ' + T/R' : ''}`;
             }
         },
         {
@@ -402,6 +416,14 @@ const SuperAgentsList = () => {
                                 />
                                 Use Thresholds
                             </label>
+                            <label className="threshold-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={useTaxRebate}
+                                    onChange={(e) => setUseTaxRebate(e.target.checked)}
+                                />
+                                Use Tax/Rebate
+                            </label>
                         </div>
                     </AddItemForm>
                 ) : (
@@ -450,6 +472,17 @@ const SuperAgentsList = () => {
                                     placeholder="Enter percentage"
                                 />
                             )}
+
+                            <div className="threshold-checkbox-container">
+                                <label className="threshold-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={editUseTaxRebate}
+                                        onChange={(e) => setEditUseTaxRebate(e.target.checked)}
+                                    />
+                                    Use Tax/Rebate
+                                </label>
+                            </div>
                         </EditItemForm>
                     </div>
                 </div>

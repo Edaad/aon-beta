@@ -41,6 +41,10 @@ const superAgentSchema = new mongoose.Schema({
         default: 0
     },
     thresholds: [thresholdSchema],
+    taxRebate: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: Date.now

@@ -26,6 +26,7 @@ const PlayersList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [useThresholds, setUseThresholds] = useState(false);
+    const [useTaxRebate, setUseTaxRebate] = useState(false);
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
@@ -37,6 +38,7 @@ const PlayersList = () => {
     const [editUsername, setEditUsername] = useState('');
     const [editPercentage, setEditPercentage] = useState('');
     const [editUseThresholds, setEditUseThresholds] = useState(false);
+    const [editUseTaxRebate, setEditUseTaxRebate] = useState(false);
     const [editThresholds, setEditThresholds] = useState([{ start: '', end: '', percentage: '' }]);
 
     const loadPlayers = useCallback(async () => {
@@ -116,6 +118,7 @@ const PlayersList = () => {
             nickname: newUsername,
             rakebackType: useThresholds ? 'threshold' : 'flat',
             rakeback: useThresholds ? 0 : parseFloat(newPercentage),
+            taxRebate: useTaxRebate,
             thresholds: useThresholds ? newThresholds.map(t => ({
                 start: parseFloat(t.start),
                 end: parseFloat(t.end),
@@ -131,6 +134,7 @@ const PlayersList = () => {
             setNewUsername('');
             setNewPercentage('');
             setUseThresholds(false);
+            setUseTaxRebate(false);
             setNewThresholds([{ start: '', end: '', percentage: '' }]);
             setIsAdding(false);
             setInputError('');
@@ -145,6 +149,7 @@ const PlayersList = () => {
         setNewUsername('');
         setNewPercentage('');
         setUseThresholds(false);
+        setUseTaxRebate(false);
         setNewThresholds([{ start: '', end: '', percentage: '' }]);
         setInputError('');
     };
@@ -181,6 +186,7 @@ const PlayersList = () => {
         setEditingPlayer(player);
         setEditUsername(player.nickname);
         setEditUseThresholds(player.rakebackType === 'threshold');
+        setEditUseTaxRebate(player.taxRebate || false);
 
         if (player.rakebackType === 'threshold') {
             setEditThresholds(player.thresholds && player.thresholds.length > 0
@@ -201,6 +207,7 @@ const PlayersList = () => {
         setEditUsername('');
         setEditPercentage('');
         setEditUseThresholds(false);
+        setEditUseTaxRebate(false);
         setEditThresholds([{ start: '', end: '', percentage: '' }]);
         setInputError('');
     };
@@ -263,6 +270,7 @@ const PlayersList = () => {
             nickname: editUsername.trim(),
             rakebackType: editUseThresholds ? 'threshold' : 'flat',
             rakeback: editUseThresholds ? 0 : parseFloat(editPercentage),
+            taxRebate: editUseTaxRebate,
             thresholds: editUseThresholds ? editThresholds.map(t => ({
                 start: parseFloat(t.start),
                 end: parseFloat(t.end),
@@ -287,9 +295,13 @@ const PlayersList = () => {
             accessor: 'rakeback',
             render: (player) => {
                 if (player.rakebackType === 'threshold') {
-                    return <span className="threshold-indicator">Thresholds</span>;
+                    return (
+                        <span className="threshold-indicator">
+                            Thresholds{player.taxRebate ? ' + T/R' : ''}
+                        </span>
+                    );
                 }
-                return `${player.rakeback}%`;
+                return `${player.rakeback}%${player.taxRebate ? ' + T/R' : ''}`;
             }
         },
         {
@@ -429,6 +441,14 @@ const PlayersList = () => {
                                 />
                                 Use Thresholds
                             </label>
+                            <label className="threshold-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={useTaxRebate}
+                                    onChange={(e) => setUseTaxRebate(e.target.checked)}
+                                />
+                                Use Tax/Rebate
+                            </label>
                         </div>
                     </AddItemForm>
                 ) : (
@@ -477,6 +497,17 @@ const PlayersList = () => {
                                     placeholder="Enter percentage"
                                 />
                             )}
+
+                            <div className="threshold-checkbox-container">
+                                <label className="threshold-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={editUseTaxRebate}
+                                        onChange={(e) => setEditUseTaxRebate(e.target.checked)}
+                                    />
+                                    Use Tax/Rebate
+                                </label>
+                            </div>
                         </EditItemForm>
                     </div>
                 </div>

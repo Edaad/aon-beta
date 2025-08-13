@@ -26,6 +26,7 @@ const AgentsList = () => {
     const [newUsername, setNewUsername] = useState('');
     const [newPercentage, setNewPercentage] = useState('');
     const [useThresholds, setUseThresholds] = useState(false);
+    const [useTaxRebate, setUseTaxRebate] = useState(false);
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
@@ -36,6 +37,7 @@ const AgentsList = () => {
     const [editingAgent, setEditingAgent] = useState(null);
     const [editUsername, setEditUsername] = useState('');
     const [editPercentage, setEditPercentage] = useState('');
+    const [editUseTaxRebate, setEditUseTaxRebate] = useState(false);
     const [editThresholds, setEditThresholds] = useState([{ start: '', end: '', percentage: '' }]);
 
     const loadAgents = useCallback(async () => {
@@ -115,6 +117,7 @@ const AgentsList = () => {
             nickname: newUsername,
             rakebackType: useThresholds ? 'threshold' : 'flat',
             rakeback: useThresholds ? 0 : parseFloat(newPercentage),
+            taxRebate: useTaxRebate,
             thresholds: useThresholds ? newThresholds.map(t => ({
                 start: parseFloat(t.start),
                 end: parseFloat(t.end),
@@ -130,6 +133,7 @@ const AgentsList = () => {
             setNewUsername('');
             setNewPercentage('');
             setUseThresholds(false);
+            setUseTaxRebate(false);
             setNewThresholds([{ start: '', end: '', percentage: '' }]);
             setIsAdding(false);
             setInputError('');
@@ -144,6 +148,7 @@ const AgentsList = () => {
         setNewUsername('');
         setNewPercentage('');
         setUseThresholds(false);
+        setUseTaxRebate(false);
         setNewThresholds([{ start: '', end: '', percentage: '' }]);
         setInputError('');
     };
@@ -179,6 +184,7 @@ const AgentsList = () => {
     const startEditAgent = (agent) => {
         setEditingAgent(agent);
         setEditUsername(agent.nickname);
+        setEditUseTaxRebate(agent.taxRebate || false);
 
         if (agent.rakebackType === 'threshold') {
             setEditThresholds(agent.thresholds || [{ start: '', end: '', percentage: '' }]);
@@ -191,6 +197,7 @@ const AgentsList = () => {
         setEditingAgent(null);
         setEditUsername('');
         setEditPercentage('');
+        setEditUseTaxRebate(false);
         setEditThresholds([{ start: '', end: '', percentage: '' }]);
     };
 
@@ -198,7 +205,10 @@ const AgentsList = () => {
         if (!editingAgent) return;
 
         try {
-            let updateData = { nickname: editUsername };
+            let updateData = { 
+                nickname: editUsername,
+                taxRebate: editUseTaxRebate
+            };
 
             if (editingAgent.rakebackType === 'threshold') {
                 // Validate thresholds
@@ -247,9 +257,13 @@ const AgentsList = () => {
             accessor: 'rakeback',
             render: (agent) => {
                 if (agent.rakebackType === 'threshold') {
-                    return <span className="threshold-indicator">Thresholds</span>;
+                    return (
+                        <span className="threshold-indicator">
+                            Thresholds{agent.taxRebate ? ' + T/R' : ''}
+                        </span>
+                    );
                 }
-                return `${agent.rakeback}%`;
+                return `${agent.rakeback}%${agent.taxRebate ? ' + T/R' : ''}`;
             }
         },
         {
@@ -389,6 +403,14 @@ const AgentsList = () => {
                                 />
                                 Use Thresholds
                             </label>
+                            <label className="threshold-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={useTaxRebate}
+                                    onChange={(e) => setUseTaxRebate(e.target.checked)}
+                                />
+                                Use Tax/Rebate
+                            </label>
                         </div>
                     </AddItemForm>
                 ) : (
@@ -437,6 +459,17 @@ const AgentsList = () => {
                                     placeholder="Enter percentage"
                                 />
                             )}
+
+                            <div className="threshold-checkbox-container">
+                                <label className="threshold-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={editUseTaxRebate}
+                                        onChange={(e) => setEditUseTaxRebate(e.target.checked)}
+                                    />
+                                    Use Tax/Rebate
+                                </label>
+                            </div>
                         </EditItemForm>
                     </div>
                 </div>

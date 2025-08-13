@@ -192,7 +192,10 @@ const ProcessedWeekContent = ({
                                 <tr key={index}>
                                     <td>{result.agentDisplay}</td>
                                     <td>{result.username}</td>
-                                    <td>${result.rakeback.toFixed(0)}</td>
+                                    <td>
+                                        ${result.rakeback.toFixed(0)}
+                                        {result.taxRebate ? ' (with t/r)' : ''}
+                                    </td>
                                     <td>{result.percentage}%</td>
                                     <td>${result.rake.toFixed(2)}</td>
                                 </tr>
@@ -232,7 +235,10 @@ const ProcessedWeekContent = ({
                                         <tr>
                                             <td>{agent.superAgent !== '-' ? agent.superAgent : '-'}</td>
                                             <td>{agent.username}</td>
-                                            <td>${agent.rakeback.toFixed(0)}</td>
+                                            <td>
+                                                ${agent.rakeback.toFixed(0)}
+                                                {agent.taxRebate ? ' (with t/r)' : ''}
+                                            </td>
                                             <td>{agent.percentage}%</td>
                                             <td>${agent.totalDownlineRake.toFixed(2)}</td>
                                             <td>
@@ -316,7 +322,10 @@ const ProcessedWeekContent = ({
                                     <React.Fragment key={`sa-${index}`}>
                                         <tr>
                                             <td>{superAgent.username}</td>
-                                            <td>${superAgent.rakeback.toFixed(0)}</td>
+                                            <td>
+                                                ${superAgent.rakeback.toFixed(0)}
+                                                {superAgent.taxRebate ? ' (with t/r)' : ''}
+                                            </td>
                                             <td>{superAgent.percentage}%</td>
                                             <td>${superAgent.totalDownlineRake.toFixed(2)}</td>
                                             <td>{superAgent.agentsCount}</td>
@@ -680,6 +689,7 @@ const RakebackData = () => {
                     const rakeCell = statsSheet[`BM${row}`]; // Changed from BL to BM
                     const agentCell = statsSheet[`F${row}`]; // Column F (A)
                     const superAgentCell = statsSheet[`D${row}`]; // Column D (SA)
+                    const plCell = statsSheet[`AL${row}`]; // Column AL (P/L)
 
                     if (!nicknameCell || !nicknameCell.v) break;
 
@@ -687,12 +697,14 @@ const RakebackData = () => {
                     const rake = rakeCell?.v || 0;
                     const agent = agentCell?.v || '-';
                     const superAgent = superAgentCell?.v || '-';
+                    const pl = plCell?.v || 0; // P/L value
 
                     extractedData.push({
                         nickname,
                         rake,
                         agent,
-                        superAgent
+                        superAgent,
+                        pl
                     });
                     row++;
                 }
@@ -794,7 +806,15 @@ const RakebackData = () => {
                         rakebackPercentage = matchedPlayer.rakeback;
                     }
 
-                    const rakeback = (player.rake * rakebackPercentage / 100).toFixed(2);
+                    let rakeback = (player.rake * rakebackPercentage / 100);
+
+                    // Apply tax/rebate if enabled for this player
+                    if (matchedPlayer.taxRebate) {
+                        const taxRebate = -0.1 * (player.pl + player.rake);
+                        rakeback += taxRebate;
+                    }
+
+                    rakeback = parseFloat(rakeback.toFixed(2));
 
                     // Determine agent display
                     let agentDisplay = "-";
@@ -808,8 +828,10 @@ const RakebackData = () => {
                         username: matchedPlayer.nickname,
                         nickname: player.nickname,
                         rake: player.rake,
+                        pl: player.pl,
                         percentage: rakebackPercentage,
-                        rakeback: parseFloat(rakeback),
+                        rakeback: rakeback,
+                        taxRebate: matchedPlayer.taxRebate,
                         agent: player.agent || '-',
                         superAgent: player.superAgent || '-',
                         agentDisplay: agentDisplay
@@ -831,16 +853,19 @@ const RakebackData = () => {
                     if (!agentDownlines[agentName]) {
                         agentDownlines[agentName] = {
                             totalRake: 0,
+                            totalPL: 0,
                             players: [],
                             superAgent: player.superAgent || '-'
                         };
                     }
 
-                    // Add player's rake to agent's total and track player details
+                    // Add player's rake and P/L to agent's total and track player details
                     agentDownlines[agentName].totalRake += player.rake;
+                    agentDownlines[agentName].totalPL += player.pl;
                     agentDownlines[agentName].players.push({
                         username: player.nickname,
-                        rake: player.rake
+                        rake: player.rake,
+                        pl: player.pl
                     });
                 }
             });
@@ -864,13 +889,22 @@ const RakebackData = () => {
                         rakebackPercentage = matchedAgent.rakeback;
                     }
 
-                    const rakeback = (totalDownlineRake * rakebackPercentage / 100).toFixed(2);
+                    let rakeback = (totalDownlineRake * rakebackPercentage / 100);
+
+                    // Apply tax/rebate if enabled for this agent
+                    if (matchedAgent.taxRebate) {
+                        const taxRebate = -0.1 * (data.totalPL + data.totalRake);
+                        rakeback += taxRebate;
+                    }
+
+                    rakeback = parseFloat(rakeback.toFixed(2));
 
                     return {
                         username: matchedAgent.nickname,
                         percentage: rakebackPercentage,
                         totalDownlineRake,
-                        rakeback: parseFloat(rakeback),
+                        rakeback: rakeback,
+                        taxRebate: matchedAgent.taxRebate,
                         superAgent: data.superAgent,
                         downlinePlayers: data.players.map(player => ({
                             ...player,
@@ -894,18 +928,21 @@ const RakebackData = () => {
                     if (!superAgentDownlines[superAgentName]) {
                         superAgentDownlines[superAgentName] = {
                             totalRake: 0,
+                            totalPL: 0,
                             agents: new Set(),
                             players: []
                         };
                     }
 
-                    // Add player's rake to super agent's total
+                    // Add player's rake and P/L to super agent's total
                     superAgentDownlines[superAgentName].totalRake += player.rake;
+                    superAgentDownlines[superAgentName].totalPL += player.pl;
 
                     // Track the player
                     superAgentDownlines[superAgentName].players.push({
                         username: player.nickname,
-                        rake: player.rake
+                        rake: player.rake,
+                        pl: player.pl
                     });
 
                     // Track the agent if exists
@@ -954,13 +991,22 @@ const RakebackData = () => {
                         rakebackPercentage = matchedSuperAgent.rakeback;
                     }
 
-                    const rakeback = (totalDownlineRake * rakebackPercentage / 100).toFixed(2);
+                    let rakeback = (totalDownlineRake * rakebackPercentage / 100);
+
+                    // Apply tax/rebate if enabled for this super agent
+                    if (matchedSuperAgent.taxRebate) {
+                        const taxRebate = -0.1 * (data.totalPL + data.totalRake);
+                        rakeback += taxRebate;
+                    }
+
+                    rakeback = parseFloat(rakeback.toFixed(2));
 
                     return {
                         username: matchedSuperAgent.nickname,
                         percentage: rakebackPercentage,
                         totalDownlineRake,
-                        rakeback: parseFloat(rakeback),
+                        rakeback: rakeback,
+                        taxRebate: matchedSuperAgent.taxRebate,
                         agentsCount: data.agents.length,
                         playersCount: data.players.length,
                         downlineAgents: data.agents.map(agent => ({
