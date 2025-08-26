@@ -11,6 +11,7 @@ import AddItemForm from '../../../components/AddItemForm/AddItemForm';
 import EditItemForm from '../../../components/EditItemForm/EditItemForm';
 import InputGroup from '../../../components/InputGroup/InputGroup';
 import ThresholdManager from '../../../components/ThresholdManager/ThresholdManager';
+import RoutingManager from '../../../components/RoutingManager/RoutingManager';
 import DeleteButton from '../../../components/DeleteButton/DeleteButton';
 import { useClub } from '../../../contexts/ClubContext';
 import { fetchSuperAgents, addSuperAgent, updateSuperAgent, deleteSuperAgent } from '../../../services/apis';
@@ -28,7 +29,9 @@ const SuperAgentsList = () => {
     const [newPercentage, setNewPercentage] = useState('');
     const [useThresholds, setUseThresholds] = useState(false);
     const [useTaxRebate, setUseTaxRebate] = useState(false);
+    const [useRouting, setUseRouting] = useState(false);
     const [newThresholds, setNewThresholds] = useState([{ start: '', end: '', percentage: '' }]);
+    const [newRouting, setNewRouting] = useState([{ username: '', type: 'player', percentage: '' }]);
     const [inputError, setInputError] = useState('');
 
     // Search state
@@ -38,8 +41,11 @@ const SuperAgentsList = () => {
     const [editingSuperAgent, setEditingSuperAgent] = useState(null);
     const [editUsername, setEditUsername] = useState('');
     const [editPercentage, setEditPercentage] = useState('');
+    const [editUseThresholds, setEditUseThresholds] = useState(false);
     const [editUseTaxRebate, setEditUseTaxRebate] = useState(false);
+    const [editUseRouting, setEditUseRouting] = useState(false);
     const [editThresholds, setEditThresholds] = useState([{ start: '', end: '', percentage: '' }]);
+    const [editRouting, setEditRouting] = useState([{ username: '', type: 'player', percentage: '' }]);
 
     const loadSuperAgents = useCallback(async () => {
         if (!currentClub) return;
@@ -114,6 +120,28 @@ const SuperAgentsList = () => {
             }
         }
 
+        // Validate routing if enabled
+        if (useRouting) {
+            if (newRouting.length === 0) {
+                setInputError('At least one routing entry is required');
+                return;
+            }
+
+            for (let i = 0; i < newRouting.length; i++) {
+                const route = newRouting[i];
+                if (!route.username || !route.percentage) {
+                    setInputError(`Username and percentage are required for routing entry ${i + 1}`);
+                    return;
+                }
+
+                const percentage = parseFloat(route.percentage);
+                if (isNaN(percentage) || percentage < 0 || percentage > 100) {
+                    setInputError(`Percentage must be between 0 and 100 for routing entry ${i + 1}`);
+                    return;
+                }
+            }
+        }
+
         // Check if username already exists
         const existingAgent = superAgents.find(agent =>
             agent.nickname.toLowerCase() === newUsername.toLowerCase()
@@ -132,6 +160,11 @@ const SuperAgentsList = () => {
                 start: parseFloat(t.start),
                 end: parseFloat(t.end),
                 percentage: parseFloat(t.percentage)
+            })) : [],
+            routing: useRouting ? newRouting.map(r => ({
+                username: r.username,
+                type: r.type,
+                percentage: parseFloat(r.percentage)
             })) : []
         };
 
@@ -144,7 +177,9 @@ const SuperAgentsList = () => {
             setNewPercentage('');
             setUseThresholds(false);
             setUseTaxRebate(false);
+            setUseRouting(false);
             setNewThresholds([{ start: '', end: '', percentage: '' }]);
+            setNewRouting([{ username: '', type: 'player', percentage: '' }]);
             setIsAdding(false);
             setInputError('');
         } catch (err) {
@@ -159,7 +194,9 @@ const SuperAgentsList = () => {
         setNewPercentage('');
         setUseThresholds(false);
         setUseTaxRebate(false);
+        setUseRouting(false);
         setNewThresholds([{ start: '', end: '', percentage: '' }]);
+        setNewRouting([{ username: '', type: 'player', percentage: '' }]);
         setInputError('');
     };
 
@@ -194,33 +231,69 @@ const SuperAgentsList = () => {
     const startEditSuperAgent = (superAgent) => {
         setEditingSuperAgent(superAgent);
         setEditUsername(superAgent.nickname);
+        setEditUseThresholds(superAgent.rakebackType === 'threshold');
         setEditUseTaxRebate(superAgent.taxRebate || false);
+        setEditUseRouting(superAgent.routing && superAgent.routing.length > 0);
 
         if (superAgent.rakebackType === 'threshold') {
-            setEditThresholds(superAgent.thresholds || [{ start: '', end: '', percentage: '' }]);
+            setEditThresholds(superAgent.thresholds && superAgent.thresholds.length > 0
+                ? superAgent.thresholds
+                : [{ start: '', end: '', percentage: '' }]);
+            setEditPercentage('');
         } else {
             setEditPercentage(superAgent.rakeback?.toString() || '');
+            setEditThresholds([{ start: '', end: '', percentage: '' }]);
         }
+
+        // Set routing data
+        setEditRouting(superAgent.routing && superAgent.routing.length > 0
+            ? superAgent.routing
+            : [{ username: '', type: 'player', percentage: '' }]);
     };
 
     const cancelEdit = () => {
         setEditingSuperAgent(null);
         setEditUsername('');
         setEditPercentage('');
+        setEditUseThresholds(false);
         setEditUseTaxRebate(false);
+        setEditUseRouting(false);
         setEditThresholds([{ start: '', end: '', percentage: '' }]);
+        setEditRouting([{ username: '', type: 'player', percentage: '' }]);
     };
 
     const saveEditedSuperAgent = async () => {
         if (!editingSuperAgent) return;
 
         try {
-            let updateData = { 
+            let updateData = {
                 nickname: editUsername,
                 taxRebate: editUseTaxRebate
             };
 
-            if (editingSuperAgent.rakebackType === 'threshold') {
+            // Handle routing
+            if (editUseRouting) {
+                // Validate routing entries
+                const validRouting = editRouting.filter(r =>
+                    r.username !== '' && r.type !== '' && r.percentage !== ''
+                );
+
+                if (validRouting.length === 0) {
+                    setInputError('At least one complete routing entry is required when using routing');
+                    return;
+                }
+
+                updateData.routing = validRouting.map(r => ({
+                    username: r.username,
+                    type: r.type,
+                    percentage: parseFloat(r.percentage)
+                }));
+            } else {
+                updateData.routing = [];
+            }
+
+            // Handle thresholds or flat percentage
+            if (editUseThresholds) {
                 // Validate thresholds
                 const validThresholds = editThresholds.filter(t =>
                     t.start !== '' && t.end !== '' && t.percentage !== ''
@@ -248,6 +321,7 @@ const SuperAgentsList = () => {
 
                 updateData.rakeback = percentage;
                 updateData.rakebackType = 'flat';
+                updateData.thresholds = [];
             }
 
             await handleUpdateSuperAgent(editingSuperAgent._id, updateData);
@@ -266,14 +340,27 @@ const SuperAgentsList = () => {
             header: 'Percentage (%)',
             accessor: 'rakeback',
             render: (agent) => {
+                const hasRouting = agent.routing && agent.routing.length > 0;
+                let displayText = '';
+
                 if (agent.rakebackType === 'threshold') {
-                    return (
-                        <span className="threshold-indicator">
-                            Thresholds{agent.taxRebate ? ' + T/R' : ''}
-                        </span>
-                    );
+                    displayText = 'Thresholds';
+                } else {
+                    displayText = `${agent.rakeback}%`;
                 }
-                return `${agent.rakeback}%${agent.taxRebate ? ' + T/R' : ''}`;
+
+                // Add indicators
+                const indicators = [];
+                if (agent.taxRebate) indicators.push('T/R');
+                if (hasRouting) indicators.push('Routing');
+
+                if (indicators.length > 0) {
+                    displayText += ` + ${indicators.join(' + ')}`;
+                }
+
+                return agent.rakebackType === 'threshold' ? (
+                    <span className="threshold-indicator">{displayText}</span>
+                ) : displayText;
             }
         },
         {
@@ -293,13 +380,7 @@ const SuperAgentsList = () => {
                         <>
                             <button
                                 className="inline-edit-btn edit"
-                                onClick={() => {
-                                    if (agent.rakebackType === 'threshold') {
-                                        startEditSuperAgent(agent);
-                                    } else {
-                                        startEdit(agent);
-                                    }
-                                }}
+                                onClick={() => startEditSuperAgent(agent)}
                             >
                                 <FaEdit />
                             </button>
@@ -424,7 +505,25 @@ const SuperAgentsList = () => {
                                 />
                                 Use Tax/Rebate
                             </label>
+                            <label className="threshold-checkbox">
+                                <input
+                                    type="checkbox"
+                                    checked={useRouting}
+                                    onChange={(e) => setUseRouting(e.target.checked)}
+                                />
+                                Use Routing
+                            </label>
                         </div>
+
+                        {useRouting && (
+                            <div className="threshold-section">
+                                <label className="threshold-label">Routing Configuration</label>
+                                <RoutingManager
+                                    routing={newRouting}
+                                    onChange={setNewRouting}
+                                />
+                            </div>
+                        )}
                     </AddItemForm>
                 ) : (
                     <AddButton
@@ -452,28 +551,42 @@ const SuperAgentsList = () => {
                                 placeholder="Enter username"
                             />
 
-                            {editingSuperAgent.rakebackType === 'threshold' ? (
-                                <div className="threshold-section">
-                                    <label className="threshold-label">Rakeback Thresholds</label>
-                                    <ThresholdManager
-                                        thresholds={editThresholds}
-                                        onChange={setEditThresholds}
+                            {(() => {
+                                console.log('editUseThresholds:', editUseThresholds);
+                                return editUseThresholds ? (
+                                    <div className="threshold-section">
+                                        <label className="threshold-label">Rakeback Thresholds</label>
+                                        <ThresholdManager
+                                            thresholds={editThresholds}
+                                            onChange={setEditThresholds}
+                                        />
+                                    </div>
+                                ) : (
+                                    <InputGroup
+                                        label="Percentage (%)"
+                                        id="percentage"
+                                        type="number"
+                                        value={editPercentage}
+                                        onChange={(e) => setEditPercentage(e.target.value)}
+                                        min="0"
+                                        max="100"
+                                        placeholder="Enter percentage"
                                     />
-                                </div>
-                            ) : (
-                                <InputGroup
-                                    label="Percentage (%)"
-                                    id="percentage"
-                                    type="number"
-                                    value={editPercentage}
-                                    onChange={(e) => setEditPercentage(e.target.value)}
-                                    min="0"
-                                    max="100"
-                                    placeholder="Enter percentage"
-                                />
-                            )}
+                                );
+                            })()}
 
                             <div className="threshold-checkbox-container">
+                                <label className="threshold-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={editUseThresholds}
+                                        onChange={(e) => {
+                                            console.log('Threshold checkbox changed:', e.target.checked);
+                                            setEditUseThresholds(e.target.checked);
+                                        }}
+                                    />
+                                    Use Thresholds
+                                </label>
                                 <label className="threshold-checkbox">
                                     <input
                                         type="checkbox"
@@ -482,7 +595,25 @@ const SuperAgentsList = () => {
                                     />
                                     Use Tax/Rebate
                                 </label>
+                                <label className="threshold-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={editUseRouting}
+                                        onChange={(e) => setEditUseRouting(e.target.checked)}
+                                    />
+                                    Use Routing
+                                </label>
                             </div>
+
+                            {editUseRouting && (
+                                <div className="threshold-section">
+                                    <label className="threshold-label">Routing Configuration</label>
+                                    <RoutingManager
+                                        routing={editRouting}
+                                        onChange={setEditRouting}
+                                    />
+                                </div>
+                            )}
                         </EditItemForm>
                     </div>
                 </div>

@@ -19,6 +19,24 @@ const thresholdSchema = new mongoose.Schema({
     }
 }, { _id: false });
 
+const routingSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        enum: ['player', 'agent', 'superAgent'],
+        required: true
+    },
+    percentage: {
+        type: Number,
+        required: true,
+        min: 0,
+        max: 100
+    }
+}, { _id: false });
+
 const playerSchema = new mongoose.Schema({
     clubId: {
         type: String,
@@ -45,6 +63,7 @@ const playerSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    routing: [routingSchema],
     createdAt: {
         type: Date,
         default: Date.now

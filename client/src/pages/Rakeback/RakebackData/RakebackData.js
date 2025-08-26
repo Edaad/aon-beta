@@ -194,7 +194,9 @@ const ProcessedWeekContent = ({
                                     <td>{result.username}</td>
                                     <td>
                                         ${result.rakeback.toFixed(0)}
-                                        {result.taxRebate ? ' (with t/r)' : ''}
+                                        {result.taxRebate && (result.routing && result.routing.length > 0) ? ' (with t/r + routing)' :
+                                            result.taxRebate ? ' (with t/r)' :
+                                                result.routing && result.routing.length > 0 ? ' (with routing)' : ''}
                                     </td>
                                     <td>{result.percentage}%</td>
                                     <td>${result.rake.toFixed(2)}</td>
@@ -237,7 +239,9 @@ const ProcessedWeekContent = ({
                                             <td>{agent.username}</td>
                                             <td>
                                                 ${agent.rakeback.toFixed(0)}
-                                                {agent.taxRebate ? ' (with t/r)' : ''}
+                                                {agent.taxRebate && (agent.routing && agent.routing.length > 0) ? ' (with t/r + routing)' :
+                                                    agent.taxRebate ? ' (with t/r)' :
+                                                        agent.routing && agent.routing.length > 0 ? ' (with routing)' : ''}
                                             </td>
                                             <td>{agent.percentage}%</td>
                                             <td>${agent.totalDownlineRake.toFixed(2)}</td>
@@ -324,7 +328,9 @@ const ProcessedWeekContent = ({
                                             <td>{superAgent.username}</td>
                                             <td>
                                                 ${superAgent.rakeback.toFixed(0)}
-                                                {superAgent.taxRebate ? ' (with t/r)' : ''}
+                                                {superAgent.taxRebate && (superAgent.routing && superAgent.routing.length > 0) ? ' (with t/r + routing)' :
+                                                    superAgent.taxRebate ? ' (with t/r)' :
+                                                        superAgent.routing && superAgent.routing.length > 0 ? ' (with routing)' : ''}
                                             </td>
                                             <td>{superAgent.percentage}%</td>
                                             <td>${superAgent.totalDownlineRake.toFixed(2)}</td>
@@ -768,6 +774,67 @@ const RakebackData = () => {
                 throw new Error('No data available to process');
             }
 
+            console.log('🚀 Starting rakeback processing...');
+            console.log('📊 All players:', players.map(p => ({ name: p.nickname, routing: p.routing })));
+            console.log('📊 Week data players:', week.extractedData.map(p => ({ name: p.nickname, rake: p.rake })));
+
+            // Helper function to calculate routing rakeback
+            const calculateRoutingRakeback = (entity, allEntities, entityType) => {
+                console.log(`🔍 Calculating routing for ${entity.nickname} (${entityType}):`, entity.routing);
+
+                if (!entity.routing || entity.routing.length === 0) {
+                    console.log(`❌ No routing configured for ${entity.nickname}`);
+                    return 0;
+                }
+
+                let totalRoutingRakeback = 0;
+
+                entity.routing.forEach((route, index) => {
+                    console.log(`🎯 Processing route ${index + 1} for ${entity.nickname}:`, route);
+
+                    // Find the target entity to route from
+                    let targetEntityData = null;
+
+                    if (route.type === 'player') {
+                        // For players, we only need them to exist in the week data
+                        targetEntityData = week.extractedData.find(p =>
+                            p.nickname.toLowerCase() === route.username.toLowerCase()
+                        );
+                        console.log(`👤 Looking for player target: ${route.username}`, { targetEntityData: !!targetEntityData, rake: targetEntityData?.rake });
+                    } else if (route.type === 'agent') {
+                        // For agents, calculate their total downline rake from week data
+                        const agentDownlineRake = week.extractedData
+                            .filter(player => player.agent && player.agent.toLowerCase() === route.username.toLowerCase())
+                            .reduce((sum, player) => sum + player.rake, 0);
+                        if (agentDownlineRake > 0) {
+                            targetEntityData = { rake: agentDownlineRake };
+                        }
+                        console.log(`👥 Looking for agent target: ${route.username}`, { agentDownlineRake, targetEntityData: !!targetEntityData });
+                    } else if (route.type === 'superAgent') {
+                        // For super agents, calculate their total downline rake from week data
+                        const superAgentDownlineRake = week.extractedData
+                            .filter(player => player.superAgent && player.superAgent.toLowerCase() === route.username.toLowerCase())
+                            .reduce((sum, player) => sum + player.rake, 0);
+                        if (superAgentDownlineRake > 0) {
+                            targetEntityData = { rake: superAgentDownlineRake };
+                        }
+                        console.log(`🌟 Looking for super agent target: ${route.username}`, { superAgentDownlineRake, targetEntityData: !!targetEntityData });
+                    }
+
+                    if (targetEntityData && targetEntityData.rake) {
+                        // Calculate routing percentage of the target's rake
+                        const routingAmount = (targetEntityData.rake * route.percentage / 100);
+                        totalRoutingRakeback += routingAmount;
+                        console.log(`✅ Routing calculation: ${targetEntityData.rake} × ${route.percentage}% = ${routingAmount}`);
+                    } else {
+                        console.log(`❌ Target not found or no rake data for route:`, route);
+                    }
+                });
+
+                console.log(`💰 Total routing rakeback for ${entity.nickname}: ${totalRoutingRakeback}`);
+                return parseFloat(totalRoutingRakeback.toFixed(2));
+            };
+
             // Helper function to calculate rakeback percentage for threshold-based players
             const calculateThresholdPercentage = (rakeAmount, thresholds) => {
                 if (!thresholds || thresholds.length === 0) {
@@ -814,6 +881,13 @@ const RakebackData = () => {
                         rakeback += taxRebate;
                     }
 
+                    // Calculate routing rakeback if enabled for this player
+                    const routingRakeback = calculateRoutingRakeback(matchedPlayer, null, 'player');
+                    if (routingRakeback > 0) {
+                        console.log(`💰 Player ${matchedPlayer.nickname} received routing rakeback: ${routingRakeback}`);
+                    }
+                    rakeback += routingRakeback;
+
                     rakeback = parseFloat(rakeback.toFixed(2));
 
                     // Determine agent display
@@ -832,6 +906,8 @@ const RakebackData = () => {
                         percentage: rakebackPercentage,
                         rakeback: rakeback,
                         taxRebate: matchedPlayer.taxRebate,
+                        routing: matchedPlayer.routing || [],
+                        routingRakeback: routingRakeback,
                         agent: player.agent || '-',
                         superAgent: player.superAgent || '-',
                         agentDisplay: agentDisplay
@@ -897,6 +973,10 @@ const RakebackData = () => {
                         rakeback += taxRebate;
                     }
 
+                    // Calculate routing rakeback if enabled for this agent
+                    const routingRakeback = calculateRoutingRakeback(matchedAgent, null, 'agent');
+                    rakeback += routingRakeback;
+
                     rakeback = parseFloat(rakeback.toFixed(2));
 
                     return {
@@ -905,6 +985,8 @@ const RakebackData = () => {
                         totalDownlineRake,
                         rakeback: rakeback,
                         taxRebate: matchedAgent.taxRebate,
+                        routing: matchedAgent.routing || [],
+                        routingRakeback: routingRakeback,
                         superAgent: data.superAgent,
                         downlinePlayers: data.players.map(player => ({
                             ...player,
@@ -999,6 +1081,10 @@ const RakebackData = () => {
                         rakeback += taxRebate;
                     }
 
+                    // Calculate routing rakeback if enabled for this super agent
+                    const routingRakeback = calculateRoutingRakeback(matchedSuperAgent, null, 'superAgent');
+                    rakeback += routingRakeback;
+
                     rakeback = parseFloat(rakeback.toFixed(2));
 
                     return {
@@ -1007,6 +1093,8 @@ const RakebackData = () => {
                         totalDownlineRake,
                         rakeback: rakeback,
                         taxRebate: matchedSuperAgent.taxRebate,
+                        routing: matchedSuperAgent.routing || [],
+                        routingRakeback: routingRakeback,
                         agentsCount: data.agents.length,
                         playersCount: data.players.length,
                         downlineAgents: data.agents.map(agent => ({
