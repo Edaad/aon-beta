@@ -580,7 +580,7 @@ const PlayersList = () => {
                                 placeholder="Enter username"
                             />
 
-                            {editingPlayer.rakebackType === 'threshold' ? (
+                            {editUseThresholds ? (
                                 <div className="threshold-section">
                                     <label className="threshold-label">Rakeback Thresholds</label>
                                     <ThresholdManager

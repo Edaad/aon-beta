@@ -28,8 +28,8 @@ const ThresholdManager = ({ thresholds, onChange }) => {
                     <tr>
                         <th>Start</th>
                         <th>End</th>
-                        <th>Percentage %</th>
-                        <th>Action</th>
+                        <th>RB %</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -401,6 +401,25 @@
     font-size: 14px;
 }
 
+/* Download Individual Report Button */
+.download-individual-report-btn {
+    background: none;
+    border: none;
+    color: #64b5f6;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 4px;
+    flex-shrink: 0;
+}
+
+.download-individual-report-btn:hover {
+    color: #42a5f5;
+}
+
 /* Tabs for Players and Agents */
 .rakeback-tabs {
     display: flex;
