@@ -16,6 +16,9 @@ import DeleteButton from '../../../components/DeleteButton/DeleteButton';
 import StatusBadge from '../../../components/StatusBadge/StatusBadge';
 import { useClub } from '../../../contexts/ClubContext';
 
+// Import individual report utilities
+import { generateAgentReport, generateSuperAgentReport } from '../../../utils/individualReports';
+
 import {
     fetchWeeks,
     fetchWeekData,
@@ -229,6 +232,7 @@ const ProcessedWeekContent = ({
                                     <th>Percentage (%)</th>
                                     <th>Downline Rake</th>
                                     <th>Details</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -252,6 +256,16 @@ const ProcessedWeekContent = ({
                                                     aria-label="Show downline details"
                                                 >
                                                     {expandedAgentId === index ? '▼' : '▶'}
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="download-individual-report-btn"
+                                                    onClick={() => generateAgentReport(week, agent)}
+                                                    aria-label="Download agent report"
+                                                    title="Download Individual Agent Report"
+                                                >
+                                                    <FaDownload />
                                                 </button>
                                             </td>
                                         </tr>
@@ -292,6 +306,8 @@ const ProcessedWeekContent = ({
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -319,6 +335,7 @@ const ProcessedWeekContent = ({
                                     <th>Agents</th>
                                     <th>Players</th>
                                     <th>Details</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -343,6 +360,16 @@ const ProcessedWeekContent = ({
                                                     aria-label="Show downline details"
                                                 >
                                                     {expandedAgentId === `sa-${index}` ? '▼' : '▶'}
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="download-individual-report-btn"
+                                                    onClick={() => generateSuperAgentReport(week, superAgent)}
+                                                    aria-label="Download super agent report"
+                                                    title="Download Individual Super Agent Report"
+                                                >
+                                                    <FaDownload />
                                                 </button>
                                             </td>
                                         </tr>
@@ -400,6 +427,7 @@ const ProcessedWeekContent = ({
                                 <tr>
                                     <td><strong>Total</strong></td>
                                     <td><strong>${week.data.summary.totalSuperAgentRakeback.toFixed(2)}</strong></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -987,6 +1015,7 @@ const RakebackData = () => {
                         taxRebate: matchedAgent.taxRebate,
                         routing: matchedAgent.routing || [],
                         routingRakeback: routingRakeback,
+                        totalDownlinePL: data.totalPL,
                         superAgent: data.superAgent,
                         downlinePlayers: data.players.map(player => ({
                             ...player,
@@ -1095,6 +1124,7 @@ const RakebackData = () => {
                         taxRebate: matchedSuperAgent.taxRebate,
                         routing: matchedSuperAgent.routing || [],
                         routingRakeback: routingRakeback,
+                        totalDownlinePL: data.totalPL,
                         agentsCount: data.agents.length,
                         playersCount: data.players.length,
                         downlineAgents: data.agents.map(agent => ({
