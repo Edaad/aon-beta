@@ -556,14 +556,19 @@ const RakebackData = () => {
                     // Convert backend data structure to frontend format
                     const frontendData = {
                         ...data,
+                        extractedData: data.extractedData || [],
                         playerResults: data.playersData?.map(player => ({
                             username: player.nickname,
                             nickname: player.nickname,
                             rake: player.rake,
+                            pl: player.pl || 0,
                             percentage: player.rakebackPercent,
                             rakeback: player.rakebackAmount,
                             agent: player.agent || '-',
                             superAgent: player.superAgent || '-',
+                            taxRebate: player.taxRebate || false,
+                            routing: player.routing || [],
+                            routingRakeback: player.routingRakeback || 0,
                             agentDisplay: player.superAgent && player.superAgent !== '-'
                                 ? `${player.superAgent} (SA)`
                                 : player.agent && player.agent !== '-'
@@ -574,17 +579,25 @@ const RakebackData = () => {
                             username: agent.nickname || 'Unknown Agent',
                             percentage: agent.rakebackPercent || 0,
                             totalDownlineRake: agent.totalRake || 0,
+                            totalDownlinePL: agent.totalPL || 0,
                             rakeback: agent.rakebackAmount || 0,
                             superAgent: agent.superAgent || '-',
+                            taxRebate: agent.taxRebate || false,
+                            routing: agent.routing || [],
+                            routingRakeback: agent.routingRakeback || 0,
                             downlinePlayers: agent.downlinePlayers || [] // Preserve downline players data
                         })) || [],
                         superAgentResults: data.superAgentsData?.map(superAgent => ({
                             username: superAgent.nickname || 'Unknown Super Agent',
                             percentage: superAgent.rakebackPercent || 0,
                             totalDownlineRake: superAgent.totalRake || 0,
+                            totalDownlinePL: superAgent.totalPL || 0,
                             rakeback: superAgent.rakebackAmount || 0,
                             agentsCount: superAgent.agentsCount || 0,
                             playersCount: superAgent.playersCount || 0,
+                            taxRebate: superAgent.taxRebate || false,
+                            routing: superAgent.routing || [],
+                            routingRakeback: superAgent.routingRakeback || 0,
                             downlineAgents: superAgent.downlineAgents || [],
                             downlinePlayers: superAgent.downlinePlayers || []
                         })) || [],
@@ -1156,34 +1169,54 @@ const RakebackData = () => {
                 totalPL: week.clubOverview?.profitLoss || 0,
                 activePlayers: week.clubOverview?.activePlayers || 0,
                 totalHands: week.clubOverview?.totalHands || 0,
+                extractedData: week.extractedData.map(player => ({
+                    nickname: player.nickname,
+                    agent: player.agent || '-',
+                    superAgent: player.superAgent || '-',
+                    rake: player.rake,
+                    pl: player.pl
+                })),
                 playersData: playerResults.map(player => ({
                     nickname: player.nickname,
                     agent: player.agent,
                     rake: player.rake,
+                    pl: player.pl,
                     rakebackPercent: player.percentage,
                     rakebackAmount: player.rakeback,
-                    superAgent: player.superAgent
+                    superAgent: player.superAgent,
+                    taxRebate: player.taxRebate || false,
+                    routing: player.routing || [],
+                    routingRakeback: player.routingRakeback || 0
                 })),
                 agentsData: agentResults.map(agent => ({
                     nickname: agent.username,
                     totalRake: agent.totalDownlineRake,
+                    totalPL: agent.totalDownlinePL || 0,
                     rakebackPercent: agent.percentage,
                     rakebackAmount: agent.rakeback,
                     playersCount: agent.downlinePlayers.length,
                     superAgent: agent.superAgent,
+                    taxRebate: agent.taxRebate || false,
+                    routing: agent.routing || [],
+                    routingRakeback: agent.routingRakeback || 0,
                     downlinePlayers: agent.downlinePlayers.map(player => ({
                         username: player.username,
                         rake: player.rake,
+                        pl: player.pl || 0,
                         contribution: parseFloat(player.contribution)
                     }))
                 })),
                 superAgentsData: superAgentResults.map(superAgent => ({
                     nickname: superAgent.username,
                     totalRake: superAgent.totalDownlineRake,
+                    totalPL: superAgent.totalDownlinePL || 0,
                     rakebackPercent: superAgent.percentage,
                     rakebackAmount: superAgent.rakeback,
                     agentsCount: superAgent.agentsCount,
                     playersCount: superAgent.playersCount,
+                    taxRebate: superAgent.taxRebate || false,
+                    routing: superAgent.routing || [],
+                    routingRakeback: superAgent.routingRakeback || 0,
                     downlineAgents: superAgent.downlineAgents.map(agent => ({
                         username: agent.username,
                         rake: agent.rake,
@@ -1192,6 +1225,7 @@ const RakebackData = () => {
                     downlinePlayers: superAgent.downlinePlayers.map(player => ({
                         username: player.username,
                         rake: player.rake,
+                        pl: player.pl || 0,
                         contribution: parseFloat(player.contribution)
                     }))
                 })),

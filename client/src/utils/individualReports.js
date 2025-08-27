@@ -55,35 +55,53 @@ export const generateAgentReport = (week, agent) => {
             agentSummary.push(['Routing Type', 'Receives percentage of other entities\' rake']);
             agentSummary.push(['']);
 
-            let totalRoutingReceived = 0;
+            let totalRoutingReceived = agent.routingRakeback || 0;
 
             agent.routing.forEach((route, index) => {
-                // Calculate target entity's total rake from week data
+                // Calculate target entity's total rake from saved week data
                 let targetRake = 0;
                 let targetDescription = '';
 
                 if (route.type === 'player') {
-                    const targetPlayer = week.extractedData?.find(p =>
+                    // Look in the complete extracted data first, fall back to player results
+                    const targetPlayer = week.data.extractedData?.find(p =>
                         p.nickname.toLowerCase() === route.username.toLowerCase()
+                    ) || week.data.playerResults?.find(p =>
+                        p.username.toLowerCase() === route.username.toLowerCase()
                     );
                     targetRake = targetPlayer?.rake || 0;
                     targetDescription = `${route.username} (Player)`;
                 } else if (route.type === 'agent') {
-                    // Calculate agent's total downline rake
-                    targetRake = week.extractedData
+                    // For agents, calculate total downline rake from extracted data
+                    targetRake = week.data.extractedData
                         ?.filter(player => player.agent && player.agent.toLowerCase() === route.username.toLowerCase())
                         .reduce((sum, player) => sum + player.rake, 0) || 0;
+
+                    // If not found in extracted data, check agent results
+                    if (targetRake === 0) {
+                        const targetAgent = week.data.agentResults?.find(a =>
+                            a.username.toLowerCase() === route.username.toLowerCase()
+                        );
+                        targetRake = targetAgent?.totalDownlineRake || 0;
+                    }
                     targetDescription = `${route.username} (Agent)`;
                 } else if (route.type === 'superAgent') {
-                    // Calculate super agent's total downline rake
-                    targetRake = week.extractedData
+                    // For super agents, calculate total downline rake from extracted data
+                    targetRake = week.data.extractedData
                         ?.filter(player => player.superAgent && player.superAgent.toLowerCase() === route.username.toLowerCase())
                         .reduce((sum, player) => sum + player.rake, 0) || 0;
+
+                    // If not found in extracted data, check super agent results
+                    if (targetRake === 0) {
+                        const targetSuperAgent = week.data.superAgentResults?.find(sa =>
+                            sa.username.toLowerCase() === route.username.toLowerCase()
+                        );
+                        targetRake = targetSuperAgent?.totalDownlineRake || 0;
+                    }
                     targetDescription = `${route.username} (Super Agent)`;
                 }
 
                 const routingAmount = (targetRake * route.percentage / 100);
-                totalRoutingReceived += routingAmount;
 
                 agentSummary.push([`Route ${index + 1}`, '']);
                 agentSummary.push(['  From Entity', targetDescription]);
@@ -202,35 +220,53 @@ export const generateSuperAgentReport = (week, superAgent) => {
             superAgentSummary.push(['Routing Type', 'Receives percentage of other entities\' rake']);
             superAgentSummary.push(['']);
 
-            let totalRoutingReceived = 0;
+            let totalRoutingReceived = superAgent.routingRakeback || 0;
 
             superAgent.routing.forEach((route, index) => {
-                // Calculate target entity's total rake from week data
+                // Calculate target entity's total rake from saved week data
                 let targetRake = 0;
                 let targetDescription = '';
 
                 if (route.type === 'player') {
-                    const targetPlayer = week.extractedData?.find(p =>
+                    // Look in the complete extracted data first, fall back to player results
+                    const targetPlayer = week.data.extractedData?.find(p =>
                         p.nickname.toLowerCase() === route.username.toLowerCase()
+                    ) || week.data.playerResults?.find(p =>
+                        p.username.toLowerCase() === route.username.toLowerCase()
                     );
                     targetRake = targetPlayer?.rake || 0;
                     targetDescription = `${route.username} (Player)`;
                 } else if (route.type === 'agent') {
-                    // Calculate agent's total downline rake
-                    targetRake = week.extractedData
+                    // For agents, calculate total downline rake from extracted data
+                    targetRake = week.data.extractedData
                         ?.filter(player => player.agent && player.agent.toLowerCase() === route.username.toLowerCase())
                         .reduce((sum, player) => sum + player.rake, 0) || 0;
+
+                    // If not found in extracted data, check agent results
+                    if (targetRake === 0) {
+                        const targetAgent = week.data.agentResults?.find(a =>
+                            a.username.toLowerCase() === route.username.toLowerCase()
+                        );
+                        targetRake = targetAgent?.totalDownlineRake || 0;
+                    }
                     targetDescription = `${route.username} (Agent)`;
                 } else if (route.type === 'superAgent') {
-                    // Calculate super agent's total downline rake
-                    targetRake = week.extractedData
+                    // For super agents, calculate total downline rake from extracted data
+                    targetRake = week.data.extractedData
                         ?.filter(player => player.superAgent && player.superAgent.toLowerCase() === route.username.toLowerCase())
                         .reduce((sum, player) => sum + player.rake, 0) || 0;
+
+                    // If not found in extracted data, check super agent results
+                    if (targetRake === 0) {
+                        const targetSuperAgent = week.data.superAgentResults?.find(sa =>
+                            sa.username.toLowerCase() === route.username.toLowerCase()
+                        );
+                        targetRake = targetSuperAgent?.totalDownlineRake || 0;
+                    }
                     targetDescription = `${route.username} (Super Agent)`;
                 }
 
                 const routingAmount = (targetRake * route.percentage / 100);
-                totalRoutingReceived += routingAmount;
 
                 superAgentSummary.push([`Route ${index + 1}`, '']);
                 superAgentSummary.push(['  From Entity', targetDescription]);
