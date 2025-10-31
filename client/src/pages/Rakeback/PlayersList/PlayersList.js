@@ -209,7 +209,7 @@ const PlayersList = () => {
     };
 
     // Update player with inline editing
-    const handleUpdatePlayer = async (playerId, updatedData) => {
+    const handleInlineUpdatePlayer = async (playerId, updatedData) => {
         try {
             const updatedPlayer = {
                 nickname: updatedData.nickname.trim(),
@@ -446,7 +446,7 @@ const PlayersList = () => {
                 <RakebackTable
                     data={filteredPlayers}
                     columns={columns}
-                    onUpdate={handleUpdatePlayer}
+                    onUpdate={handleInlineUpdatePlayer}
                     editableFields={['nickname', 'rakeback']}
                 />
             );

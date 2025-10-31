@@ -212,7 +212,7 @@ const SuperAgentsList = () => {
     };
 
     // Update super agent with inline editing
-    const handleUpdateSuperAgent = async (superAgentId, updatedData) => {
+    const handleInlineUpdateSuperAgent = async (superAgentId, updatedData) => {
         try {
             const updatedSuperAgent = {
                 nickname: updatedData.nickname.trim(),
@@ -267,7 +267,7 @@ const SuperAgentsList = () => {
 
         try {
             let updateData = {
-                nickname: editUsername,
+                nickname: editUsername.trim(),
                 taxRebate: editUseTaxRebate
             };
 
@@ -324,7 +324,8 @@ const SuperAgentsList = () => {
                 updateData.thresholds = [];
             }
 
-            await handleUpdateSuperAgent(editingSuperAgent._id, updateData);
+            await updateSuperAgent(currentClub.name, editingSuperAgent._id, updateData);
+            loadSuperAgents();
             cancelEdit();
             setInputError('');
         } catch (error) {
@@ -414,7 +415,7 @@ const SuperAgentsList = () => {
                 <RakebackTable
                     data={filteredSuperAgents}
                     columns={columns}
-                    onUpdate={handleUpdateSuperAgent}
+                    onUpdate={handleInlineUpdateSuperAgent}
                     editableFields={['nickname', 'rakeback']}
                 />
             );

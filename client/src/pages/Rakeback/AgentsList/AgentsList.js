@@ -202,7 +202,7 @@ const AgentsList = () => {
     };
 
     // Update agent with inline editing
-    const handleUpdateAgent = async (agentId, updatedData) => {
+    const handleInlineUpdateAgent = async (agentId, updatedData) => {
         try {
             const updatedAgent = {
                 nickname: updatedData.nickname.trim(),
@@ -347,7 +347,8 @@ const AgentsList = () => {
         };
 
         try {
-            await handleUpdateAgent(editingAgent._id, updatedAgent);
+            await updateAgent(currentClub.name, editingAgent._id, updatedAgent);
+            loadAgents();
             cancelEdit();
             setInputError('');
         } catch (error) {
@@ -436,7 +437,7 @@ const AgentsList = () => {
                 <RakebackTable
                     data={filteredAgents}
                     columns={columns}
-                    onUpdate={handleUpdateAgent}
+                    onUpdate={handleInlineUpdateAgent}
                     editableFields={['nickname', 'rakeback']}
                 />
             );
